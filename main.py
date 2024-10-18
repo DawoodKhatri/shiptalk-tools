@@ -1,10 +1,10 @@
 from openai import OpenAI
 from dotenv import load_dotenv
-import json
-from response_format import response_format
 from system_prompts import justInTimeInventoryPrompt
-from fastapi import Request, FastAPI
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from input_types import JustInTimeInventoryInputParamsType
+from output_types import AnalysisResults
 
 app = FastAPI()
 
@@ -30,22 +30,15 @@ inputParams = {
 
 
 @app.post("/api/v1/just-in-time-inventory")
-async def just_in_time_inventory(request: Request):
-    try:
+async def just_in_time_inventory(inputParameters: JustInTimeInventoryInputParamsType) -> AnalysisResults:
 
-        inputParameters = await request.json()
+    completion = client.beta.chat.completions.parse(
+        model="gpt-4o-mini",
+        messages=justInTimeInventoryPrompt(
+            inputParameters=inputParameters),
+        response_format=AnalysisResults
+    )
 
-        completion = client.chat.completions.create(
-            model="gpt-4o-mini",
-            messages=justInTimeInventoryPrompt(
-                inputParameters=inputParameters),
+    response = completion.choices[0].message.parsed
 
-            response_format=response_format
-        )
-
-        response = json.loads(completion.choices[0].message.content)
-
-        return {"success": True, "results": response["results"]}
-
-    except Exception as e:
-        return {"success": False, "message": str(e)}
+    return response
