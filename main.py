@@ -20,7 +20,7 @@ load_dotenv()
 
 client = OpenAI()
 
-inputParams = {
+sampleInputParameters = {
     "productType": "Electronics",
     "currentInventoryLevel": 100,
     "averageLeadTime": 5,
