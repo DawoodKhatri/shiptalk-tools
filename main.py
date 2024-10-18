@@ -1,10 +1,11 @@
+from fastapi import FastAPI, Body
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.exceptions import HTTPException
 from openai import OpenAI
 from dotenv import load_dotenv
-from system_prompts import justInTimeInventoryPrompt
-from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
-from input_types import JustInTimeInventoryInputParamsType
-from output_types import AnalysisResults
+from typing import Any
+import os
+import importlib
 
 app = FastAPI()
 
@@ -20,25 +21,41 @@ load_dotenv()
 
 client = OpenAI()
 
-sampleInputParameters = {
-    "productType": "Electronics",
-    "currentInventoryLevel": 100,
-    "averageLeadTime": 5,
-    "dailyDemand": 10,
-    "productionDays": 10
-}
+
+# dynamically loading of tools configurations
+tool_mapping = {}
+tools_dir = "tools"
+for file_name in os.listdir(tools_dir):
+    if file_name.endswith(".py") and file_name != "__init__.py":
+        module_name = f"{tools_dir}.{file_name[:-3]}"  # Strip ".py"
+        module = importlib.import_module(module_name)
+        tool_mapping.update(module.tool_config)
 
 
-@app.post("/api/v1/just-in-time-inventory")
-async def just_in_time_inventory(inputParameters: JustInTimeInventoryInputParamsType) -> AnalysisResults:
+@app.post("/api/v1/chat-tools/")
+async def process_tool(
+    tool: str,
+    inputParameters: Any = Body(...),
+) -> dict[str, Any]:
+    if tool not in tool_mapping:
+        raise HTTPException(status_code=400, detail="Invalid tool name")
+
+    prompt_func = tool_mapping[tool]["prompt_func"]
+    response_format = tool_mapping[tool]["response_format"]
+    input_format = tool_mapping[tool]["input_format"]
+
+    validated_input = input_format(**inputParameters)
+    messages = prompt_func(inputParameters=validated_input)
 
     completion = client.beta.chat.completions.parse(
         model="gpt-4o-mini",
-        messages=justInTimeInventoryPrompt(
-            inputParameters=inputParameters),
-        response_format=AnalysisResults
+        messages=messages,
+        response_format=response_format,
     )
 
     response = completion.choices[0].message.parsed
 
-    return response
+    return {
+        "tool": tool,
+        "response": response,
+    }

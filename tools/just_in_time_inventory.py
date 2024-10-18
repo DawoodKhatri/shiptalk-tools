@@ -1,23 +1,33 @@
 import json
-from input_types import JustInTimeInventoryInputParamsType
+from pydantic import BaseModel
+from .custom_types.base_types import Plot
+from pydantic import BaseModel
 
-def justInTimeInventoryPrompt(inputParameters: JustInTimeInventoryInputParamsType):
-    system_prompt = """
+
+class JustInTimeInventoryInputParamsType(BaseModel):
+    productType: str
+    currentInventoryLevel: int
+    averageLeadTime: int
+    dailyDemand: int
+    productionDays: int
+
+
+class JustInTimeInventoryAnalysisResults(BaseModel):
+    description: str
+    plots: list[Plot]
+    conclusion: str
+
+
+def just_in_time_inventory_prompt(inputParameters: JustInTimeInventoryInputParamsType):
+    system_prompt = (
+        """
     You are an AI tasked with building a Just-In-Time Inventory Optimization Tool. 
     Your role is to analyze stock levels, lead times, and production schedules to help minimize inventory holding costs.
 
     ### *Input Data Schema*
-    {
-      "type": "object",
-      "properties": {
-        "productType": { "type": "string" },
-        "currentInventoryLevel": { "type": "integer" },
-        "averageLeadTime": { "type": "integer" },
-        "dailyDemand": { "type": "integer" },
-        "productionDays": { "type": "integer" }
-      },
-      "required": ["productType", "currentInventoryLevel", "averageLeadTime", "dailyDemand", "productionDays"]
-    }
+    """
+        + json.dumps(JustInTimeInventoryInputParamsType.model_json_schema())
+        + """
 
     ### *Chart Types*
     Possible values for chart types:
@@ -67,20 +77,26 @@ def justInTimeInventoryPrompt(inputParameters: JustInTimeInventoryInputParamsTyp
     3. **conclusion**: Provide markdown-formatted, actionable insights based on the analysis (e.g., suggest reducing or replenishing stock), including adjustments based on **productType**.
 
     """
+    )
 
     user_prompt = """
     I want to optimize my inventory using the Just-In-Time approach. Here's my data:
-    """ + json.dumps(inputParameters.model_dump(), indent=4)
+    """ + json.dumps(
+        inputParameters.model_dump(), indent=4
+    )
 
     messages = [
-        {
-            "role": "system",
-            "content": system_prompt
-        },
-        {
-            "role": "user",
-            "content": user_prompt
-        }
+        {"role": "system", "content": system_prompt},
+        {"role": "user", "content": user_prompt},
     ]
 
     return messages
+
+
+tool_config = {
+    "just-in-time-inventory": {
+        "prompt_func": just_in_time_inventory_prompt,
+        "response_format": JustInTimeInventoryAnalysisResults,
+        "input_format": JustInTimeInventoryInputParamsType,
+    }
+}
