@@ -25,7 +25,6 @@ def justInTimeInventoryPrompt(inputParameters: JustInTimeInventoryInputParamsTyp
     - **pieChart**
     - **lineChart**
     - **areaChart**
-    - **radarChart**
 
     ### *Instructions*
     1. **Inventory Analysis**:
