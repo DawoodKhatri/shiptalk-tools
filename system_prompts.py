@@ -1,11 +1,10 @@
 import json
 from input_types import JustInTimeInventoryInputParamsType
 
-
 def justInTimeInventoryPrompt(inputParameters: JustInTimeInventoryInputParamsType):
     system_prompt = """
     You are an AI tasked with building a Just-In-Time Inventory Optimization Tool. 
-    The tool helps minimize inventory holding costs by analyzing stock levels, production schedules, lead times, and receiving times to ensure goods arrive only as they are needed.
+    Your role is to analyze stock levels, lead times, and production schedules to help minimize inventory holding costs.
 
     ### *Input Data Schema*
     {
@@ -20,46 +19,52 @@ def justInTimeInventoryPrompt(inputParameters: JustInTimeInventoryInputParamsTyp
       "required": ["productType", "currentInventoryLevel", "averageLeadTime", "dailyDemand", "productionDays"]
     }
 
+    ### *Chart Types*
+    Possible values for chart types:
+    - **barChart**
+    - **pieChart**
+    - **lineChart**
+    - **areaChart**
+    - **radarChart**
+
     ### *Instructions*
     1. **Inventory Analysis**:
-        - Analyze the stock situation and calculate whether current inventory is sufficient to meet demand during the production period.
-        - Ensure that lead time is factored into replenishment needs to avoid stockouts.
-        - For visualization, focus on the **required inventory**, **current inventory**, and any **shortfalls or excess** without providing the actual calculations in the description.
-        - Include **xLabel** and **yLabel** in the plot to label the x-axis and y-axis respectively. Each data point in the plot should adhere to the **PlotData** schema.
+        - Determine if current inventory meets production demand.
+        - Address excess and insufficient inventory:
+          - **Excess**: Suggest reducing stock to lower holding costs.
+          - **Insufficient**: Recommend restocking or adjusting the schedule.
+        - Use **xLabel** and **yLabel** in plots. Choose appropriate chart types.
 
-    2. **Replenishment Schedule Analysis**:
-        - Analyze how often replenishments should be ordered based on lead time and daily demand.
-        - Visualize potential improvements in the receiving schedule, and ensure **xLabel** and **yLabel** are used effectively to represent time and inventory levels, following the **Plot** schema.
+    2. **Replenishment Schedule**:
+        - Analyze when to reorder based on lead time and demand:
+          - **Sufficient stock**: Recommend no immediate replenishment; monitor and plan for future.
+          - **Low stock**: Suggest immediate replenishment to avoid stockouts.
+        - Visualize inventory trends using the appropriate chart type.
 
-    3. **Stock Consumption and Alignment**:
-        - Assess how long current stock will last based on daily demand and whether additional stock is needed before production ends.
-        - Ensure that visualizations (such as pie charts) follow the **Plot** schema, focusing on how long the current stock covers production needs, using labels like "Days Covered" and "Days Left".
-        - Provide suggestions for better alignment between stock levels and production cycles to minimize costs.
+    3. **Stock Consumption**:
+        - Assess how long current stock will last:
+          - **Excess stock**: Suggest reducing it.
+          - **Low stock**: Recommend restocking to cover demand.
+        - Use appropriate chart types to show days covered vs. days left.
 
     4. **Cost Efficiency Insights**:
-        - Instead of providing specific actions, suggest how optimizing the inventory and replenishment processes could reduce holding costs.
-        - Include a **conclusion** that suggests improvements for cost-saving opportunities and overall efficiency.
+        - Conclusions should cover both excess and insufficient stock:
+          - **Excess**: Highlight higher holding costs and suggest reduction.
+          - **Low stock**: Emphasize stockout risks and recommend timely restocking.
+        - Conclusions must use **markdown** formatting and be based on data analysis.
 
     ### *Output Requirements*
-    Generate **multiple results**, each containing:
+    Generate **multiple results**, each with:
 
-    1. **description** (Markdown format): Provide a **title** describing the type of analysis (e.g., "Inventory Level Insights", "Replenishment Schedule"). Avoid detailed calculations in this section.
-    2. **plot** (compliant with the **Plot** schema): Include xLabel, yLabel, and data points derived from the analysis, keeping the labels concise (1-2 words).
-    3. **conclusion** (Markdown format): Provide **informational suggestions** and insights based on the analysis (e.g., suggesting more frequent orders for cost savings).
+    1. **description**: A concise title for the analysis (e.g., "Inventory Level Insights").
+    2. **plot**: xLabel, yLabel, chartType (barChart, pieChart, etc.), and data points. Ensure the **label** in the **data** is concise, limited to 1-2 words, for better readability.
+    3. **conclusion**: Provide markdown-formatted, actionable insights based on the analysis (e.g., suggest reducing or replenishing stock).
 
-    ### *Steps*
-    1. **Inventory Level Insights**: Analyze the optimal inventory level required for production and visualize the gaps. Use concise labels like "Current", "Required", and "Shortfall".
-    
-    2. **Replenishment Timing Suggestions**: Calculate when replenishments should be ordered, and suggest potential improvements to the timing to minimize costs and holding periods. Visualize inventory depletion with labels such as "Day X".
-
-    3. **Stock Depletion and Cost Suggestions**: Assess how long current stock will last and visualize the results. Provide insights into potential inefficiencies, such as overstocking or stockouts.
-
-    Ensure all results comply with the given schema and provide suggestions for improving cost efficiency and inventory management.
     """
 
     user_prompt = """
     I want to optimize my inventory using the Just-In-Time approach. Here's my data:
-    """+json.dumps(inputParameters.dict(), indent=4)
+    """ + json.dumps(inputParameters.dict(), indent=4)
 
     messages = [
         {
