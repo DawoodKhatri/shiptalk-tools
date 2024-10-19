@@ -13,15 +13,46 @@ class DynamicRoutingInputParamsType(BaseModel):
     weatherConditions: str
 
 
+class ImpactProgress(BaseModel):
+    label: str  # For example, "Traffic Impact", "Weather Impact"
+    value: float  # Progress percentage (0-100)
+
+
+class Sensitivity(BaseModel):
+    level: str  # Low, Medium, High (as a tag or progress bar)
+    explanation: str  # Explanation of the sensitivity level
+
+
 class DynamicRoutingAnalysisResults(BaseModel):
+    # Visual outputs
     deliveryTimeComparison: Plot
     conditionImpactChart: Plot
     priorityBasedRecommendation: Plot
-    riskLevel: str
-    riskExplanation: str
-    delayMitigation: str
-    deliveryStatus: str
-    deliveryStatusExplanation: str
+
+    # Risk fields
+    riskLevel: str  # Low, Medium, High (displayed as a progress bar)
+    # Numeric representation of risk level (0-100 for progress bar display)
+    riskProgress: float
+    riskExplanation: str  # Markdown explanation of risk level
+
+    # Delay impact analysis (broken into separate class)
+    # List of factors with progress bars
+    delayImpactAnalysis: list[ImpactProgress]
+
+    # Delivery status (tag format)
+    deliveryStatus: str  # "On Time", "Delayed" (displayed as a tag)
+    deliveryStatusExplanation: str  # Markdown explanation for the status
+
+    # Traffic sensitivity (separate class for better structure)
+    # Tag or progress bar for sensitivity with explanation
+    trafficSensitivity: Sensitivity
+
+    # Weather impact
+    weatherImpactAssessment: str  # Markdown text explaining weather-related delays
+
+    # Priority adjustment
+    # Markdown text or card format with recommendations
+    priorityAdjustmentSuggestions: str
 
 
 def dynamic_routing_prompt(inputParameters: DynamicRoutingInputParamsType):
@@ -71,16 +102,35 @@ def dynamic_routing_prompt(inputParameters: DynamicRoutingInputParamsType):
              - Provide a final assessment of whether the delivery is expected to be "On Time" or "Delayed".
              - Include a delivery status explanation formatted as **Markdown**, summarizing the overall delivery status, and explain the reasons for delay or on-time delivery.
 
+           - **Delay Impact Analysis**:
+             - Breakdown the delay caused by traffic and weather using progress bars.
+             - Include each factor with its impact percentage.
+
+           - **Traffic Sensitivity**:
+             - Analyze how sensitive the current route is to traffic changes.
+             - Provide the sensitivity level (Low, Medium, High) and explain the effects of traffic fluctuations.
+
+           - **Weather Impact Assessment**:
+             - Explain how current weather conditions are likely to impact delivery.
+
+           - **Priority Adjustment Suggestions**:
+             - Provide suggestions on whether to adjust the priority level based on the conditions.
+             - This explanation should be formatted as **Markdown** or displayed as cards.
+
         4. **Output Format**:
            The output should be structured in JSON format with the following sections:
            - `deliveryTimeComparison`: A `Plot` object with a comparison of original and estimated delivery times.
            - `conditionImpactChart`: A `Plot` object with a breakdown of the delays caused by traffic and weather.
            - `priorityBasedRecommendation`: A `Plot` object with recommendations based on delivery priority.
            - `riskLevel`: A string indicating the overall risk level (e.g., Low, Medium, High).
+           - `riskProgress`: A numeric value (0-100) representing the risk level progress bar.
            - `riskExplanation`: A **Markdown** text explaining why this risk level was assigned.
-           - `delayMitigation`: **Markdown** text providing actionable suggestions to mitigate delays in list format.
+           - `delayImpactAnalysis`: A list of `ImpactProgress` objects representing the impact of each condition (traffic, weather, etc.).
            - `deliveryStatus`: A string summarizing the delivery status (e.g., "On Time", "Delayed").
-           - `deliveryStatusExplanation`: **Markdown** text summarizing why the delivery is on time or delayed.
+           - `deliveryStatusExplanation`: A **Markdown** text summarizing why the delivery is on time or delayed.
+           - `trafficSensitivity`: A `Sensitivity` object explaining traffic sensitivity.
+           - `weatherImpactAssessment`: **Markdown** text explaining weather impacts.
+           - `priorityAdjustmentSuggestions`: **Markdown** text or cards offering priority adjustments.
 
         ### **Markdown Formatting Instructions**:
         - All text-based outputs (explanations for risk, delay mitigation, and delivery status) **must be returned in Markdown format only**.
