@@ -165,38 +165,35 @@ tool_config = {
         "prompt_func": last_mile_delivery_solutions_prompt,
         "response_format": LastMileDeliverySolutionsAnalysisResults,
         "input_format": LastMileDeliverySolutionsInputParamsType,
+        "options": {
+            "type_of_products": [
+                "Perishable Goods",
+                "Fragile Items",
+                "High-Value Products",
+                "Regulated Goods (e.g., Alcohol, Tobacco)",
+                "Oversized & Heavy Items",
+                "Temperature-Sensitive Goods",
+                "Standard Retail Products",
+                "Documents & Legal Paperwork",
+                "Medical Supplies & Pharmaceuticals",
+            ],
+            "delivery_method": [
+                "Own Fleet",
+                "Third-Party Carrier",
+                "Mixed Fleet",
+                "Courier Service",
+                "Postal Service",
+                "Crowdsourced Delivery",
+            ],
+            "user_objectives": [
+                "Cost Reduction",
+                "Faster Delivery",
+                "Customer Satisfaction",
+                "Operational Efficiency",
+                "Improved Delivery Accuracy",
+                "Sustainability",
+                "Enhanced Tracking & Visibility",
+            ],
+        },
     }
-}
-
-# options
-
-options = {
-    "type_of_products": [
-        "Perishable Goods",
-        "Fragile Items",
-        "High-Value Products",
-        "Regulated Goods (e.g., Alcohol, Tobacco)",
-        "Oversized & Heavy Items",
-        "Temperature-Sensitive Goods",
-        "Standard Retail Products",
-        "Documents & Legal Paperwork",
-        "Medical Supplies & Pharmaceuticals",
-    ],
-    "delivery_method": [
-        "Own Fleet",
-        "Third-Party Carrier",
-        "Mixed Fleet",
-        "Courier Service",
-        "Postal Service",
-        "Crowdsourced Delivery",
-    ],
-    "user_objectives": [
-        "Cost Reduction",
-        "Faster Delivery",
-        "Customer Satisfaction",
-        "Operational Efficiency",
-        "Improved Delivery Accuracy",
-        "Sustainability",
-        "Enhanced Tracking & Visibility",
-    ],
 }

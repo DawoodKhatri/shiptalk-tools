@@ -38,7 +38,7 @@ async def process_tool(
     tool: str,
     inputParameters: Any = Body(...),
 ) -> Dict[str, Any]:
-    
+
     if tool not in tool_mapping:
         raise HTTPException(status_code=400, detail="Invalid tool name")
 
@@ -48,11 +48,10 @@ async def process_tool(
         input_format = tool_mapping[tool]["input_format"]
 
         validated_input = input_format(**inputParameters)
+
         messages = prompt_func(inputParameters=validated_input)
         completion = client.beta.chat.completions.parse(
-            model="gpt-4o-mini",
-            messages=messages,
-            response_format=response_format,
+            model="gpt-4o-mini", messages=messages, response_format=response_format
         )
 
         response = completion.choices[0].message.parsed
@@ -70,3 +69,20 @@ async def process_tool(
 
     except Exception as e:
         raise HTTPException(status_code=422, detail=str(e))
+
+@app.get("/api/v1/tools-options")
+async def get_tool_options(tool_name: str) -> Dict[str, Any]:
+    """
+    Get the options for a specific tool.
+    If no options are found, return an empty dictionary.
+    """
+    if tool_name not in tool_mapping:
+        raise HTTPException(status_code=400, detail="Invalid tool name")
+
+    # Retrieve the tool's options if they exist
+    options = tool_mapping[tool_name].get("options", {})
+    
+    return {
+        "tool": tool_name,
+        "options": options
+    }
