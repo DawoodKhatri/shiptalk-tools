@@ -150,9 +150,7 @@ The output should contain the following elements:
 - Examples or case studies where similar strategies have been successful.
 - A general theoretical recommendation for improving supply chain processes through S&OP.
 """.format(
-        json_schema=json.dumps(
-            SalesAndOperationsPlanningInputParamsType.model_json_schema(), indent=4
-        ),
+        json_schema=SalesAndOperationsPlanningInputParamsType,
         totalCharts=totalCharts,
         pieChart=pieChart,
         barChart=barChart,

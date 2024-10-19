@@ -1,93 +1,113 @@
 import json
 from pydantic import BaseModel
+from typing import List, Dict, Optional
 from .custom_types.base_types import Plot
-from pydantic import BaseModel
 import random
 
 
-class JustInTimeInventoryInputParamsType(BaseModel):
-    productType: str
-    currentInventoryLevel: int
-    averageLeadTime: int
-    dailyDemand: int
-    productionDays: int
+class JustInTimeInventoryInputParams(BaseModel):
+    industry_sector: str  # E.g., 'Manufacturing', 'Automotive', 'Electronics'
+    company_size: int  # Number of employees
+    annual_revenue_million_usd: float  # Annual revenue in million USD
+    average_monthly_demand_units: int  # Units sold per month
+    current_inventory_level_units: int  # Current inventory level in units
+    production_capacity_units_per_month: int
+    warehouse_capacity_units: int
+    main_objectives: List[str]  # E.g., ['Reduce inventory costs', 'Improve production efficiency']
+    current_challenges: Optional[List[str]] = None  # E.g., ['Stockouts', 'Overstock', 'Long lead times']
 
 
 class JustInTimeInventoryAnalysisResults(BaseModel):
-    description: str
-    plots: list[Plot]
-    conclusion: str
+    recommended_order_schedule: Optional[Dict[str, int]]  # Dates mapped to order quantities
+    estimated_cost_savings_percentage: Optional[float] = None
+    risk_analysis: List[str]
+    implementation_plan: List[str]
+    key_performance_indicators: List[str]
+    charts: List[Plot]
+    overall_suggestion: str  # General strategic recommendation
 
 
-def just_in_time_inventory_prompt(inputParameters: JustInTimeInventoryInputParamsType):
-    pieChart = random.randint(0, 2)
-    barChart = random.randint(0, 2)
-    lineChart = random.randint(0, 2)
-    
-    
-    system_prompt = (
-        """
-    You are an AI tasked with building a Just-In-Time Inventory Optimization Tool. 
-    Your role is to analyze stock levels, lead times, and production schedules to help minimize inventory holding costs.
+def just_in_time_inventory_prompt(
+    inputParameters: JustInTimeInventoryInputParams,
+):
+    # Generate random data for example charts
+    pieChart = random.randint(0, 1)
+    barChart = random.randint(1, 2)
+    lineChart = random.randint(1, 2)
+    totalCharts = pieChart + barChart + lineChart
 
-    ### *Input Data Schema*
-    """
-        + json.dumps(JustInTimeInventoryInputParamsType.model_json_schema())
-        + """
+    # Pass the JSON schema of the input parameters to provide context about the input structure
+    system_prompt = f"""
+You are an AI assistant specializing in inventory management and optimization, particularly in Just-In-Time (JIT) inventory systems.
 
-    ### *Chart Types*
-    Possible values for chart types:
-    - **barChart**
-    - **pieChart**
-    - **lineChart**
-    - **areaChart**
+Your task is to analyze the user's input data to provide actionable insights and recommendations for implementing or improving a Just-In-Time inventory system.
 
-    ### *Instructions*
-    1. **Inventory Analysis**:
-        - Determine if current inventory meets production demand.
-        - Analyze **productType** to factor in demand patterns, lead times, or handling costs:
-          - For high-demand product types, recommend tighter inventory controls and more frequent replenishment.
-          - For custom or long-lead-time products, adjust schedules to account for longer production/delivery times.
-          - For bulky or costly-to-store items, recommend reducing stock to minimize holding costs.
-        - Address excess and insufficient inventory:
-          - **Excess**: Suggest reducing stock to lower holding costs.
-          - **Insufficient**: Recommend restocking or adjusting the schedule.
-        - Generate **multiple plots** to visualize the analysis (e.g., inventory level, demand patterns, stock coverage).
+Your analysis should focus on strategically minimizing inventory holding costs by receiving goods only as they are needed in the production process.
 
-    2. **Replenishment Schedule**:
-        - Analyze when to reorder based on lead time and demand:
-          - **Sufficient stock**: Recommend no immediate replenishment; monitor and plan for future.
-          - **Low stock**: Suggest immediate replenishment to avoid stockouts.
-          - Adjust for **productType** if lead times or demand are affected (e.g., perishable goods or high-demand items).
-        - Use the appropriate chart type to display trends over time and ensure **multiple plots** are used when necessary.
+### User Objectives and Challenges
 
-    3. **Stock Consumption**:
-        - Assess how long current stock will last:
-          - **Excess stock**: Suggest reducing it.
-          - **Low stock**: Recommend restocking to cover demand.
-          - Adjust for **productType** if relevant (e.g., perishable goods need faster turnover).
-        - Create **multiple plots** to show stock coverage, consumption, and days left.
+Before starting your analysis, consider the user's main objectives and current challenges. Tailor your recommendations to align with these objectives and address the challenges.
 
-    4. **Cost Efficiency Insights**:
-        - Provide a unified conclusion based on both excess and insufficient stock conditions:
-          - **Excess**: Highlight higher holding costs and suggest reduction.
-          - **Low stock**: Emphasize stockout risks and recommend timely restocking.
-        - Factor in **productType** for storage or handling costs.
-        - Ensure the conclusions are **markdown formatted** and summarize key insights from the analysis.
+### Input Structure
 
-    ### *Output Requirements*
-    Generate a response with the following:
+Here is the expected structure of the input data:
+{json.dumps(JustInTimeInventoryInputParams.model_json_schema(), indent=4)}
 
-    1. **description**: Provide a single, concise title for the analysis (e.g., "Inventory Level Insights").
-    2. **plots**: Generate pieChart:{pieChart}, barChart:{barChart} and lineChart:{lineChart} within the same analysis. Each plot should contain:
-        - xLabel, yLabel, chartType (barChart, pieChart, etc.), and data points. Ensure the **label** in the **data points** of "plots" is concise, limited to a maximum of 1-2 words, for better readability.
-    3. **conclusion**: Provide a single, markdown-formatted conclusion summarizing actionable insights based on the analysis (e.g., suggest reducing or replenishing stock), including adjustments based on **productType**.
-    """.format(pieChart=pieChart, barChart=barChart, lineChart=lineChart)
-    )
+### Instructions
 
-    user_prompt = """
-    I want to optimize my inventory using the Just-In-Time approach. Here's my data:
-    """ + json.dumps(
+Analyze the provided data to recommend optimal ordering schedules and strategies for implementing a Just-In-Time inventory system. Your analysis should include:
+
+- Recommended ordering schedules to meet production needs while minimizing inventory.
+- Estimated cost savings as a percentage, if possible.
+- Key performance indicators (KPIs) relevant to JIT implementation.
+- Risk analysis, including potential risks such as stockouts due to supplier delays, and strategies to mitigate them.
+- Key considerations for implementing JIT in the user's specific industry sector.
+- An implementation plan with actionable steps.
+- Visualizations to support your recommendations.
+- An overall strategic suggestion for improving the inventory management process.
+
+### Output Formatting Guidelines
+
+Please structure your output in the following format:
+
+1. **Introduction**: Briefly summarize the key findings.
+2. **User Objectives Alignment**: Explain how your recommendations align with the user's specified objectives.
+3. **Recommendations**:
+   - Provide recommended ordering schedules.
+   - Estimate potential cost savings, if applicable.
+4. **Key Performance Indicators (KPIs)**:
+   - Identify relevant KPIs.
+   - Explain how the recommendations impact these KPIs.
+5. **Risk Analysis**:
+   - Identify potential risks.
+   - Suggest mitigation strategies.
+6. **Implementation Plan**:
+   - Step-by-step plan to implement the recommendations.
+7. **Key Considerations**:
+   - Highlight important factors to consider when implementing JIT.
+8. **Visualizations**:
+   - Include the specified number of visual charts ({totalCharts} charts: {pieChart} pie chart(s), {barChart} bar chart(s), and {lineChart} line chart(s)) to support your recommendations.
+9. **Conclusion**:
+   - Offer a general strategic recommendation.
+10. **Feedback Prompt**:
+   - Ask the user if further clarification or additional analysis is needed.
+
+### Output Requirements
+
+The output should contain the following elements:
+
+- Only provide factual information based on your knowledge base.
+- Recommended ordering schedules.
+- Estimated cost savings as a percentage, if applicable.
+- Key performance indicators (KPIs) and how the recommendations impact them.
+- Risk analysis with mitigation strategies.
+- Implementation plan.
+- Key considerations.
+- Visualizations to support your recommendations.
+- An overall strategic suggestion.
+"""
+
+    user_prompt = "Please analyze the following data:\n" + json.dumps(
         inputParameters.model_dump(), indent=4
     )
 
@@ -103,6 +123,31 @@ tool_config = {
     "just-in-time-inventory": {
         "prompt_func": just_in_time_inventory_prompt,
         "response_format": JustInTimeInventoryAnalysisResults,
-        "input_format": JustInTimeInventoryInputParamsType,
+        "input_format": JustInTimeInventoryInputParams,
+        "options": {
+            "industry_sector": [
+                "Manufacturing",
+                "Automotive",
+                "Electronics",
+                "Retail",
+                "Pharmaceuticals",
+                "Food & Beverage",
+            ],
+            "main_objectives": [
+                "Reduce inventory costs",
+                "Improve production efficiency",
+                "Enhance supplier collaboration",
+                "Decrease lead times",
+                "Increase flexibility",
+            ],
+            "current_challenges": [
+                "Stockouts",
+                "Overstock",
+                "Long lead times",
+                "High holding costs",
+                "Supplier unreliability",
+                "Production delays",
+            ],
+        },
     }
 }
