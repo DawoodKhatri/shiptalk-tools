@@ -1,9 +1,10 @@
 from fastapi import FastAPI, Body
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.exceptions import HTTPException
+from pydantic import ValidationError
 from openai import OpenAI
 from dotenv import load_dotenv
-from typing import Any
+from typing import Any, Dict
 import os
 import importlib
 
@@ -32,30 +33,40 @@ for file_name in os.listdir(tools_dir):
         tool_mapping.update(module.tool_config)
 
 
-@app.post("/api/v1/chat-tools/")
+@app.post("/api/v1/chat-tools")
 async def process_tool(
     tool: str,
     inputParameters: Any = Body(...),
-) -> dict[str, Any]:
+) -> Dict[str, Any]:
+    
     if tool not in tool_mapping:
         raise HTTPException(status_code=400, detail="Invalid tool name")
 
-    prompt_func = tool_mapping[tool]["prompt_func"]
-    response_format = tool_mapping[tool]["response_format"]
-    input_format = tool_mapping[tool]["input_format"]
+    try:
+        prompt_func = tool_mapping[tool]["prompt_func"]
+        response_format = tool_mapping[tool]["response_format"]
+        input_format = tool_mapping[tool]["input_format"]
 
-    validated_input = input_format(**inputParameters)
-    messages = prompt_func(inputParameters=validated_input)
+        validated_input = input_format(**inputParameters)
+        messages = prompt_func(inputParameters=validated_input)
+        completion = client.beta.chat.completions.parse(
+            model="gpt-4o-mini",
+            messages=messages,
+            response_format=response_format,
+        )
 
-    completion = client.beta.chat.completions.parse(
-        model="gpt-4o-mini",
-        messages=messages,
-        response_format=response_format,
-    )
+        response = completion.choices[0].message.parsed
 
-    response = completion.choices[0].message.parsed
+        return {
+            "tool": tool,
+            "response": response,
+        }
 
-    return {
-        "tool": tool,
-        "response": response,
-    }
+    except ValidationError as e:
+        raise HTTPException(
+            status_code=422,
+            detail=e.errors(),
+        )
+
+    except Exception as e:
+        raise HTTPException(status_code=422, detail=str(e))
