@@ -159,5 +159,10 @@ tool_config = {
         "prompt_func": dynamic_routing_prompt,
         "response_format": DynamicRoutingAnalysisResults,
         "input_format": DynamicRoutingInputParamsType,
+        "options": {
+            "priorityLevels": ["Low", "Medium", "High"],
+            "trafficConditions": ["Light", "Moderate", "Heavy"],
+            "weatherConditions": ["Clear", "Rain", "Snow", "Fogg", "Storm"],
+        }
     }
 }

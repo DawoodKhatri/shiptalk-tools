@@ -42,7 +42,8 @@ class CycleCountingAnalysisResults(BaseModel):
 
     # New analytical fields
     # Recommended next cycle count date based on the frequency and priority
-    nextCycleCountPeriod: str  # Number of days or weeks until the next count (e.g., "2 weeks", "5 days")
+    # Number of days or weeks until the next count (e.g., "2 weeks", "5 days")
+    nextCycleCountPeriod: str
     # Replenishment suggestion if the inventory count is lower than expected
     # Markdown text recommending when and how to replenish stock
     replenishmentSuggestion: str
@@ -149,11 +150,14 @@ def cycle_counting_prompt(inputParameters: CycleCountingInputParams):
     return messages
 
 
-
 tool_config = {
     "cycle-counting": {
         "prompt_func": cycle_counting_prompt,
         "response_format": CycleCountingAnalysisResults,
         "input_format": CycleCountingInputParams,
+        "options": {
+            "cycleCountFrequency": ["Daily", "Weekly", "Bi-Weekly", "Monthly", "Quarterly", "Annually"],
+            "priorityLevel": ["High", "Medium", "Low"],
+        }
     }
 }

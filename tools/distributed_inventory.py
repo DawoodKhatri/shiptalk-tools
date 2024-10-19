@@ -82,6 +82,7 @@ class DistributedInventoryAnalysisResults(BaseModel):
 
     conclusion: str  # Textual conclusion summarizing key insights
 
+
 def distributed_inventory_prompt(inputParameters: DistributedInventoryInputParamsType):
 
     system_prompt = (
@@ -213,5 +214,8 @@ tool_config = {
         "prompt_func": distributed_inventory_prompt,
         "response_format": DistributedInventoryAnalysisResults,
         "input_format": DistributedInventoryInputParamsType,
+        "options": {
+            "demandLevels": ["Low", "Medium", "High"]
+        }
     }
 }
