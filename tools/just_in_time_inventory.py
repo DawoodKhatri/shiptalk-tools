@@ -2,6 +2,7 @@ import json
 from pydantic import BaseModel
 from .custom_types.base_types import Plot
 from pydantic import BaseModel
+import random
 
 
 class JustInTimeInventoryInputParamsType(BaseModel):
@@ -19,6 +20,11 @@ class JustInTimeInventoryAnalysisResults(BaseModel):
 
 
 def just_in_time_inventory_prompt(inputParameters: JustInTimeInventoryInputParamsType):
+    pieChart = random.randint(0, 2)
+    barChart = random.randint(0, 2)
+    lineChart = random.randint(0, 2)
+    
+    
     system_prompt = (
         """
     You are an AI tasked with building a Just-In-Time Inventory Optimization Tool. 
@@ -46,37 +52,37 @@ def just_in_time_inventory_prompt(inputParameters: JustInTimeInventoryInputParam
         - Address excess and insufficient inventory:
           - **Excess**: Suggest reducing stock to lower holding costs.
           - **Insufficient**: Recommend restocking or adjusting the schedule.
-        - Use **xLabel** and **yLabel** in plots. Choose appropriate chart types.
+        - Generate **multiple plots** to visualize the analysis (e.g., inventory level, demand patterns, stock coverage).
 
     2. **Replenishment Schedule**:
         - Analyze when to reorder based on lead time and demand:
           - **Sufficient stock**: Recommend no immediate replenishment; monitor and plan for future.
           - **Low stock**: Suggest immediate replenishment to avoid stockouts.
           - Adjust for **productType** if lead times or demand are affected (e.g., perishable goods or high-demand items).
-        - Visualize inventory trends using the appropriate chart type.
+        - Use the appropriate chart type to display trends over time and ensure **multiple plots** are used when necessary.
 
     3. **Stock Consumption**:
         - Assess how long current stock will last:
           - **Excess stock**: Suggest reducing it.
           - **Low stock**: Recommend restocking to cover demand.
           - Adjust for **productType** if relevant (e.g., perishable goods need faster turnover).
-        - Use appropriate chart types to show days covered vs. days left.
+        - Create **multiple plots** to show stock coverage, consumption, and days left.
 
     4. **Cost Efficiency Insights**:
-        - Conclusions should cover both excess and insufficient stock:
+        - Provide a unified conclusion based on both excess and insufficient stock conditions:
           - **Excess**: Highlight higher holding costs and suggest reduction.
           - **Low stock**: Emphasize stockout risks and recommend timely restocking.
         - Factor in **productType** for storage or handling costs.
-        - Conclusions must use **markdown** formatting and be based on data analysis.
+        - Ensure the conclusions are **markdown formatted** and summarize key insights from the analysis.
 
     ### *Output Requirements*
-    Generate **multiple results**, each with:
+    Generate a response with the following:
 
-    1. **description**: A concise title for the analysis (e.g., "Inventory Level Insights").
-    2. **plot**: xLabel, yLabel, chartType (barChart, pieChart, etc.), and data points. Ensure the **label** in the **data** is concise, limited to 1-2 words, for better readability.
-    3. **conclusion**: Provide markdown-formatted, actionable insights based on the analysis (e.g., suggest reducing or replenishing stock), including adjustments based on **productType**.
-
-    """
+    1. **description**: Provide a single, concise title for the analysis (e.g., "Inventory Level Insights").
+    2. **plots**: Generate pieChart:{pieChart}, barChart:{barChart} and lineChart:{lineChart} within the same analysis. Each plot should contain:
+        - xLabel, yLabel, chartType (barChart, pieChart, etc.), and data points. Ensure the **label** in the **data points** of "plots" is concise, limited to a maximum of 1-2 words, for better readability.
+    3. **conclusion**: Provide a single, markdown-formatted conclusion summarizing actionable insights based on the analysis (e.g., suggest reducing or replenishing stock), including adjustments based on **productType**.
+    """.format(pieChart=pieChart, barChart=barChart, lineChart=lineChart)
     )
 
     user_prompt = """
