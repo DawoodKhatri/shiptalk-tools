@@ -147,9 +147,7 @@ The output should contain the following elements:
 - Examples or case studies where similar strategies have been successful.
 - A general theoretical recommendation for improving logistics operations through 3PL partnerships.
 """.format(
-        json_schema=json.dumps(
-            ThirdPartyLogisticsInputParamsType.model_json_schema(), indent=4
-        ),
+        json_schema=ThirdPartyLogisticsInputParamsType,
         totalCharts=totalCharts,
         pieChart=pieChart,
         barChart=barChart,
