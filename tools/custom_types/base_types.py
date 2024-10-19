@@ -1,4 +1,5 @@
 from pydantic import BaseModel
+from typing import Optional
 
 
 class PlotData(BaseModel):
@@ -11,3 +12,15 @@ class Plot(BaseModel):
     yLabel: str
     chartType: str
     data: list[PlotData]
+    explanation: Optional[str]
+
+
+class ComparisonPlot(BaseModel):
+    xLabel: str
+    yLabel: str
+    yActualLabel: str
+    yComparedLabel: str
+    chartType: str
+    actualData: list[PlotData]
+    comparedData: list[PlotData]
+    explanation: str
