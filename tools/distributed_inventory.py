@@ -215,6 +215,17 @@ tool_config = {
         "response_format": DistributedInventoryAnalysisResults,
         "input_format": DistributedInventoryInputParamsType,
         "options": {
+            "regions": ["North America", "Europe", "Asia", "Africa", "South America"],
+            "productTypes": [
+                "Luxury Goods",
+                "Consumer Goods",
+                "Electronics",
+                "Food",
+                "Clothing",
+                "Furniture",
+                "Automotive",
+                "Medical Supplies",
+            ],
             "demandLevels": ["Low", "Medium", "High"]
         }
     }
