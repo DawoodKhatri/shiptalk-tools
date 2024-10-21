@@ -1,6 +1,6 @@
 import json
 from pydantic import BaseModel
-from .custom_types.base_types import Plot
+from .custom_types.base_types import Plot, ComparisonPlot
 from pydantic import BaseModel
 
 
@@ -48,7 +48,8 @@ class CycleCountingAnalysisResults(BaseModel):
     # Text recommending when and how to replenish stock
     replenishmentSuggestion: str
     # Over/Understock analysis providing insights on whether certain items are overstocked or understocked
-    stockLevelAnalysis: Plot  # Bar chart showing overstocked/understocked items
+    # Bar chart showing overstocked/understocked items
+    stockLevelAnalysis: ComparisonPlot
     # Recommendations for improving cycle count accuracy
     # Text suggesting ways to improve cycle count accuracy
     accuracyImprovementSuggestions: str
@@ -91,6 +92,12 @@ def cycle_counting_prompt(inputParameters: CycleCountingInputParams):
              - If the priority is **Low**, suggest maintaining the current count frequency unless discrepancies are significant.
              - Generate a pieChart showing priority-based recommendations for items that need urgent counting attention in percentages.
              - The explanation should justify why specific items need more frequent cycle counts.
+             
+            - **Stock Level Analysis**:
+              - Analyze the stock levels to identify overstocked or understocked items.
+              - Generate a barChart showing the stock levels of different items.
+              - Provide an explanation of the analysis and suggest actions to balance the stock levels.
+              - The explanation should include recommendations for replenishing or reducing stock levels based on the analysis.
 
         3. **Text-Based Explanations**:
            - **Cycle Count Frequency Suggestions**:
