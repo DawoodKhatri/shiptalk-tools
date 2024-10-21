@@ -1,9 +1,17 @@
 import json
 from pydantic import BaseModel
-from typing import List, Dict, Optional
+from typing import List,  Optional
 from .custom_types.base_types import Plot
 import random
 
+class RiskAnalysis(BaseModel):
+    riskLevel: str  # E.g., 'Low', 'Medium', 'High'
+    progress: int  # Progress value from 0 to 100
+    explanation: str  # Markdown explanation of the risk level
+
+class EfficiencyScore(BaseModel):
+    percentage: float  # E.g., 0.0 to 100.0
+    explanation: str  # Markdown explanation of the efficiency score
 
 class JustInTimeInventoryInputParams(BaseModel):
     industry_sector: str  # E.g., 'Manufacturing', 'Automotive', 'Electronics'
@@ -18,97 +26,123 @@ class JustInTimeInventoryInputParams(BaseModel):
 
 
 class JustInTimeInventoryAnalysisResults(BaseModel):
-    recommended_order_schedule: Optional[Dict[str, int]]  # Dates mapped to order quantities
-    estimated_cost_savings_percentage: Optional[float] = None
-    risk_analysis: List[str]
-    implementation_plan: List[str]
-    key_performance_indicators: List[str]
-    charts: List[Plot]
-    overall_suggestion: str  # General strategic recommendation
+    # Visual Outputs
+    recommendedOrderSchedule: Plot  # LineChart or AreaChart with markdown explanation
+    inventoryLevelVsDemand: Plot  # LineChart with markdown explanation
+    costSavingsEstimate: Plot  # PieChart with markdown explanation
+    productionCapacityUtilization: Plot  # BarChart with markdown explanation
+    riskAnalysisChart: Plot  # BarChart or PieChart with markdown explanation
+
+    # Analytical Fields
+    riskAssessment: RiskAnalysis  # With progress bar data and markdown explanation
+    costSavingsPotential: EfficiencyScore  # With percentage and markdown explanation
+    keyPerformanceIndicators: List[str]  # List with markdown explanations
+
+    # Implementation Plan
+    implementationPlan: str  # Markdown format
+
+    # Conclusion
+    conclusion: str  # Summarized markdown text conclusion with key takeaways
 
 
-def just_in_time_inventory_prompt(
-    inputParameters: JustInTimeInventoryInputParams,
-):
-    # Generate random data for example charts
-    pieChart = random.randint(0, 1)
-    barChart = random.randint(1, 2)
-    lineChart = random.randint(1, 2)
-    totalCharts = pieChart + barChart + lineChart
+def just_in_time_inventory_prompt(inputParameters: JustInTimeInventoryInputParams):
 
-    # Pass the JSON schema of the input parameters to provide context about the input structure
-    system_prompt = f"""
-You are an AI assistant specializing in inventory management and optimization, particularly in Just-In-Time (JIT) inventory systems.
+    system_prompt = (
+        """
+You are an assistant specializing in inventory management, particularly in Just-In-Time (JIT) inventory systems. Your task is to analyze the input provided by the user and generate actionable recommendations for optimizing their inventory management using JIT principles.
 
-Your task is to analyze the user's input data to provide actionable insights and recommendations for implementing or improving a Just-In-Time inventory system.
+The goal is to help users minimize inventory holding costs by receiving goods only as they are needed in the production process. Your output will consist of visual data (restricted to pieChart, barChart, areaChart, and lineChart), explanations of that data, and a final conclusion that summarizes key takeaways and recommendations.
 
-Your analysis should focus on strategically minimizing inventory holding costs by receiving goods only as they are needed in the production process.
+## *Steps to Follow:*
 
-### User Objectives and Challenges
-
-Before starting your analysis, consider the user's main objectives and current challenges. Tailor your recommendations to align with these objectives and address the challenges.
-
-### Input Structure
-
-Here is the expected structure of the input data:
-{json.dumps(JustInTimeInventoryInputParams.model_json_schema(), indent=4)}
-
-### Instructions
-
-Analyze the provided data to recommend optimal ordering schedules and strategies for implementing a Just-In-Time inventory system. Your analysis should include:
-
-- Recommended ordering schedules to meet production needs while minimizing inventory.
-- Estimated cost savings as a percentage, if possible.
-- Key performance indicators (KPIs) relevant to JIT implementation.
-- Risk analysis, including potential risks such as stockouts due to supplier delays, and strategies to mitigate them.
-- Key considerations for implementing JIT in the user's specific industry sector.
-- An implementation plan with actionable steps.
-- Visualizations to support your recommendations.
-- An overall strategic suggestion for improving the inventory management process.
-
-### Output Formatting Guidelines
-
-Please structure your output in the following format:
-
-1. **Introduction**: Briefly summarize the key findings.
-2. **User Objectives Alignment**: Explain how your recommendations align with the user's specified objectives.
-3. **Recommendations**:
-   - Provide recommended ordering schedules.
-   - Estimate potential cost savings, if applicable.
-4. **Key Performance Indicators (KPIs)**:
-   - Identify relevant KPIs.
-   - Explain how the recommendations impact these KPIs.
-5. **Risk Analysis**:
-   - Identify potential risks.
-   - Suggest mitigation strategies.
-6. **Implementation Plan**:
-   - Step-by-step plan to implement the recommendations.
-7. **Key Considerations**:
-   - Highlight important factors to consider when implementing JIT.
-8. **Visualizations**:
-   - Include the specified number of visual charts ({totalCharts} charts: {pieChart} pie chart(s), {barChart} bar chart(s), and {lineChart} line chart(s)) to support your recommendations.
-9. **Conclusion**:
-   - Offer a general strategic recommendation.
-10. **Feedback Prompt**:
-   - Ask the user if further clarification or additional analysis is needed.
-
-### Output Requirements
-
-The output should contain the following elements:
-
-- Only provide factual information based on your knowledge base.
-- Recommended ordering schedules.
-- Estimated cost savings as a percentage, if applicable.
-- Key performance indicators (KPIs) and how the recommendations impact them.
-- Risk analysis with mitigation strategies.
-- Implementation plan.
-- Key considerations.
-- Visualizations to support your recommendations.
-- An overall strategic suggestion.
+1. **Input Understanding**:
+   You will receive a set of inputs from the user, including:
 """
+        + json.dumps(JustInTimeInventoryInputParams.model_json_schema(), indent=4)
+        + """
+   Based on these inputs, you need to generate analysis and recommendations.
 
-    user_prompt = "Please analyze the following data:\n" + json.dumps(
-        inputParameters.model_dump(), indent=4
+2. **Visual Outputs** (only use pieChart, barChart, areaChart, or lineChart):
+   - **Optimal Ordering Schedule**:
+     - Provide an optimal ordering schedule to meet production needs while minimizing inventory.
+     - Generate data for a lineChart or areaChart showing the recommended ordering quantities over time.
+     - Include an explanation of how this schedule aligns with demand and production capacity.
+     - The explanation should be in **markdown** format.
+
+   - **Inventory Level vs Demand**:
+     - Visualize the relationship between inventory levels and average monthly demand.
+     - Create a lineChart showing inventory levels and demand over time.
+     - Include an explanation of how JIT can reduce inventory levels while meeting demand.
+     - The explanation should be in **markdown** format.
+
+   - **Cost Savings Estimate**:
+     - Estimate potential cost savings from implementing JIT.
+     - Create a pieChart showing the distribution of current costs and potential savings.
+     - Provide an explanation of where cost savings come from.
+     - The explanation should be in **markdown** format.
+
+   - **Production Capacity Utilization**:
+     - Analyze production capacity utilization.
+     - Create a barChart showing current vs optimized production capacity utilization.
+     - Include an explanation of how JIT affects production efficiency.
+     - The explanation should be in **markdown** format.
+
+   - **Risk Analysis**:
+     - Identify risks such as stockouts or supplier delays.
+     - Create a barChart or pieChart illustrating the risks and their potential impact.
+     - Include an explanation of mitigation strategies.
+     - The explanation should be in **markdown** format.
+
+3. **Analytical Fields** (Add visual indicators for better insights):
+   - **Risk Assessment**:
+     - Provide a risk level (Low, Medium, High) and display it using a progress bar (0-100).
+     - Include a markdown explanation of why this risk level was chosen.
+
+   - **Cost Savings Potential**:
+     - Provide an estimated cost savings percentage.
+     - Include a markdown explanation of how these savings can be achieved.
+
+   - **Key Performance Indicators (KPIs)**:
+     - List relevant KPIs for JIT implementation.
+     - Provide explanations of how the recommendations will impact these KPIs.
+
+4. **Implementation Plan**:
+   - Outline a step-by-step plan for implementing JIT in the user's industry sector.
+   - The plan should be in **markdown** format.
+
+5. **Conclusion**:
+   - Provide a final conclusion that summarizes the key recommendations and strategic suggestions.
+   - The conclusion should be strictly in the form of **markdown** text.
+   - The conclusion should be clear and actionable, giving the user a step-by-step understanding of what they should do next to optimize their inventory management using JIT.
+
+6. **Output Format**:
+   The output should be structured in JSON format with the following sections:
+     - `recommendedOrderSchedule`: A `Plot` object with visual data and **markdown** explanation.
+     - `inventoryLevelVsDemand`: A `Plot` object with visual data and **markdown** explanation.
+     - `costSavingsEstimate`: A `Plot` object with visual data and **markdown** explanation.
+     - `productionCapacityUtilization`: A `Plot` object with visual data and **markdown** explanation.
+     - `riskAnalysisChart`: A `Plot` object with visual data and **markdown** explanation.
+     - `riskAssessment`: A `RiskAnalysis` object with progress bar data and **markdown** explanation.
+     - `costSavingsPotential`: An `EfficiencyScore` object with percentage and **markdown** explanation.
+     - `keyPerformanceIndicators`: A list of KPIs with **markdown** explanations.
+     - `implementationPlan`: A step-by-step plan in **markdown** format.
+     - `conclusion`: A summarized **markdown** text conclusion with key takeaways.
+
+---
+### **Notes**:
+- Ensure the visual data is formatted in a way that can be used for creating charts and graphs.
+- Use only **pieChart**, **barChart**, **areaChart**, or **lineChart** for visuals.
+- Keep the explanations simple and understandable, focusing on why the recommendations are beneficial.
+- The final conclusion should provide a summary that helps the user understand what actions they need to take next.
+- The Explanation and Conclusion sections should be in **markdown** format only.
+"""
+    )
+
+    user_prompt = (
+        """
+Please analyze the following data and provide recommendations for implementing Just-In-Time inventory management:
+"""
+        + json.dumps(inputParameters.model_dump(), indent=4)
     )
 
     messages = [
