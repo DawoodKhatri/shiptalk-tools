@@ -18,13 +18,13 @@ class ProgressData(BaseModel):
     label: str
     # Percentage or progress value (0-100 for progress bar display)
     value: float
-    explanation: str  # Markdown explanation for the progress value
+    explanation: str  # explanation for the progress value
 
 
 class RiskAnalysis(BaseModel):
     riskLevel: str  # Low, Medium, High (risk categorization)
     riskProgress: float  # Numeric representation for progress bar (0-100)
-    explanation: str  # Markdown explanation for the risk level
+    explanation: str  # explanation for the risk level
 
 
 class CycleCountingAnalysisResults(BaseModel):
@@ -45,15 +45,15 @@ class CycleCountingAnalysisResults(BaseModel):
     # Number of days or weeks until the next count (e.g., "2 weeks", "5 days")
     nextCycleCountPeriod: str
     # Replenishment suggestion if the inventory count is lower than expected
-    # Markdown text recommending when and how to replenish stock
+    # Text recommending when and how to replenish stock
     replenishmentSuggestion: str
     # Over/Understock analysis providing insights on whether certain items are overstocked or understocked
     stockLevelAnalysis: Plot  # Bar chart showing overstocked/understocked items
     # Recommendations for improving cycle count accuracy
-    # Markdown text suggesting ways to improve cycle count accuracy
+    # Text suggesting ways to improve cycle count accuracy
     accuracyImprovementSuggestions: str
     # Explanation of the overall cycle count process and suggestions for streamlining it
-    # Markdown text offering tips for improving the cycle count process
+    # Text offering tips for improving the cycle count process
     processStreamliningSuggestions: str
 
 
@@ -79,59 +79,55 @@ def cycle_counting_prompt(inputParameters: CycleCountingInputParams):
              - Compare the **expected item count** with the **current inventory levels**.
              - Generate a barChart showing the expected count vs. actual counted items during the cycle count.
              - Highlight discrepancies between the counts and recommend corrective actions if discrepancies are found.
-             - The explanation must be formatted as **Markdown**.
 
            - **Cycle Count Frequency Adjustment**:
              - Based on the user's input and discrepancies, generate a recommendation to either maintain or adjust the frequency of the cycle count (e.g., daily, weekly, monthly).
              - Use a progress bar or gauge to show whether the frequency should be increased or maintained.
-             - Provide a markdown explanation suggesting how to optimize the cycle count schedule based on accuracy and priority.
+             - Provide a explanation suggesting how to optimize the cycle count schedule based on accuracy and priority.
              
            - **Priority Recommendations for Cycle Counting**:
              - Analyze the **priority level** provided by the user and any **discrepancies** between the expected and actual cycle count.
              - If the priority is **High**, recommend more frequent counting for items with large discrepancies.
              - If the priority is **Low**, suggest maintaining the current count frequency unless discrepancies are significant.
-             - Generate a barChart or pieChart showing priority-based recommendations for items that need urgent counting attention.
-             - The explanation must be formatted as **Markdown** and should justify why specific items need more frequent cycle counts.
+             - Generate a pieChart showing priority-based recommendations for items that need urgent counting attention in percentages.
+             - The explanation should justify why specific items need more frequent cycle counts.
 
-        3. **Text-Based Explanations** (Strictly in Markdown Format):
+        3. **Text-Based Explanations**:
            - **Cycle Count Frequency Suggestions**:
              - Based on the user's input (frequency, priority, discrepancies), provide a suggestion for adjusting the cycle count frequency.
-             - The suggestion must be formatted as **Markdown**.
 
            - **Cycle Count Discrepancy Reporting**:
-             - Provide a markdown explanation of any discrepancies detected during the cycle count process.
+             - Provide a explanation of any discrepancies detected during the cycle count process.
              - Suggest actions the user should take to address these discrepancies, such as recounting, increasing frequency, or auditing inventory processes.
 
            - **Recommendations for Improving Cycle Count Accuracy**:
              - Suggest ways to improve the accuracy of the cycle count process (e.g., improving counting methods, adjusting counting frequency).
-             - The suggestions must be formatted as **Markdown**.
 
            - **Process Optimization for Cycle Counting**:
-             - Provide markdown text with recommendations for optimizing or automating the cycle count process, such as using barcode scanners or implementing automated systems.
+             - Provide recommendations for optimizing or automating the cycle count process, such as using barcode scanners or implementing automated systems.
              
            - **Next Cycle Count Period**:
              - Based on discrepancies, priority, and frequency, suggest how many days or weeks should pass before the next cycle count.
-             - The recommendation should be provided as **Markdown**, with an example like "2 weeks" or "5 days."
+             - The recommendation should be provided, with an example like "2 weeks" or "5 days."
 
         4. **Final Recommendations**:
-           - After generating all the visuals and explanations, provide a final markdown conclusion that summarizes the key recommendations for the user.
+           - After generating all the visuals and explanations, provide a final conclusion that summarizes the key recommendations for the user.
            - The conclusion should focus on how to improve the accuracy of cycle counting, optimize frequency, and prioritize items for future cycle counts.
 
         5. **Output Format**:
            The output should be structured in JSON format with the following sections:
-             - `cycleCountAccuracyAnalysis`: A `Plot` object with visual data and **markdown** explanation.
+             - `cycleCountAccuracyAnalysis`: A `Plot` object with visual data and explanation.
              - `cycleCountFrequencyAdjustment`: A `ProgressData` object with a suggested frequency adjustment and markdown explanation.
              - `priorityRecommendations`: A `Plot` object with priority-based recommendations for counting and markdown explanation.
-             - `discrepancyReporting`: **Markdown** text explaining any discrepancies found in the cycle count.
-             - `accuracyImprovementSuggestions`: **Markdown** text with tips for improving cycle count accuracy.
-             - `processOptimizationSuggestions`: **Markdown** text suggesting ways to streamline or automate the cycle count process.
-             - `conclusion`: A final **markdown** text summarizing key takeaways.
+             - `discrepancyReporting`: A text explaining any discrepancies found in the cycle count.
+             - `accuracyImprovementSuggestions`: A text with tips for improving cycle count accuracy.
+             - `processOptimizationSuggestions`: A text suggesting ways to streamline or automate the cycle count process.
+             - `conclusion`: A final text summarizing key takeaways.
 
         ---
         ### **Notes**:
         - Ensure the visual data is formatted in a way that can be used for creating charts and graphs.
         - Use only **pieChart**, **barChart**, or **lineChart** for visuals.
-        - All explanations and conclusions must be provided in **markdown** format for clarity.
         """
     )
 
