@@ -14,6 +14,9 @@ class Plot(BaseModel):
     data: list[PlotData]
     explanation: Optional[str]
 
+class NamedPlot(Plot):
+    name: str
+
 
 class ComparisonPlot(BaseModel):
     xLabel: str

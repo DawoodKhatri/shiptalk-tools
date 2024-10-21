@@ -1,7 +1,7 @@
 import json
 from pydantic import BaseModel
 from typing import List
-from .custom_types.base_types import Plot
+from .custom_types.base_types import Plot, NamedPlot
 import random
 
 
@@ -22,28 +22,22 @@ class ThirdPartyLogisticsInputParamsType(BaseModel):
     )
 
 
+
 class KeyPerformanceIndicator(BaseModel):
     kpi_name: str  # E.g., 'Order Fulfillment Time', 'Inventory Turnover Rate'
     current_value: float
     expected_improvement_percentage: float
 
 
-class RiskAnalysis(BaseModel):
-    risk_description: str
-    mitigation_suggestion: str
-
-
 class ThirdPartyLogisticsAnalysisResults(BaseModel):
     suggested_providers: List[str]
     estimated_cost_savings_percentage: float
-    expected_improvement_in_service_levels: (
-        str  # E.g., 'Improved delivery times by 20%'
-    )
+    expected_improvement_in_service_levels: str
     key_performance_indicators: List[KeyPerformanceIndicator]
-    implementation_plan: List[str]
-    risk_analysis: List[RiskAnalysis]
-    key_considerations: List[str]
-    charts: List[Plot]
+    implementation_plan: str
+    risk_analysis: str
+    key_considerations: str
+    charts: List[NamedPlot]
     success_stories: str = None  # Optional field to provide case studies or examples
     overall_suggestion: str  # Theoretical strategic suggestion
 
@@ -59,99 +53,50 @@ def third_party_logistics_prompt(
 
     # Pass the JSON schema of the input parameters to provide context about the input structure
     system_prompt = """
-You are an AI assistant specializing in logistics and supply chain optimization.
-Your task is to analyze the user's logistics requirements and provide actionable insights
-to help them find suitable third-party logistics (3PL) providers to outsource their logistics functions.
+You are an AI assistant specializing in logistics and supply chain optimization. 
+Your role is to analyze the user's logistics needs and offer strategic suggestions for selecting third-party logistics (3PL) providers.
 
-### *User Objectives and Priorities*
-Before starting your analysis, please consider the user's primary goals. The user may specify their main objectives such as:
+### *User Goals and Priorities*
+Before analyzing, consider the user's key objectives, which may include:
 - Cost reduction
 - Scalability
 - Improved service levels
-- Access to advanced technology
+- Access to advanced technologies
 - Focus on core competencies
-- Other specific priorities
-
-Tailor your recommendations to align with these objectives.
+- Specific regional or service priorities
 
 ### *Input Structure*
-Here is the expected structure of the input data:
+The input data will follow this structure:
 {json_schema}
 
-### *Visualization Types*
-Please generate relevant visualizations to support your analysis. The possible chart types are:
-- **barChart**: Displays categorical data with rectangular bars.
-- **pieChart**: Represents parts of a whole as pie slices.
-- **lineChart**: Shows data trends over time or continuous variables.
-- **areaChart**: Similar to a line chart, but with filled areas to represent quantities.
-- **scatterPlot**: Displays values for typically two variables for a set of data.
-- **heatMap**: Represents data values as colors in a matrix.
+### *Chart Types*
+Generate visualizations to support your analysis. Choose from these chart types:
+- **barChart**: For displaying categorical data comparisons.
+- **pieChart**: For showing proportions of a whole.
+- **lineChart**: For depicting trends over time.
+- **scatterPlot**: For showing relationships between two variables.
+
+Ensure you only use these chart types in your analysis. The value of ChartType must be one of ['barChart', 'pieChart', 'lineChart', 'scatterPlot'].
 
 ### *Instructions*
-Analyze the provided data to recommend optimal third-party logistics providers and strategies. Ensure the following:
-- Identify cost-saving opportunities and service level improvements.
-- Suggest 3PL providers that match the user's logistics functions to outsource, geographic regions, and other requirements.
-- Include exactly {totalCharts} visualizations in your analysis: {pieChart} pie chart(s), {barChart} bar chart(s), and {lineChart} line chart(s).
-- Provide a theoretical overall suggestion to improve logistics operations.
-- Identify key performance indicators (KPIs) relevant to outsourcing logistics and measure the impact of your recommendations on these KPIs.
-- Consider practical constraints such as budget limits, resource availability, or regulatory requirements.
-- Account for regional differences in logistics infrastructure or provider availability.
-- Explore innovative solutions like technology integration, automation, or value-added services if applicable.
-- Assess potential risks associated with the recommended strategies and suggest ways to mitigate them.
+Provide a detailed analysis using the data to suggest optimal 3PL providers and strategies. You should:
+- Identify cost-saving and service level improvement opportunities.
+- Recommend 3PL providers that align with the user's logistics needs, geographic location, and other requirements.
+- Include exactly {totalCharts} visualizations in the analysis.
+- Present a strategic suggestion for improving logistics operations.
+- Outline key performance indicators (KPIs) that will measure the impact of your recommendations.
+- Address constraints like budget, resources, or regulations.
+- Consider regional logistics infrastructure or provider availability.
+- Explore innovative options such as automation, technology integration, or value-added services if applicable.
+- Conduct a risk assessment for your suggestions and propose mitigation strategies.
 
-### *Implementation Roadmap*
-Provide a step-by-step plan on how to implement the suggested strategies. This should include actionable steps that the user can follow.
+### *Implementation Plan*
+Provide an actionable, step-by-step plan in Markdown format to implement your recommendations.
 
 ### *Success Stories or Case Studies*
-Include examples of how similar strategies have benefited other companies, if possible but not mandatory. A real-world context can help reinforce the recommendations.
-
-### *Output Formatting Guidelines*
-Please structure your output in the following format:
-
-1. **Introduction**: Briefly summarize the key findings.
-2. **User Objectives Alignment**: Explain how your recommendations align with the user's specified objectives.
-3. **Recommendations**:
-   - List recommended 3PL providers or strategies.
-   - Provide estimated cost savings as a percentage.
-   - Describe expected improvements in service levels.
-4. **Key Performance Indicators (KPIs)**:
-   - Identify relevant KPIs.
-   - Explain how the recommendations impact these KPIs.
-5. **Implementation Roadmap**:
-   - Step-by-step plan to implement the strategies.
-6. **Risk Analysis**:
-   - Assess potential risks.
-   - Suggest mitigation strategies.
-7. **Key Considerations**:
-   - Highlight important factors to consider when outsourcing to 3PL providers.
-8. **Visualizations**:
-   - Include the specified number of visual charts ({totalCharts} charts: {pieChart} pie chart(s), {barChart} bar chart(s), and {lineChart} line chart(s)) to represent insights.
-9. **Success Stories or Case Studies**:
-   - Provide examples where similar strategies have been successful.
-10. **Conclusion**:
-    - Offer a general theoretical recommendation for improving logistics operations through 3PL partnerships.
-11. **Feedback Prompt**:
-    - Ask the user if further clarification or additional analysis is needed.
-
-### *Output Requirements*
-The output should contain the following elements:
-- Only provide factual information based on your knowledge base.
-- Recommended 3PL providers or strategies, tailored to the user's objectives.
-- Estimated cost savings as a percentage.
-- Expected improvements in service levels.
-- Identification of key performance indicators (KPIs) and how the recommendations impact them.
-- A step-by-step implementation plan.
-- A risk assessment of the recommended strategies.
-- Key considerations when outsourcing logistics functions.
-- Include the specified number of visual charts ({totalCharts} charts: {pieChart} pie chart(s), {barChart} bar chart(s), and {lineChart} line chart(s)) to represent insights.
-- Examples or case studies where similar strategies have been successful.
-- A general theoretical recommendation for improving logistics operations through 3PL partnerships.
+If possible, include examples of how similar logistics strategies have benefited other companies. Use Markdown format for this section.
 """.format(
-        json_schema=ThirdPartyLogisticsInputParamsType,
-        totalCharts=totalCharts,
-        pieChart=pieChart,
-        barChart=barChart,
-        lineChart=lineChart,
+        json_schema=ThirdPartyLogisticsInputParamsType, totalCharts=totalCharts
     )
 
     user_prompt = "Please analyze the following data:\n" + json.dumps(

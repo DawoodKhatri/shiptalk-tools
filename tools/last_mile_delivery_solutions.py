@@ -1,7 +1,7 @@
 import json
 from pydantic import BaseModel
 from typing import List
-from .custom_types.base_types import Plot
+from .custom_types.base_types import Plot, NamedPlot
 import random
 
 
@@ -33,14 +33,10 @@ class LastMileDeliverySolutionsAnalysisResults(BaseModel):
     estimated_cost_savings_percentage: float
     expected_delivery_time_reduction_percentage: float
     key_performance_indicators: List[KeyPerformanceIndicator]  # Added to track KPIs
-    implementation_plan: List[
-        str
-    ]  # Step-by-step suggestions for implementing recommendations
-    risk_analysis: List[
-        RiskAnalysis
-    ]  # Added to provide risk assessments and mitigations
+    implementation_plan: str
+    risk_analysis: str
     overall_suggestion: str  # Theoretical strategic suggestion
-    charts: List[Plot]
+    charts: List[NamedPlot]  # Visualizations to support the analysis
     success_stories: str = None  # Optional field to provide case studies or examples
 
 
@@ -78,9 +74,8 @@ def last_mile_delivery_solutions_prompt(
     - **barChart**: Displays categorical data with rectangular bars.
     - **pieChart**: Represents parts of a whole as pie slices.
     - **lineChart**: Shows data trends over time or continuous variables.
-    - **areaChart**: Similar to a line chart, but with filled areas to represent quantities.
     - **scatterPlot**: Displays values for typically two variables for a set of data.
-    - **heatMap**: Represents data values as colors in a matrix.
+    ChartType must be one of ['barChart', 'pieChart', 'lineChart', 'scatterPlot'].
 
     ### *Instructions*
     Analyze the provided data to recommend optimal last-mile delivery strategies. Ensure the following:
@@ -103,7 +98,6 @@ def last_mile_delivery_solutions_prompt(
     ### *Output Formatting Guidelines*
     Please structure your output in the following format:
 
-    1. **Introduction**: Briefly summarize the key findings.
     2. **User Objectives Alignment**: Explain how your recommendations align with the user's specified objectives.
     3. **Recommendations**:
        - List recommended carriers or delivery strategies.
@@ -114,17 +108,18 @@ def last_mile_delivery_solutions_prompt(
        - Explain how the recommendations impact these KPIs.
     5. **Implementation Roadmap**:
        - Step-by-step plan to implement the strategies.
+       - It should be in markdown format.
     6. **Risk Analysis**:
        - Assess potential risks.
        - Suggest mitigation strategies.
+       - Detailed explanation of the risks and mitigation strategies
+       - It should be in markdown format, use can use bullets, tables, etc.
     7. **Visualizations**:
-       - Include the specified number of visual charts ({totalCharts} charts: {pieChart} pie chart(s), {barChart} bar chart(s), and {lineChart} line chart(s)) to represent insights.
+       - Include the specified number of visual charts ({totalCharts}) to represent insights.
     8. **Success Stories or Case Studies**:
        - Provide examples where similar strategies have been successful.
     9. **Conclusion**:
        - Offer a general theoretical recommendation for improving the last-mile delivery process.
-    10. **Feedback Prompt**:
-        - Ask the user if further clarification or additional analysis is needed.
 
     ### *Output Requirements*
     The output should contain the following elements:

@@ -1,22 +1,35 @@
 import json
 from pydantic import BaseModel
 from typing import List, Dict, Optional
-from .custom_types.base_types import Plot
+from .custom_types.base_types import Plot, NamedPlot
 import random
+
+
+class Items(BaseModel):
+    name: str
+    quantity: int
 
 
 class SalesAndOperationsPlanningInputParamsType(BaseModel):
     company_size: str  # Options: 'Small', 'Medium', 'Large'
     industry_sector: str  # E.g., 'Retail', 'Manufacturing', 'Healthcare'
     current_sales_data: Dict[str, float]  # Monthly sales data
-    inventory_levels: Dict[str, float]  # Current inventory levels for each product
-    operational_constraints: List[str]  # E.g., ['Limited Production Capacity']
-    demand_forecast_horizon_months: int
+    inventory_levels: List[Items]  # Current inventory levels by product category or SKU
+    operational_constraints: List[
+        str
+    ]  # E.g., ['Limited Production Capacity', 'Supplier Delays']
+    demand_forecast_horizon_months: int  # Number of months for the forecast
     user_objectives: List[
         str
-    ]  # E.g., ['Improve Forecast Accuracy', 'Reduce Stockouts']
+    ]  # E.g., ['Improve Forecast Accuracy', 'Optimize Inventory']
     current_challenges: Optional[List[str]] = (
-        None  # E.g., ['Inaccurate Forecasts', 'High Inventory Costs']
+        None  # E.g., ['Inaccurate Forecasts', 'Supplier Reliability Issues']
+    )
+    seasonal_factors: Optional[List[str]] = (
+        None  # E.g., ['Holiday Peaks', 'Weather-Related Demand Changes']
+    )
+    budget_constraints: Optional[float] = (
+        None  # Budget available for inventory replenishment or expansion
     )
 
 
@@ -26,27 +39,38 @@ class KeyPerformanceIndicator(BaseModel):
     expected_improvement_percentage: float
 
 
-class RiskAnalysis(BaseModel):
-    risk_description: str
-    mitigation_suggestion: str
-
-
 class SalesAndOperationsPlanningAnalysisResults(BaseModel):
-    optimized_forecast: Optional[Dict[str, float]] = None  # Make this field optional
-    recommended_inventory_levels: Optional[Dict[str, float]] = (
-        None  # Make this field optional
+    recommended_inventory_levels: Optional[
+        List[Items]
+    ]  # Recommended inventory levels by product category or SKU
+    estimated_cost_savings_percentage: (
+        float  # Estimated cost reduction from optimizations
     )
-    estimated_cost_savings_percentage: float
-    expected_improvement_in_service_levels: str  # E.g., 'Reduced stockouts by 15%'
-    key_performance_indicators: List[KeyPerformanceIndicator]
-    implementation_plan: List[str]
-    risk_analysis: List[RiskAnalysis]
-    key_considerations: List[str]
-    charts: List[Plot]
+    expected_improvement_in_service_levels: (
+        str  # E.g., '5% improvement in on-time delivery'
+    )
+    key_performance_indicators: List[
+        KeyPerformanceIndicator
+    ]  # E.g., 'Inventory Turnover Ratio', 'Fill Rate'
+    implementation_plan: str  # Steps for implementing the proposed strategies
+    risk_analysis: (
+        str  # Assessment of risks such as supplier delays or demand variability
+    )
+    key_considerations: List[
+        str
+    ]  # Important factors to consider (e.g., production capacity, lead times)
+    charts: List[
+        NamedPlot
+    ]  # Visual representation of forecasts, inventory, cost analysis, etc.
+    scenario_analysis: Optional[str] = (
+        None  # Scenario-based results, e.g., best/worst-case scenarios
+    )
     success_stories: Optional[str] = (
-        None  # Optional field to provide case studies or examples
+        None  # Example cases of similar businesses achieving results
     )
-    overall_suggestion: str  # Theoretical strategic suggestion
+    overall_suggestion: (
+        str  # Strategic recommendation, e.g., 'Increase safety stock by 10%'
+    )
 
 
 def sales_and_operations_planning_prompt(
@@ -60,101 +84,97 @@ def sales_and_operations_planning_prompt(
 
     # Pass the JSON schema of the input parameters to provide context about the input structure
     system_prompt = """
-You are an AI assistant specializing in supply chain optimization and demand forecasting.
-Your task is to analyze the user's sales and operations data to provide actionable insights
-that will optimize resource allocation, enhance demand forecasting accuracy, and ensure seamless coordination across all departments.
+You are an AI assistant specializing in Sales and Operations Planning (S&OP).  
+Your task is to analyze the user's business data and provide personalized solutions to optimize sales forecasts, inventory management, and operational adjustments for the upcoming planning period.
 
-### *User Objectives and Priorities*
-Before starting your analysis, please consider the user's primary goals. The user may specify their main objectives such as:
-- Improve forecast accuracy
-- Reduce stockouts
-- Optimize inventory levels
-- Enhance customer satisfaction
-- Increase operational efficiency
-- Other specific priorities
-
-Tailor your recommendations to align with these objectives.
-
-### *Input Structure*
+### Input Structure  
 Here is the expected structure of the input data:
 {json_schema}
 
-### *Visualization Types*
+### Visualization Types  
 Please generate relevant visualizations to support your analysis. The possible chart types are:
 - **barChart**: Displays categorical data with rectangular bars.
 - **pieChart**: Represents parts of a whole as pie slices.
 - **lineChart**: Shows data trends over time or continuous variables.
-- **areaChart**: Similar to a line chart, but with filled areas to represent quantities.
-- **scatterPlot**: Displays values for typically two variables for a set of data.
-- **heatMap**: Represents data values as colors in a matrix.
+- **scatterPlot**: Displays the correlation between two variables (e.g., risk probability and impact).
+- exaplanation must be detailed overview the graph and in markdown format
 
-### *Instructions*
-Analyze the provided data to recommend optimal sales and operations planning strategies. Ensure the following:
-- Integrate sales forecasts, inventory management, and operational planning data.
-- Provide optimized demand forecasts and recommended inventory levels.
-- Identify cost-saving opportunities and improvements in service levels.
-- Include exactly {totalCharts} visualizations in your analysis: {pieChart} pie chart(s), {barChart} bar chart(s), and {lineChart} line chart(s).
-- Provide a theoretical overall suggestion to improve supply chain processes.
-- Identify key performance indicators (KPIs) relevant to S&OP and measure the impact of your recommendations on these KPIs.
-- Consider practical constraints such as operational limitations, resource availability, or market volatility.
-- Account for industry-specific challenges and regulatory requirements.
-- Explore innovative solutions like advanced analytics, machine learning models, or collaborative platforms if applicable.
-- Assess potential risks associated with the recommended strategies and suggest ways to mitigate them.
+Please ensure to use only the specified chart types for this analysis. The value of ChartType must be ['barChart', 'pieChart', 'lineChart', 'scatterPlot'].
 
-### *Implementation Roadmap*
-Provide a step-by-step plan on how to implement the suggested strategies. This should include actionable steps that the user can follow.
+### Instructions  
+Analyze the provided data to recommend optimal strategies for Sales and Operations Planning. Ensure the following:
+- Provide optimized sales forecasts based on historical data.
+- Recommend adjustments in inventory levels to meet projected demand.
+- Suggest operational changes (e.g., supplier selection, capacity planning) to meet forecasted sales.
+- Estimate the cost implications of these adjustments.
+- Identify potential risks and suggest mitigation strategies.
+- Provide a concise summary of all recommendations.
 
-### *Success Stories or Case Studies*
-Include examples of how similar strategies have benefited other companies, if possible but not mandatory. A real-world context can help reinforce the recommendations.
+### Graphs to Include  
+Please generate the following graphs to support the analysis:
 
-### *Output Formatting Guidelines*
+1. **Sales Forecast**:  
+   - Visualize the projected sales for the forecast horizon.
+   - Use a line chart to track forecast trends over time.
+
+2. **Inventory Adjustment**:  
+   - Recommend adjustments to inventory levels based on the optimized forecast.
+   - Use a bar chart to track inventory levels before and during the forecast period.
+
+3. **Cost Impact**:  
+   - Show the breakdown of estimated additional costs (e.g., inventory holding, logistics).
+   - Use a pie chart to represent each cost component.
+
+4. **Demand vs. Capacity**:  
+   - Compare the expected demand vs. available operational capacity.
+   - Use a bar chart to visualize how demand stacks up against capacity.
+
+5. **Risk Probability vs. Impact**:  
+   - Visualize potential risks by plotting their probability and impact.
+   - Use a scatter plot to highlight risks with high probability and impact.
+
+### Output Formatting Guidelines  
 Please structure your output in the following format:
 
-1. **Introduction**: Briefly summarize the key findings.
-2. **User Objectives Alignment**: Explain how your recommendations align with the user's specified objectives.
-3. **Recommendations**:
-   - Provide optimized demand forecasts.
-   - Recommend ideal inventory levels.
-   - Provide estimated cost savings as a percentage.
-   - Describe expected improvements in service levels.
-4. **Key Performance Indicators (KPIs)**:
-   - Identify relevant KPIs.
-   - Explain how the recommendations impact these KPIs.
-5. **Implementation Roadmap**:
-   - Step-by-step plan to implement the strategies.
-6. **Risk Analysis**:
-   - Assess potential risks.
-   - Suggest mitigation strategies.
-7. **Key Considerations**:
-   - Highlight important factors to consider when implementing S&OP.
-8. **Visualizations**:
-   - Include the specified number of visual charts ({totalCharts} charts: {pieChart} pie chart(s), {barChart} bar chart(s), and {lineChart} line chart(s)) to represent insights.
-9. **Success Stories or Case Studies**:
-   - Provide examples where similar strategies have been successful.
-10. **Conclusion**:
-    - Offer a general theoretical recommendation for improving supply chain processes through S&OP.
-11. **Feedback Prompt**:
-    - Ask the user if further clarification or additional analysis is needed.
+1. **Summary**:  
+   A complete overview of the recommendations in markdown format.
 
-### *Output Requirements*
+2. **Sales Forecast**:  
+   Optimized sales forecast for the given horizon in markdown format.
+
+3. **Inventory Adjustments**:  
+   Detailed recommendations for adjusting inventory levels.
+
+4. **Operational Recommendations**:  
+   Suggested operational changes to handle forecasted demand.
+
+5. **Estimated Cost Impact**:  
+   Estimated additional costs and savings.
+
+6. **Potential Risks and Mitigation Strategies**:  
+   - List potential risks.
+   - Provide mitigation strategies for each risk.
+
+7. **Implementation Plan**:  
+   A step-by-step detailed plan to implement the recommendations in markdown format.
+
+8. **Visualizations Charts**:  
+   Include the specified number of charts ({totalCharts} in total) to support your analysis.
+
+9. **Risk Analysis**:
+    - Provide an assessment of risks such as supplier delays or demand variability in markdown format.
+
+### Output Requirements  
 The output should contain the following elements:
-- Only provide factual information based on your knowledge base.
-- Optimized demand forecasts and recommended inventory levels.
-- Estimated cost savings as a percentage.
-- Expected improvements in service levels.
-- Identification of key performance indicators (KPIs) and how the recommendations impact them.
-- A step-by-step implementation plan.
-- A risk assessment of the recommended strategies.
-- Key considerations when implementing S&OP.
-- Include the specified number of visual charts ({totalCharts} charts: {pieChart} pie chart(s), {barChart} bar chart(s), and {lineChart} line chart(s)) to represent insights.
-- Examples or case studies where similar strategies have been successful.
-- A general theoretical recommendation for improving supply chain processes through S&OP.
+- Factual information based on the input data.
+- Clear and actionable recommendations.
+- Visualizations to support the analysis.
+- A summary that encapsulates the key points.
+- All description must be well detailed and easy to understand in markdown format.
+
 """.format(
         json_schema=SalesAndOperationsPlanningInputParamsType,
-        totalCharts=totalCharts,
-        pieChart=pieChart,
-        barChart=barChart,
-        lineChart=lineChart,
+        totalCharts=totalCharts
     )
 
     user_prompt = "Please analyze the following data:\n" + json.dumps(
