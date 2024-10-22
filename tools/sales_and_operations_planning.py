@@ -136,6 +136,10 @@ Please generate the following graphs to support the analysis:
 5. **Risk Probability vs. Impact**:  
    - Visualize potential risks by plotting their probability and impact.
    - Use a scatter plot to highlight risks with high probability and impact.
+   
+6. **Seasonal Factors vs. Demand**:  
+   - Visualize demands by plotting their seasonal factors.
+   - Use a bar chart to highlight demands with seasonal factor.
 
 ### Output Formatting Guidelines  
 Please structure your output in the following format:

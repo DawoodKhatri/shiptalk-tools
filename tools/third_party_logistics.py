@@ -85,8 +85,8 @@ Provide a detailed analysis using the data to suggest optimal 3PL providers and 
 - Include exactly {totalCharts} visualizations in the analysis.
 - Present a strategic suggestion for improving logistics operations.
 - Outline key performance indicators (KPIs) that will measure the impact of your recommendations.
-- Address constraints like budget, resources, or regulations.
-- Consider regional logistics infrastructure or provider availability.
+- Address constraints like budget, resources, or regulations based on the company size.
+- Consider regional logistics infrastructure or provider availability based on the monthly shippment volume.
 - Explore innovative options such as automation, technology integration, or value-added services if applicable.
 - Conduct a risk assessment for your suggestions and propose mitigation strategies.
 

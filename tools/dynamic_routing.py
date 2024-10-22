@@ -131,6 +131,11 @@ def dynamic_routing_prompt(inputParameters: DynamicRoutingInputParamsType):
            - `trafficSensitivity`: A `Sensitivity` object explaining traffic sensitivity.
            - `weatherImpactAssessment`: **Markdown** text explaining weather impacts.
            - `priorityAdjustmentSuggestions`: **Markdown** text or cards offering priority adjustments.
+           
+           
+          As you are given address make sure the analysis you perform is accurate and relevant to the location.
+           The hours assumed for the delivery time are accurate based on the distance between the current location and the destination address.
+
 
         ### **Markdown Formatting Instructions**:
         - All text-based outputs (explanations for risk, delay mitigation, and delivery status) **must be returned in Markdown format only**.
