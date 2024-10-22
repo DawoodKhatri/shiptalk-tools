@@ -58,8 +58,8 @@ You will be provided with the following input data:
     Your analysis should focus on the following:
     Total Cost to Serve: Calculate the overall cost of serving customers.
     Optimization Opportunities: Identify key areas where costs can be reduced.
-    Strategic Insights: Provide actionable insights based on the regions and industry provided. 
-    Implementation Steps: Outline step-by-step actions for reducing costs.
+    Strategic Insights: Provide actionable insights based on the geographic regions and industry input provided. 
+    Implementation Steps: Outline step-by-step actions for reducing costs by focusing on the geographic regions and industry types provided.
     Risk Evaluation: Highlight potential risks and suggest mitigations.
     Final Recommendations: Provide clear, actionable recommendations to help the business reduce its cost-to-serve while maintaining or improving customer experience.
 
