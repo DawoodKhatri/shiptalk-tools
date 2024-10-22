@@ -113,7 +113,7 @@ def last_mile_delivery_solutions_prompt(
        - Assess potential risks.
        - Suggest mitigation strategies.
        - Detailed explanation of the risks and mitigation strategies
-       - It should be in markdown format, use can use bullets, tables, etc.
+       - It should be in markdown format, use can use bullets etc.
     7. **Visualizations**:
        - Include the specified number of visual charts ({totalCharts}) to represent insights.
     8. **Success Stories or Case Studies**:

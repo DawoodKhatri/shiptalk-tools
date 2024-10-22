@@ -14,7 +14,8 @@ class SalesAndOperationsPlanningInputParamsType(BaseModel):
     company_size: str  # Options: 'Small', 'Medium', 'Large'
     industry_sector: str  # E.g., 'Retail', 'Manufacturing', 'Healthcare'
     current_sales_data: Dict[str, float]  # Monthly sales data
-    inventory_levels: List[Items]  # Current inventory levels by product category or SKU
+    # Current inventory levels by product category or SKU
+    inventory_levels: List[Items]
     operational_constraints: List[
         str
     ]  # E.g., ['Limited Production Capacity', 'Supplier Delays']
@@ -33,6 +34,11 @@ class SalesAndOperationsPlanningInputParamsType(BaseModel):
     )
 
 
+class ServiceLevelImprovements(BaseModel):
+    percentage: float
+    explanation: str
+
+
 class KeyPerformanceIndicator(BaseModel):
     kpi_name: str  # E.g., 'Forecast Accuracy', 'Inventory Turnover Rate'
     current_value: float
@@ -46,9 +52,7 @@ class SalesAndOperationsPlanningAnalysisResults(BaseModel):
     estimated_cost_savings_percentage: (
         float  # Estimated cost reduction from optimizations
     )
-    expected_improvement_in_service_levels: (
-        str  # E.g., '5% improvement in on-time delivery'
-    )
+    expected_improvement_in_service_levels: ServiceLevelImprovements
     key_performance_indicators: List[
         KeyPerformanceIndicator
     ]  # E.g., 'Inventory Turnover Ratio', 'Fill Rate'

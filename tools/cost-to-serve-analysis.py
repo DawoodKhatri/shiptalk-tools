@@ -4,16 +4,21 @@ from typing import List, Dict, Optional, Union
 from .custom_types.base_types import Plot, NamedPlot
 import random
 
+
 class CostToServeInputParams(BaseModel):
     business_model: str  # Options: 'B2B', 'B2C', 'D2C', etc.
-    customer_segments: List[str] = None  # E.g., 'Wholesale', 'Retail', 'Online'
+    # E.g., 'Wholesale', 'Retail', 'Online'
+    customer_segments: List[str] = None
     total_supply_chain_cost: (
-        float  # Total cost for supply chain (manufacturing, storage, transport, etc.)
+        # Total cost for supply chain (manufacturing, storage, transport, etc.)
+        float
     )
     average_order_value: float  # Average value of an order across segments
-    user_goals: List[str] = None  # E.g., 'Reduce Cost-to-Serve', 'Improve Margins'
+    # E.g., 'Reduce Cost-to-Serve', 'Improve Margins'
+    user_goals: List[str] = None
     industry_type: Optional[str] = None  # E.g., 'Fashion', 'Tech', 'FMCG'
-    geographical_scope: Optional[str] = None  # E.g., 'Global', 'North America', 'Asia'
+    # E.g., 'Global', 'North America', 'Asia'
+    geographical_scope: Optional[str] = None
 
 
 class CostToServeAnalysisResults(BaseModel):
@@ -124,6 +129,13 @@ tool_config = {
                 "Increase Efficiency",
                 "Optimize Logistics",
                 "Enhance Customer Experience",
+            ],
+            "challenges": [
+                "High Delivery Costs",
+                "Inefficient Warehousing",
+                "Complex Distribution Channels",
+                "Low Order Volumes",
+                "High Return Rates",
             ],
             "industry_type": [
                 "Fashion",

@@ -1,43 +1,49 @@
 import json
 from pydantic import BaseModel
 from typing import List,  Optional
-from .custom_types.base_types import Plot
+from .custom_types.base_types import Plot, ComparisonPlot
 import random
+
 
 class RiskAnalysis(BaseModel):
     riskLevel: str  # E.g., 'Low', 'Medium', 'High'
     progress: int  # Progress value from 0 to 100
     explanation: str  # Markdown explanation of the risk level
 
+
 class EfficiencyScore(BaseModel):
     percentage: float  # E.g., 0.0 to 100.0
     explanation: str  # Markdown explanation of the efficiency score
 
+
 class JustInTimeInventoryInputParams(BaseModel):
     average_monthly_demand_units: int  # Units sold per month
     current_inventory_level_units: int  # Current inventory level in units
-    production_capacity_units_per_month: int  # Production capacity in units per month
+    # Production capacity in units per month
+    production_capacity_units_per_month: int
     warehouse_capacity_units: int  # Warehouse storage capacity in units
-    main_objectives: List[str]  # E.g., ['Reduce inventory costs', 'Improve production efficiency']
-    current_challenges: Optional[List[str]] = None  # E.g., ['Stockouts', 'Overstock', 'Long lead times']
-
+    # E.g., ['Reduce inventory costs', 'Improve production efficiency']
+    main_objectives: List[str]
+    # E.g., ['Stockouts', 'Overstock', 'Long lead times']
+    current_challenges: Optional[List[str]] = None
 
 
 class JustInTimeInventoryAnalysisResults(BaseModel):
     # Visual Outputs
     inventoryLevelVsDemand: Plot
     productionCapacityUtilization: Plot
-    warehouseCapacityVsInventory: Plot
+    warehouseCapacityVsInventory: ComparisonPlot
     objectiveFulfillmentAnalysis: Plot
     leadTimeVsStockouts: Plot
-    costToServeAnalysis: Plot 
-    
+    costToServeAnalysis: Plot
+
     # Analytical Fields
     riskAssessment: RiskAnalysis  # With progress bar data and markdown explanation
-    costSavingsPotential: EfficiencyScore  # With percentage and markdown explanation
+    # With percentage and markdown explanation
+    costSavingsPotential: EfficiencyScore
     keyPerformanceIndicators: List[str]  # List with markdown explanations
     implementationPlan: str
-    conclusion: str 
+    conclusion: str
 
 
 def just_in_time_inventory_prompt(inputParameters: JustInTimeInventoryInputParams):
@@ -66,7 +72,7 @@ The goal is to help users minimize inventory holding costs by receiving goods on
 
     2. **Production Capacity Utilization**:
     - Analyze the percentage of production capacity used compared to the actual production demand.
-    - Use a **bar chart** to display the utilization of production capacity.
+    - Use a **pie chart** to display the utilization of production capacity.
 
     3. **Warehouse Capacity vs. Inventory Level**:
     - Compare current inventory levels with available warehouse capacity to ensure efficient storage.
@@ -74,7 +80,7 @@ The goal is to help users minimize inventory holding costs by receiving goods on
 
     4. **Objective Fulfillment Analysis**:
     - Assess how well the JIT system meets objectives such as reducing inventory costs or improving efficiency.
-    - Use a **radar chart** to visualize performance across multiple objectives.
+    - Use a **bar chart** to visualize performance across multiple objectives.
 
     5. **Lead Time vs. Stockouts**:
     - Explore the relationship between lead times and stockout occurrences to identify areas for improvement.
@@ -160,7 +166,7 @@ tool_config = {
             ],
             "current_challenges": [
                 "Stockouts",
-                "Overstock",    
+                "Overstock",
                 "Long lead times",
                 "High holding costs",
                 "Supplier unreliability",
