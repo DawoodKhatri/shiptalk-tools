@@ -50,15 +50,15 @@ def cost_to_serve_analysis_prompt(inputParameters: CostToServeInputParams):
     system_prompt = """
 You are a supply chain expert specializing in cost-to-serve analysis. Your task is to evaluate the costs associated with delivering products to different customer segments, identify areas for cost reduction, and provide strategic recommendations to enhance profitability.
 
-Input Structure
-You will be provided with the following structured input data:
+Input Data
+You will be provided with the following input data:
 {json_schema}
 
 # Analysis Objectives
     Your analysis should focus on the following:
     Total Cost to Serve: Calculate the overall cost of serving customers.
     Optimization Opportunities: Identify key areas where costs can be reduced.
-    Strategic Insights: Provide actionable insights based on industry and market trends.
+    Strategic Insights: Provide actionable insights based on the regions and industry provided. 
     Implementation Steps: Outline step-by-step actions for reducing costs.
     Risk Evaluation: Highlight potential risks and suggest mitigations.
     Final Recommendations: Provide clear, actionable recommendations to help the business reduce its cost-to-serve while maintaining or improving customer experience.
@@ -81,7 +81,7 @@ You will be provided with the following structured input data:
     Final Recommendation: Summarize the most important recommendation.
     Success Probability: Estimate the likelihood of success as a percentage.
     Potential Savings: Calculate the potential savings if recommendations are followed.
-    Customer Impact: Describe how changes will affect the customer experience.
+    Customer Impact: Describe how changes will affect the customer experience and suggest improvements based on the inputs provided by the user.
     Visualizations: Display relevant charts (pie chart, bar chart, line chart, scatter plot).
     Guidelines
     Ensure that the output is concise but thorough, with clear explanations for each recommendation.
@@ -89,7 +89,7 @@ You will be provided with the following structured input data:
     Make sure that your final recommendations are actionable and directly tied to the provided input data.
 
 """.format(
-        json_schema=CostToServeInputParams,
+        json_schema=json.dumps(inputParameters.model_dump(), indent=4),
         total_charts=total_charts,
         pie_chart_count=pie_chart_count,
         bar_chart_count=bar_chart_count,
