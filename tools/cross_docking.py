@@ -28,31 +28,71 @@ class CrossDockingInputParams(BaseModel):
 class RiskAnalysis(BaseModel):
     riskLevel: str  # Low, Medium, High (risk categorization)
     riskProgress: float  # Numeric representation for progress bar (0-100)
-    explanation: str  # Markdown explanation for the risk level
+    explanation: str  # Explanation for the risk level
 
 
 class DeliveryStatus(BaseModel):
     status: str  # e.g., "On Time", "Delayed"
-    explanation: str  # Explanation in markdown format
+    explanation: str
 
 
 class CostEfficiency(BaseModel):
-    laborEfficiency: str  # Explanation in markdown format
-    dockUtilization: str  # Explanation in markdown format
-    truckCapacityUtilization: str  # Explanation in markdown format
+    laborEfficiency: str
+    dockUtilization: str
+    truckCapacityUtilization: str
 
 
 class CrossDockingAnalysisResults(BaseModel):
     carrierOptimization: Plot  # Using the Plot class for visual data
-    dockScheduling: str  # Markdown formatted suggestion
+    dockScheduling: str  # Suggestion
     laborAllocation: Plot  # Pie chart for labor allocation
     riskAssessment: RiskAnalysis  # Markdown formatted risk assessment
     deliveryTimelineComparison: ComparisonPlot  # Line chart for delivery timeline
-    deliveryStatus: DeliveryStatus  # Markdown formatted delivery status
-    costEfficiency: CostEfficiency  # Markdown formatted cost analysis
+    deliveryStatus: DeliveryStatus  # Delivery status
+    costEfficiency: CostEfficiency  # Cost analysis
 
 
 def cross_docking_prompt(inputParameters: CrossDockingInputParams):
+
+    system_prompt = (
+        """
+        You are an assistant for a shipping community called the Cross-Docking Tool. Your task is to analyze the input provided by the user and generate actionable recommendations for optimizing the cross-docking process.
+
+        The goal is to help efficiently allocate labor and dock resources, and optimize the transfer of goods between inbound and outbound trucks.
+        
+        Output Format:
+        - `carrierOptimization`: Analyze the load distribution between the outbound trucks, Generate a barChart showing the load allocated to each outbound truck, Provide a explanation detailing the allocation and any recommendations for balancing the loadavailable load from incoming trucks, along with an explanation of the data.
+        - `dockScheduling`: Dock utilization and explanation.
+        - `laborAllocation`: A `pieChart` for labor distribution and explanation.
+        - `riskAssessment`: Text explaining the risk levels and mitigation strategies.
+        - `deliveryTimelineComparison`: A `barChart` Compare the planned departure times of outbound trucks with any adjusted times based on the user's input (traffic, weather).
+        - `deliveryStatus`: Text summarizing the delivery timeline and any delays.
+        - `costEfficiency`: Text summarizing the cost efficiency of the process.
+        
+
+        
+        ### **Notes**:
+        - Use Time in the format HH:MM AM/PM
+        - Use only **pieChart**, **barChart**, or **lineChart** for visuals.
+        """
+    )
+
+    user_prompt = (
+        """
+        I need you to analyze the cross-docking process based on the following input:
+        """
+        + json.dumps(inputParameters.model_dump(), indent=4)
+    )
+
+    messages = [
+        {"role": "system", "content": system_prompt},
+        {"role": "user", "content": user_prompt},
+    ]
+
+    return messages
+
+
+def cross_docking_promp(inputParameters: CrossDockingInputParams):
 
     system_prompt = (
         """
@@ -73,56 +113,55 @@ def cross_docking_prompt(inputParameters: CrossDockingInputParams):
            - **Carrier Optimization Analysis**:
              - Analyze the load distribution between the outbound trucks.
              - Generate a barChart showing the load allocated to each outbound truck.
-             - Provide a **markdown** format explanation detailing the allocation and any recommendations for balancing the load.
+             - Provide a explanation detailing the allocation and any recommendations for balancing the load.
 
            - **Dock Scheduling and Labor Allocation**:
              - Based on the number of available docks and labor, generate a recommendation for scheduling the unloading and loading of trucks.
              - Use a barChart to represent dock utilization and a pieChart for labor distribution.
-             - Provide a **markdown** explanation on how the docks and labor should be allocated for maximum efficiency.
+             - Provide a explanation on how the docks and labor should be allocated for maximum efficiency.
 
            - **Delivery Timeline Comparison**:
              - Compare the planned departure times of outbound trucks with any adjusted times based on the user's input (traffic, weather).
              - Generate a lineChart showing the comparison between the planned and adjusted timelines.
              - The values should be in proper format (e.g., For 12:30 PM, use 12.5 or For 1:45 PM, use 13.75).
-             - Provide a **markdown** explanation for any delays or on-time departures and suggestions to mitigate delays if necessary.
+             - Provide a explanation for any delays or on-time departures and suggestions to mitigate delays if necessary.
 
            - **Risk Assessment**:
              - Analyze the risk level based on traffic, weather, and scheduling tightness.
-             - Provide a **markdown** explanation of the risk level (Low, Medium, High) and any suggestions to minimize risks.
+             - Provide a explanation of the risk level (Low, Medium, High) and any suggestions to minimize risks.
 
-        3. **Text-Based Explanations** (Strictly in Markdown Format):
+        3. **Text-Based Explanations**:
            - **Carrier Optimization Suggestions**:
-             - Provide **markdown** recommendations on how to efficiently load and allocate goods between outbound trucks.
+             - Provide recommendations on how to efficiently load and allocate goods between outbound trucks.
 
            - **Dock Scheduling and Labor Utilization**:
-             - Provide **markdown** text explaining the optimal allocation of docks and labor based on the user's input.
-             - Offer **markdown** suggestions on how to improve labor efficiency and reduce dock idle time.
+             - Provide text explaining the optimal allocation of docks and labor based on the user's input.
+             - Offer suggestions on how to improve labor efficiency and reduce dock idle time.
 
            - **Delivery Status and Timeline Explanation**:
-             - Provide **markdown** text summarizing the expected delivery status and any delays.
+             - Provide text summarizing the expected delivery status and any delays.
              - Explain the reasons for potential delays and suggest corrective actions to ensure timely departures.
 
            - **Risk Mitigation**:
-             - Provide **markdown** suggestions for minimizing risks based on current traffic, weather, and other input factors.
+             - Provide suggestions for minimizing risks based on current traffic, weather, and other input factors.
              - Recommend actions to reduce delays or avoid bottlenecks in the process.
 
         4. **Final Recommendations**:
-           - After generating all visuals and explanations, provide a final **markdown** conclusion that summarizes the key recommendations for the user.
+           - After generating all visuals and explanations, provide a final conclusion that summarizes the key recommendations for the user.
            - The conclusion should focus on how to optimize cross-docking by minimizing storage time, improving labor and dock utilization, and ensuring timely deliveries.          
           
         5. **Output Format**:
            The output should be structured in JSON format with the following sections:
-             - `carrierOptimization`: A `Plot` object with load distribution and **markdown** format of explanation.
-             - `dockScheduling`: A `Plot` object for dock utilization and **markdown** format of explanation.
-             - `laborAllocation`: A `Plot` object for labor distribution and **markdown** format of explanation.
+             - `carrierOptimization`: A `Plot` object with load distribution and explanation.
+             - `dockScheduling`: A `Plot` object for dock utilization and explanation.
+             - `laborAllocation`: A `Plot` object for labor distribution and explanation.
              - `deliveryTimelineComparison`: A `Plot` object comparing planned and adjusted timelines.
-             - `riskAssessment`: **Markdown** text explaining the risk levels and mitigation strategies.
-             - `deliveryStatus`: **Markdown** text summarizing the delivery timeline and any delays.
-             - `finalRecommendations`: A final **markdown** text summarizing key takeaways and suggestions for process optimization.
+             - `riskAssessment`: Text explaining the risk levels and mitigation strategies.
+             - `deliveryStatus`: Text summarizing the delivery timeline and any delays.
+             - `finalRecommendations`: A final Text summarizing key takeaways and suggestions for process optimization.
 
         ---
         ### **Notes**:
-        - Ensure all explanations and text outputs are provided strictly in **markdown** format including all styling for clarity and consistency in reading for users.
         - Use only **pieChart**, **barChart**, or **lineChart** for visuals.
         """
     )

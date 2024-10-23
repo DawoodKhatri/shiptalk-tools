@@ -22,7 +22,6 @@ class ThirdPartyLogisticsInputParamsType(BaseModel):
     )
 
 
-
 class KeyPerformanceIndicator(BaseModel):
     kpi_name: str  # E.g., 'Order Fulfillment Time', 'Inventory Turnover Rate'
     current_value: float
@@ -49,7 +48,7 @@ def third_party_logistics_prompt(
     pieChart = random.randint(1, 3)
     barChart = random.randint(1, 3)
     lineChart = random.randint(1, 3)
-    totalCharts = pieChart + barChart + lineChart
+    totalCharts = 5
 
     # Pass the JSON schema of the input parameters to provide context about the input structure
     system_prompt = """
@@ -74,9 +73,8 @@ Generate visualizations to support your analysis. Choose from these chart types:
 - **barChart**: For displaying categorical data comparisons.
 - **pieChart**: For showing proportions of a whole.
 - **lineChart**: For depicting trends over time.
-- **scatterPlot**: For showing relationships between two variables.
 
-Ensure you only use these chart types in your analysis. The value of ChartType must be one of ['barChart', 'pieChart', 'lineChart', 'scatterPlot'].
+Ensure you only use these chart types in your analysis. The value of ChartType must be one of ['barChart', 'pieChart', 'lineChart'].
 
 ### *Instructions*
 Provide a detailed analysis using the data to suggest optimal 3PL providers and strategies. You should:
@@ -94,7 +92,7 @@ Provide a detailed analysis using the data to suggest optimal 3PL providers and 
 Provide an actionable, step-by-step plan in Markdown format to implement your recommendations.
 
 ### *Success Stories or Case Studies*
-If possible, include examples of how similar logistics strategies have benefited other companies. Use Markdown format for this section.
+If possible, include examples of how similar logistics strategies have benefited other companies. Use Markdown format for this section with max 150 words.
 """.format(
         json_schema=ThirdPartyLogisticsInputParamsType, totalCharts=totalCharts
     )

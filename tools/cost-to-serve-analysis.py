@@ -74,10 +74,10 @@ You will be provided with the following input data:
 # Output Structure
     Format your analysis in the following sections:
     Total Cost to Serve: Provide the overall cost.
-    Optimization Recommendations: List key cost-reduction strategies in markdown format.
-    Strategic Insights: High-level strategies to improve operations in markdown format.
-    Implementation Steps: A detailed plan for how to achieve the recommendations in markdown format.
-    Risk Evaluation: Assess risks and mitigations associated with the detailed steps in markdown format.
+    Optimization Recommendations: List key cost-reduction strategies.
+    Strategic Insights: High-level strategies to improve operations.
+    Implementation Steps: A detailed plan for how to achieve the recommendations.
+    Risk Evaluation: Assess risks and mitigations associated with the detailed steps.
     Final Recommendation: Summarize the most important recommendation.
     Success Probability: Estimate the likelihood of success as a percentage.
     Potential Savings: Calculate the potential savings if recommendations are followed.

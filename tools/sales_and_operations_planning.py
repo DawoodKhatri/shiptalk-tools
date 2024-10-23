@@ -81,10 +81,7 @@ def sales_and_operations_planning_prompt(
     inputParameters: SalesAndOperationsPlanningInputParamsType,
 ):
     # Generate random data for example charts
-    pieChart = random.randint(1, 3)
-    barChart = random.randint(1, 3)
-    lineChart = random.randint(1, 3)
-    totalCharts = pieChart + barChart + lineChart
+    totalCharts = 6
 
     # Pass the JSON schema of the input parameters to provide context about the input structure
     system_prompt = """
@@ -117,29 +114,29 @@ Analyze the provided data to recommend optimal strategies for Sales and Operatio
 ### Graphs to Include  
 Please generate the following graphs to support the analysis:
 
-1. **Sales Forecast**:  
+1. **Demand vs. Capacity**:  
+   - Compare the expected demand vs. available operational capacity.
+   - Use a barChart to visualize how demand stacks up against capacity.
+
+2. **Sales Forecast**:  
    - Visualize the projected sales for the forecast horizon.
-   - Use a line chart to track forecast trends over time.
-
-2. **Inventory Adjustment**:  
-   - Recommend adjustments to inventory levels based on the optimized forecast.
-   - Use a bar chart to track inventory levels before and during the forecast period.
-
+   - Use a lineChart to track forecast trends over time.
+   
 3. **Cost Impact**:  
    - Show the breakdown of estimated additional costs (e.g., inventory holding, logistics).
-   - Use a pie chart to represent each cost component.
+   - Use a pieChart to represent each cost component.
 
-4. **Demand vs. Capacity**:  
-   - Compare the expected demand vs. available operational capacity.
-   - Use a bar chart to visualize how demand stacks up against capacity.
+4. **Inventory Adjustment**:  
+   - Recommend adjustments to inventory levels based on the optimized forecast.
+   - Use a barChart to track inventory levels before and during the forecast period.
 
-5. **Risk Probability vs. Impact**:  
-   - Visualize potential risks by plotting their probability and impact.
-   - Use a scatter plot to highlight risks with high probability and impact.
-   
-6. **Seasonal Factors vs. Demand**:  
+5. **Seasonal Factors vs. Demand**:  
    - Visualize demands by plotting their seasonal factors.
-   - Use a bar chart to highlight demands with seasonal factor.
+   - Use a barChart to highlight demands with seasonal factor.
+
+6. **Risk Probability vs. Impact**:  
+   - Visualize potential risks by plotting their probability and impact.
+   - Use a pieChart to highlight risks with high probability and impact.
 
 ### Output Formatting Guidelines  
 Please structure your output in the following format:

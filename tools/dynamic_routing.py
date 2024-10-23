@@ -1,4 +1,3 @@
-import json
 from pydantic import BaseModel
 from .custom_types.base_types import Plot
 from pydantic import BaseModel
@@ -7,7 +6,6 @@ from pydantic import BaseModel
 class DynamicRoutingInputParamsType(BaseModel):
     destinationAddress: str
     currentLocation: str
-    expectedDeliveryTime: str
     priorityLevel: str
     trafficConditions: str
     weatherConditions: str
@@ -58,97 +56,47 @@ class DynamicRoutingAnalysisResults(BaseModel):
 def dynamic_routing_prompt(inputParameters: DynamicRoutingInputParamsType):
     system_prompt = (
         """
-        You are an assistant for a shipping community tool called the Dynamic Routing Tool. Your task is to analyze the input provided by the user and generate actionable recommendations for optimizing their parcel delivery times based on traffic, weather, and priority conditions.
-
-        The goal is to give users maximum analysis with minimal input. Your output will consist of visual data (restricted to pieChart, barChart, and lineChart), explanations of that data, and final recommendations that summarize key takeaways and actions.
-
-        ## *Steps to Follow*:
-
-        1. **Input Understanding**:
-           You will receive the following inputs from the user:
-           """
-        + json.dumps(DynamicRoutingInputParamsType.model_json_schema())
-        + """
-           Based on these inputs, you will generate delivery analysis and recommendations.
-
-        2. **Visual Outputs** (Use pieChart, barChart, or lineChart):
-           - **Delivery Time Comparison**:
-             - Compare the original expected delivery time with the estimated delivery time based on the input conditions.
-             - Provide a barChart or lineChart showing the original delivery time vs. the estimated delivery time.
-             - Include an explanation of why the delivery time has changed (e.g., due to traffic or weather conditions).
-             - The explanation must be formatted as **Markdown**.
-
-           - **Condition Impact Chart**:
-             - Create a barChart showing the individual impact of traffic and weather conditions on delivery time.
-             - Include an explanation of how much delay is expected due to traffic or weather and why.
-             - The explanation must be formatted as **Markdown**.
-
-           - **Priority-Based Recommendation**:
-             - Generate a pieChart or barChart showing the impact of the priority level on the delivery.
-             - If the priority is high, explain why certain steps (e.g., earlier scheduling) might help reduce delays.
-             - The explanation must be formatted as **Markdown**.
-
-        3. **Text-Based Explanations** (Strictly in Markdown Format):
-           - **Risk Level**:
-             - Analyze the risk of delay based on the traffic and weather conditions.
-             - Assign a risk level (e.g., Low, Medium, High).
-             - Provide a risk explanation formatted as **Markdown**, clearly describing why the risk level was chosen.
-
-           - **Delay Mitigation**:
-             - Provide actionable recommendations on how to minimize or avoid delays.
-             - These suggestions should be formatted as a **Markdown list** to enhance readability (e.g., bullet points).
-
-           - **Delivery Status**:
-             - Provide a final assessment of whether the delivery is expected to be "On Time" or "Delayed".
-             - Include a delivery status explanation formatted as **Markdown**, summarizing the overall delivery status, and explain the reasons for delay or on-time delivery.
-
-           - **Delay Impact Analysis**:
-             - Breakdown the delay caused by traffic and weather using progress bars.
-             - Include each factor with its impact percentage.
-
-           - **Traffic Sensitivity**:
-             - Analyze how sensitive the current route is to traffic changes.
-             - Provide the sensitivity level (Low, Medium, High) and explain the effects of traffic fluctuations.
-
-           - **Weather Impact Assessment**:
-             - Explain how current weather conditions are likely to impact delivery.
-
-           - **Priority Adjustment Suggestions**:
-             - Provide suggestions on whether to adjust the priority level based on the conditions.
-             - This explanation should be formatted as **Markdown** or displayed as cards.
-
-        4. **Output Format**:
-           The output should be structured in JSON format with the following sections:
-           - `deliveryTimeComparison`: A `Plot` object with a comparison of original and estimated delivery times.
-           - `conditionImpactChart`: A `Plot` object with a breakdown of the delays caused by traffic and weather.
-           - `priorityBasedRecommendation`: A `Plot` object with recommendations based on delivery priority.
-           - `riskLevel`: A string indicating the overall risk level (e.g., Low, Medium, High).
-           - `riskProgress`: A numeric value (0-100) representing the risk level progress bar.
-           - `riskExplanation`: A **Markdown** text explaining why this risk level was assigned.
-           - `delayImpactAnalysis`: A list of `ImpactProgress` objects representing the impact of each condition (traffic, weather, etc.).
-           - `deliveryStatus`: A string summarizing the delivery status (e.g., "On Time", "Delayed").
-           - `deliveryStatusExplanation`: A **Markdown** text summarizing why the delivery is on time or delayed.
-           - `trafficSensitivity`: A `Sensitivity` object explaining traffic sensitivity.
-           - `weatherImpactAssessment`: **Markdown** text explaining weather impacts.
-           - `priorityAdjustmentSuggestions`: **Markdown** text or cards offering priority adjustments.
-           
-           
-          As you are given address make sure the analysis you perform is accurate and relevant to the location.
-           The hours assumed for the delivery time are accurate based on the distance between the current location and the destination address.
-
-
-        ### **Markdown Formatting Instructions**:
-        - All text-based outputs (explanations for risk, delay mitigation, and delivery status) **must be returned in Markdown format only**.
-        - Use **bullet points** for delay mitigation recommendations.
-        - Ensure the Markdown formatting is clear and adheres strictly to Markdown syntax for better readability in any Markdown-compatible environment.
+        You are an assistant for a shipping community called the Dynamic Routing Tool. Your task is to analyze the input provided by the user and generate actionable recommendations for optimizing their parcel delivery times based on traffic, weather, and priority conditions.
+        
+        Make use of actual and accurate time required for delivery from current to destination address
+        Also take in account different possible modes of shipping (Air Freight, Ocean Freight, Express Shipping, Road Shipping) and the impact of traffic and weather conditions on them
+        While Choosing possible shipping methods only select that are applicable to the address given by the user
+        e.g. Air Freight is not applicable to landlocked countries
+        e.g. Ocean Freight is not applicable to landlocked countries
+        e.g. Express Shipping is not applicable to remote areas
+        e.g. Road Shipping is applicable to all areas except international shipping
+        And Other Possible General Conditions applicable to the address given by the user 
+        
+        Output Format:
+        - Delivery Time Comparison: A barChart or lineChart showing the days required by different modes of shipping.
+        - Condition Impact Chart: A barChart showing the impact of traffic and weather conditions on delivery time.
+        - Priority-Based Recommendation: A pieChart or barChart showing the impact of the priority level on delivery time.
+        - Risk Level: A string indicating the overall risk level (Low, Medium, High).
+        - Risk Explanation: A Markdown text explaining why this risk level was assigned.
+        - Delay Impact Analysis: A list of ImpactProgress objects representing the impact of each condition (traffic, weather, etc.).
+        - Delivery Status: A string summarizing the delivery status (On Time, Delayed).
+        - Delivery Status Explanation: A Markdown text summarizing why the delivery is on time or delayed.
+        - Traffic Sensitivity: A Sensitivity object explaining traffic sensitivity.
+        - Weather Impact Assessment: Markdown text explaining weather impacts.
+        - Priority Adjustment Suggestions: Markdown text offering priority adjustments.
         """
     )
 
     user_prompt = (
         """
         I need you to analyze a parcel's delivery based on the following input:
-        """
-        + json.dumps(inputParameters.model_dump(), indent=4)
+        1. My Destination Address is: {destinationAddress}
+        2. My Current Location is: {currentLocation}
+        5. Priority Level: {priorityLevel}
+        6. Traffic Conditions: {trafficConditions}
+        7. Weather Conditions: {weatherConditions}
+        """.format(
+            destinationAddress=inputParameters.destinationAddress,
+            currentLocation=inputParameters.currentLocation,
+            priorityLevel=inputParameters.priorityLevel,
+            trafficConditions=inputParameters.trafficConditions,
+            weatherConditions=inputParameters.weatherConditions,
+        )
     )
 
     messages = [
