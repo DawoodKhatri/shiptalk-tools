@@ -1,0 +1,1809 @@
+[
+  {
+    "state": "California",
+    "compliance": {
+      "prohibitedItems": [
+        "Fireworks",
+        "Certain pesticides",
+        "Unpasteurized milk",
+        "Firearms"
+      ],
+      "restrictedItems": [
+        {
+          "item": "Alcohol",
+          "ageVerificationRequired": true,
+          "carrierRestrictions": ["FedEx", "UPS"],
+          "documentationRequired": [
+            "Alcohol shipping permit",
+            "Proof of age 21+"
+          ]
+        },
+        {
+          "item": "Hazardous materials",
+          "labelingRequirements": "Must include hazard warning labels",
+          "documentationRequired": ["Material Safety Data Sheet (MSDS)"],
+          "shippingRestrictions": "Ground shipping only"
+        },
+        {
+          "item": "Tobacco",
+          "ageVerificationRequired": true,
+          "carrierRestrictions": ["FedEx"],
+          "documentationRequired": []
+        }
+      ],
+      "documentationRequirements": [
+        {
+          "item": "Firearms",
+          "requiredDocuments": ["Licensed firearm dealer certificate"]
+        },
+        {
+          "item": "Electronics",
+          "requiredDocuments": ["Battery recycling compliance form"]
+        },
+        {
+          "item": "Agricultural products",
+          "requiredDocuments": ["Pest control certification"]
+        }
+      ],
+      "taxesAndFees": [
+        {
+          "category": "Excise tax",
+          "items": ["Alcohol", "Tobacco"]
+        },
+        {
+          "category": "Environmental fee",
+          "items": ["Electronics"]
+        }
+      ],
+      "packagingLabeling": [
+        {
+          "item": "Perishable goods",
+          "requirement": "Must be labeled 'Perishable'"
+        },
+        {
+          "item": "Hazardous materials",
+          "requirement": "Must have a hazard warning label"
+        },
+        {
+          "item": "Alcohol",
+          "requirement": "Must have a tamper-evident seal"
+        }
+      ],
+      "specialNotes": "Additional restrictions apply when shipping agricultural products to certain states due to pest control requirements."
+    }
+  },
+  {
+    "state": "Texas",
+    "compliance": {
+      "prohibitedItems": ["Fireworks", "Raw milk", "Certain pesticides"],
+      "restrictedItems": [
+        {
+          "item": "Alcohol",
+          "ageVerificationRequired": true,
+          "carrierRestrictions": ["FedEx"],
+          "documentationRequired": ["Alcohol shipping permit"]
+        },
+        {
+          "item": "Tobacco",
+          "ageVerificationRequired": true,
+          "carrierRestrictions": ["UPS"],
+          "documentationRequired": []
+        },
+        {
+          "item": "Hazardous materials",
+          "labelingRequirements": "Must include hazard warning labels",
+          "documentationRequired": ["MSDS"],
+          "shippingRestrictions": "Ground shipping only"
+        }
+      ],
+      "documentationRequirements": [
+        {
+          "item": "Firearms",
+          "requiredDocuments": ["Gun dealer license"]
+        },
+        {
+          "item": "Electronics",
+          "requiredDocuments": ["Battery recycling form"]
+        }
+      ],
+      "taxesAndFees": [
+        {
+          "category": "Environmental fee",
+          "items": ["Lead-acid batteries", "Electronics"]
+        }
+      ],
+      "packagingLabeling": [
+        {
+          "item": "Alcohol",
+          "requirement": "Tamper-evident seal required"
+        },
+        {
+          "item": "Hazardous materials",
+          "requirement": "Hazard warning label"
+        }
+      ],
+      "specialNotes": "Texas imposes additional requirements on agricultural items being shipped from California."
+    }
+  },
+  {
+    "state": "Florida",
+    "compliance": {
+      "prohibitedItems": ["Fireworks", "Certain marine products"],
+      "restrictedItems": [
+        {
+          "item": "Alcohol",
+          "ageVerificationRequired": true,
+          "carrierRestrictions": ["UPS"],
+          "documentationRequired": [
+            "Alcohol shipping permit",
+            "Proof of age 21+"
+          ]
+        },
+        {
+          "item": "Hazardous materials",
+          "labelingRequirements": "Special hazard warning labels required",
+          "documentationRequired": ["MSDS"],
+          "shippingRestrictions": "Ground shipping only"
+        }
+      ],
+      "documentationRequirements": [
+        {
+          "item": "Firearms",
+          "requiredDocuments": ["Dealer license"]
+        },
+        {
+          "item": "Marine products",
+          "requiredDocuments": ["Marine wildlife certificate"]
+        }
+      ],
+      "taxesAndFees": [
+        {
+          "category": "Excise tax",
+          "items": ["Alcohol"]
+        }
+      ],
+      "packagingLabeling": [
+        {
+          "item": "Hazardous materials",
+          "requirement": "Special hazard warning label required"
+        },
+        {
+          "item": "Alcohol",
+          "requirement": "Tamper-evident seal"
+        }
+      ],
+      "specialNotes": "Florida has additional restrictions on shipping certain marine products."
+    }
+  },
+
+  {
+    "state": "New York",
+    "compliance": {
+      "prohibitedItems": ["Fireworks", "Certain pesticides", "Raw milk"],
+      "restrictedItems": [
+        {
+          "item": "Alcohol",
+          "ageVerificationRequired": true,
+          "carrierRestrictions": ["FedEx", "UPS"],
+          "documentationRequired": [
+            "Permit for alcohol shipment",
+            "Proof of age 21+"
+          ]
+        },
+        {
+          "item": "Hazardous materials",
+          "labelingRequirements": "Hazard warning label required",
+          "documentationRequired": ["MSDS"],
+          "shippingRestrictions": "Ground shipping only"
+        }
+      ],
+      "documentationRequirements": [
+        {
+          "item": "Firearms",
+          "requiredDocuments": ["Firearm dealer license"]
+        }
+      ],
+      "taxesAndFees": [
+        {
+          "category": "Excise tax",
+          "items": ["Alcohol", "Tobacco"]
+        }
+      ],
+      "packagingLabeling": [
+        {
+          "item": "Alcohol",
+          "requirement": "Tamper-evident seal required"
+        },
+        {
+          "item": "Hazardous materials",
+          "requirement": "Hazard warning label required"
+        }
+      ],
+      "specialNotes": "New York enforces strict age verification requirements for alcohol shipments."
+    }
+  },
+  {
+    "state": "Illinois",
+    "compliance": {
+      "prohibitedItems": ["Certain pesticides", "Raw milk"],
+      "restrictedItems": [
+        {
+          "item": "Alcohol",
+          "ageVerificationRequired": true,
+          "carrierRestrictions": ["FedEx"],
+          "documentationRequired": ["Alcohol shipping permit"]
+        },
+        {
+          "item": "Tobacco",
+          "ageVerificationRequired": true,
+          "carrierRestrictions": ["UPS"]
+        }
+      ],
+      "documentationRequirements": [
+        {
+          "item": "Firearms",
+          "requiredDocuments": ["Dealer license"]
+        }
+      ],
+      "taxesAndFees": [
+        {
+          "category": "Excise tax",
+          "items": ["Alcohol"]
+        },
+        {
+          "category": "Environmental fee",
+          "items": ["Electronics"]
+        }
+      ],
+      "packagingLabeling": [
+        {
+          "item": "Alcohol",
+          "requirement": "Tamper-evident seal required"
+        }
+      ],
+      "specialNotes": "Illinois restricts the shipment of pesticides across state lines."
+    }
+  },
+  {
+    "state": "Pennsylvania",
+    "compliance": {
+      "prohibitedItems": ["Fireworks", "Certain hazardous chemicals"],
+      "restrictedItems": [
+        {
+          "item": "Alcohol",
+          "ageVerificationRequired": true,
+          "carrierRestrictions": ["UPS"],
+          "documentationRequired": [
+            "Alcohol shipping permit",
+            "Proof of age 21+"
+          ]
+        },
+        {
+          "item": "Tobacco",
+          "ageVerificationRequired": true,
+          "carrierRestrictions": ["FedEx"]
+        }
+      ],
+      "documentationRequirements": [
+        {
+          "item": "Firearms",
+          "requiredDocuments": ["Dealer license"]
+        }
+      ],
+      "taxesAndFees": [
+        {
+          "category": "Excise tax",
+          "items": ["Alcohol"]
+        }
+      ],
+      "packagingLabeling": [
+        {
+          "item": "Alcohol",
+          "requirement": "Must have tamper-evident seal"
+        }
+      ],
+      "specialNotes": "Pennsylvania restricts certain hazardous chemicals for public safety."
+    }
+  },
+  {
+    "state": "Ohio",
+    "compliance": {
+      "prohibitedItems": ["Fireworks", "Certain medical waste"],
+      "restrictedItems": [
+        {
+          "item": "Alcohol",
+          "ageVerificationRequired": true,
+          "carrierRestrictions": ["FedEx"],
+          "documentationRequired": ["Alcohol shipping permit"]
+        },
+        {
+          "item": "Tobacco",
+          "ageVerificationRequired": true,
+          "carrierRestrictions": ["UPS"]
+        }
+      ],
+      "documentationRequirements": [
+        {
+          "item": "Firearms",
+          "requiredDocuments": ["Dealer license"]
+        }
+      ],
+      "taxesAndFees": [
+        {
+          "category": "Excise tax",
+          "items": ["Alcohol", "Tobacco"]
+        }
+      ],
+      "packagingLabeling": [
+        {
+          "item": "Alcohol",
+          "requirement": "Tamper-evident seal required"
+        }
+      ],
+      "specialNotes": "Special handling is required for certain hazardous medical waste."
+    }
+  },
+  {
+    "state": "Georgia",
+    "compliance": {
+      "prohibitedItems": ["Fireworks", "Certain agricultural pesticides"],
+      "restrictedItems": [
+        {
+          "item": "Alcohol",
+          "ageVerificationRequired": true,
+          "carrierRestrictions": ["UPS"],
+          "documentationRequired": ["Proof of age 21+", "Alcohol permit"]
+        },
+        {
+          "item": "Hazardous materials",
+          "labelingRequirements": "Special labeling required",
+          "shippingRestrictions": "Ground only"
+        }
+      ],
+      "documentationRequirements": [
+        {
+          "item": "Firearms",
+          "requiredDocuments": ["Dealer license"]
+        }
+      ],
+      "taxesAndFees": [
+        {
+          "category": "Excise tax",
+          "items": ["Alcohol"]
+        }
+      ],
+      "packagingLabeling": [
+        {
+          "item": "Hazardous materials",
+          "requirement": "Must display hazard warning"
+        }
+      ],
+      "specialNotes": "Georgia enforces strict pesticide shipping regulations."
+    }
+  },
+  {
+    "state": "Michigan",
+    "compliance": {
+      "prohibitedItems": ["Fireworks", "Raw dairy products"],
+      "restrictedItems": [
+        {
+          "item": "Alcohol",
+          "ageVerificationRequired": true,
+          "carrierRestrictions": ["FedEx"],
+          "documentationRequired": ["Alcohol shipping permit"]
+        }
+      ],
+      "documentationRequirements": [
+        {
+          "item": "Firearms",
+          "requiredDocuments": ["Dealer license"]
+        }
+      ],
+      "taxesAndFees": [
+        {
+          "category": "Environmental fee",
+          "items": ["Electronics"]
+        }
+      ],
+      "packagingLabeling": [
+        {
+          "item": "Alcohol",
+          "requirement": "Must have tamper-evident seal"
+        }
+      ],
+      "specialNotes": "Raw dairy products are restricted in Michigan."
+    }
+  },
+  {
+    "state": "North Carolina",
+    "compliance": {
+      "prohibitedItems": ["Fireworks", "Certain flammable liquids"],
+      "restrictedItems": [
+        {
+          "item": "Alcohol",
+          "ageVerificationRequired": true,
+          "carrierRestrictions": ["UPS"],
+          "documentationRequired": ["Alcohol shipping permit"]
+        }
+      ],
+      "documentationRequirements": [
+        {
+          "item": "Firearms",
+          "requiredDocuments": ["Dealer license"]
+        }
+      ],
+      "taxesAndFees": [
+        {
+          "category": "Excise tax",
+          "items": ["Alcohol"]
+        }
+      ],
+      "packagingLabeling": [
+        {
+          "item": "Hazardous materials",
+          "requirement": "Must have hazard warning label"
+        }
+      ],
+      "specialNotes": "North Carolina enforces strict regulations on flammable liquids."
+    }
+  },
+  {
+    "state": "Virginia",
+    "compliance": {
+      "prohibitedItems": ["Fireworks", "Hazardous chemicals"],
+      "restrictedItems": [
+        {
+          "item": "Alcohol",
+          "ageVerificationRequired": true,
+          "carrierRestrictions": ["FedEx", "UPS"],
+          "documentationRequired": ["Alcohol shipping permit"]
+        }
+      ],
+      "documentationRequirements": [
+        {
+          "item": "Firearms",
+          "requiredDocuments": ["Firearm license"]
+        }
+      ],
+      "taxesAndFees": [
+        {
+          "category": "Excise tax",
+          "items": ["Alcohol"]
+        }
+      ],
+      "packagingLabeling": [
+        {
+          "item": "Alcohol",
+          "requirement": "Tamper-evident seal required"
+        }
+      ],
+      "specialNotes": "Virginia restricts hazardous chemicals for safety compliance."
+    }
+  },
+  {
+    "state": "New Jersey",
+    "compliance": {
+      "prohibitedItems": ["Fireworks", "Certain insecticides"],
+      "restrictedItems": [
+        {
+          "item": "Alcohol",
+          "ageVerificationRequired": true,
+          "carrierRestrictions": ["FedEx"],
+          "documentationRequired": ["Alcohol shipping permit"]
+        }
+      ],
+      "documentationRequirements": [
+        {
+          "item": "Firearms",
+          "requiredDocuments": ["Licensed dealer certificate"]
+        }
+      ],
+      "taxesAndFees": [
+        {
+          "category": "Excise tax",
+          "items": ["Alcohol"]
+        }
+      ],
+      "packagingLabeling": [
+        {
+          "item": "Hazardous materials",
+          "requirement": "Special hazard warning required"
+        }
+      ],
+      "specialNotes": "Special packaging is required for insecticides."
+    }
+  },
+  {
+    "state": "Washington",
+    "compliance": {
+      "prohibitedItems": ["Fireworks", "Certain flammable materials"],
+      "restrictedItems": [
+        {
+          "item": "Alcohol",
+          "ageVerificationRequired": true,
+          "carrierRestrictions": ["FedEx", "UPS"],
+          "documentationRequired": [
+            "Alcohol shipping permit",
+            "Proof of age 21+"
+          ]
+        }
+      ],
+      "documentationRequirements": [
+        {
+          "item": "Electronics",
+          "requiredDocuments": ["Battery recycling form"]
+        }
+      ],
+      "taxesAndFees": [
+        {
+          "category": "Environmental fee",
+          "items": ["Electronics"]
+        }
+      ],
+      "packagingLabeling": [
+        {
+          "item": "Hazardous materials",
+          "requirement": "Special hazard label required"
+        }
+      ],
+      "specialNotes": "Additional requirements apply to flammable materials."
+    }
+  },
+  {
+    "state": "Massachusetts",
+    "compliance": {
+      "prohibitedItems": ["Fireworks", "Hazardous chemicals"],
+      "restrictedItems": [
+        {
+          "item": "Alcohol",
+          "ageVerificationRequired": true,
+          "carrierRestrictions": ["FedEx"],
+          "documentationRequired": ["Alcohol permit"]
+        }
+      ],
+      "documentationRequirements": [
+        {
+          "item": "Firearms",
+          "requiredDocuments": ["Firearm license"]
+        }
+      ],
+      "taxesAndFees": [
+        {
+          "category": "Excise tax",
+          "items": ["Alcohol"]
+        }
+      ],
+      "packagingLabeling": [
+        {
+          "item": "Hazardous materials",
+          "requirement": "Must display hazard warning label"
+        }
+      ],
+      "specialNotes": "Hazardous chemicals are heavily regulated."
+    }
+  },
+  {
+    "state": "Arizona",
+    "compliance": {
+      "prohibitedItems": ["Certain fireworks", "Agricultural pesticides"],
+      "restrictedItems": [
+        {
+          "item": "Alcohol",
+          "ageVerificationRequired": true,
+          "carrierRestrictions": ["FedEx"],
+          "documentationRequired": ["Alcohol shipping permit"]
+        }
+      ],
+      "documentationRequirements": [
+        {
+          "item": "Agricultural products",
+          "requiredDocuments": ["Pest control certificate"]
+        }
+      ],
+      "taxesAndFees": [
+        {
+          "category": "Environmental fee",
+          "items": ["Electronics"]
+        }
+      ],
+      "packagingLabeling": [
+        {
+          "item": "Perishables",
+          "requirement": "Must label as 'Perishable'"
+        }
+      ],
+      "specialNotes": "Arizona has additional requirements for agricultural shipments due to pest concerns."
+    }
+  },
+  {
+    "state": "Indiana",
+    "compliance": {
+      "prohibitedItems": ["Fireworks", "Certain agricultural products"],
+      "restrictedItems": [
+        {
+          "item": "Alcohol",
+          "ageVerificationRequired": true,
+          "carrierRestrictions": ["FedEx"],
+          "documentationRequired": ["Alcohol shipping permit"]
+        }
+      ],
+      "documentationRequirements": [
+        {
+          "item": "Firearms",
+          "requiredDocuments": ["Dealer license"]
+        }
+      ],
+      "taxesAndFees": [
+        {
+          "category": "Excise tax",
+          "items": ["Alcohol", "Tobacco"]
+        }
+      ],
+      "packagingLabeling": [
+        {
+          "item": "Alcohol",
+          "requirement": "Tamper-evident seal required"
+        }
+      ],
+      "specialNotes": "Additional restrictions apply for agricultural products."
+    }
+  },
+  {
+    "state": "Tennessee",
+    "compliance": {
+      "prohibitedItems": ["Fireworks", "Certain hazardous chemicals"],
+      "restrictedItems": [
+        {
+          "item": "Alcohol",
+          "ageVerificationRequired": true,
+          "carrierRestrictions": ["UPS"],
+          "documentationRequired": ["Alcohol permit"]
+        }
+      ],
+      "documentationRequirements": [
+        {
+          "item": "Firearms",
+          "requiredDocuments": ["Dealer certificate"]
+        }
+      ],
+      "taxesAndFees": [
+        {
+          "category": "Excise tax",
+          "items": ["Alcohol"]
+        }
+      ],
+      "packagingLabeling": [
+        {
+          "item": "Hazardous materials",
+          "requirement": "Hazard warning label required"
+        }
+      ],
+      "specialNotes": "Hazardous chemicals are subject to additional restrictions."
+    }
+  },
+  {
+    "state": "Missouri",
+    "compliance": {
+      "prohibitedItems": ["Fireworks", "Certain pesticides"],
+      "restrictedItems": [
+        {
+          "item": "Alcohol",
+          "ageVerificationRequired": true,
+          "carrierRestrictions": ["FedEx", "UPS"],
+          "documentationRequired": ["Alcohol shipping permit"]
+        }
+      ],
+      "documentationRequirements": [
+        {
+          "item": "Firearms",
+          "requiredDocuments": ["Licensed dealer certificate"]
+        }
+      ],
+      "taxesAndFees": [
+        {
+          "category": "Environmental fee",
+          "items": ["Electronics"]
+        }
+      ],
+      "packagingLabeling": [
+        {
+          "item": "Hazardous materials",
+          "requirement": "Hazard warning label required"
+        }
+      ],
+      "specialNotes": "Missouri has specific restrictions on pesticides."
+    }
+  },
+  {
+    "state": "Maryland",
+    "compliance": {
+      "prohibitedItems": ["Fireworks", "Raw milk"],
+      "restrictedItems": [
+        {
+          "item": "Alcohol",
+          "ageVerificationRequired": true,
+          "carrierRestrictions": ["UPS"],
+          "documentationRequired": ["Alcohol permit", "Proof of age"]
+        }
+      ],
+      "documentationRequirements": [
+        {
+          "item": "Firearms",
+          "requiredDocuments": ["Dealer license"]
+        }
+      ],
+      "taxesAndFees": [
+        {
+          "category": "Excise tax",
+          "items": ["Alcohol"]
+        }
+      ],
+      "packagingLabeling": [
+        {
+          "item": "Hazardous materials",
+          "requirement": "Special hazard label required"
+        }
+      ],
+      "specialNotes": "Strict controls on raw milk and hazardous materials."
+    }
+  },
+  {
+    "state": "Wisconsin",
+    "compliance": {
+      "prohibitedItems": ["Fireworks", "Certain chemicals"],
+      "restrictedItems": [
+        {
+          "item": "Alcohol",
+          "ageVerificationRequired": true,
+          "carrierRestrictions": ["FedEx"],
+          "documentationRequired": ["Proof of age", "Alcohol permit"]
+        }
+      ],
+      "documentationRequirements": [
+        {
+          "item": "Firearms",
+          "requiredDocuments": ["Licensed dealer certificate"]
+        }
+      ],
+      "taxesAndFees": [
+        {
+          "category": "Environmental fee",
+          "items": ["Electronics"]
+        }
+      ],
+      "packagingLabeling": [
+        {
+          "item": "Alcohol",
+          "requirement": "Must include tamper-evident seal"
+        }
+      ],
+      "specialNotes": "Special handling required for hazardous chemicals."
+    }
+  },
+  {
+    "state": "Colorado",
+    "compliance": {
+      "prohibitedItems": ["Certain fireworks", "Hazardous waste"],
+      "restrictedItems": [
+        {
+          "item": "Alcohol",
+          "ageVerificationRequired": true,
+          "carrierRestrictions": ["UPS"],
+          "documentationRequired": ["Alcohol shipping permit"]
+        }
+      ],
+      "documentationRequirements": [
+        {
+          "item": "Firearms",
+          "requiredDocuments": ["Dealer license"]
+        }
+      ],
+      "taxesAndFees": [
+        {
+          "category": "Excise tax",
+          "items": ["Alcohol"]
+        }
+      ],
+      "packagingLabeling": [
+        {
+          "item": "Hazardous materials",
+          "requirement": "Hazard warning label"
+        }
+      ],
+      "specialNotes": "Colorado restricts shipments of hazardous waste."
+    }
+  },
+  {
+    "state": "Minnesota",
+    "compliance": {
+      "prohibitedItems": ["Fireworks", "Certain pesticides"],
+      "restrictedItems": [
+        {
+          "item": "Alcohol",
+          "ageVerificationRequired": true,
+          "carrierRestrictions": ["FedEx", "UPS"],
+          "documentationRequired": ["Alcohol permit"]
+        }
+      ],
+      "documentationRequirements": [
+        {
+          "item": "Firearms",
+          "requiredDocuments": ["Licensed dealer certificate"]
+        }
+      ],
+      "taxesAndFees": [
+        {
+          "category": "Excise tax",
+          "items": ["Alcohol"]
+        }
+      ],
+      "packagingLabeling": [
+        {
+          "item": "Alcohol",
+          "requirement": "Tamper-evident seal required"
+        }
+      ],
+      "specialNotes": "Additional restrictions apply for certain pesticides."
+    }
+  },
+  {
+    "state": "South Carolina",
+    "compliance": {
+      "prohibitedItems": ["Fireworks", "Certain agricultural chemicals"],
+      "restrictedItems": [
+        {
+          "item": "Alcohol",
+          "ageVerificationRequired": true,
+          "carrierRestrictions": ["UPS"],
+          "documentationRequired": ["Alcohol permit", "Proof of age"]
+        }
+      ],
+      "documentationRequirements": [
+        {
+          "item": "Firearms",
+          "requiredDocuments": ["Firearm license"]
+        }
+      ],
+      "taxesAndFees": [
+        {
+          "category": "Excise tax",
+          "items": ["Alcohol"]
+        }
+      ],
+      "packagingLabeling": [
+        {
+          "item": "Alcohol",
+          "requirement": "Must have tamper-evident seal"
+        }
+      ],
+      "specialNotes": "South Carolina enforces strict agricultural chemical restrictions."
+    }
+  },
+  {
+    "state": "Alabama",
+    "compliance": {
+      "prohibitedItems": ["Fireworks", "Certain pesticides"],
+      "restrictedItems": [
+        {
+          "item": "Alcohol",
+          "ageVerificationRequired": true,
+          "carrierRestrictions": ["FedEx"],
+          "documentationRequired": ["Alcohol permit"]
+        }
+      ],
+      "documentationRequirements": [
+        {
+          "item": "Firearms",
+          "requiredDocuments": ["Dealer license"]
+        }
+      ],
+      "taxesAndFees": [
+        {
+          "category": "Excise tax",
+          "items": ["Alcohol"]
+        }
+      ],
+      "packagingLabeling": [
+        {
+          "item": "Alcohol",
+          "requirement": "Tamper-evident seal required"
+        }
+      ],
+      "specialNotes": "Additional packaging required for pesticides."
+    }
+  },
+  {
+    "state": "Kentucky",
+    "compliance": {
+      "prohibitedItems": ["Fireworks", "Hazardous waste"],
+      "restrictedItems": [
+        {
+          "item": "Alcohol",
+          "ageVerificationRequired": true,
+          "carrierRestrictions": ["UPS"],
+          "documentationRequired": ["Alcohol permit"]
+        }
+      ],
+      "documentationRequirements": [
+        {
+          "item": "Firearms",
+          "requiredDocuments": ["Licensed dealer certificate"]
+        }
+      ],
+      "taxesAndFees": [
+        {
+          "category": "Excise tax",
+          "items": ["Alcohol"]
+        }
+      ],
+      "packagingLabeling": [
+        {
+          "item": "Hazardous materials",
+          "requirement": "Hazard warning label"
+        }
+      ],
+      "specialNotes": "Kentucky restricts hazardous waste shipments to comply with state environmental regulations."
+    }
+  },
+  {
+    "state": "Oregon",
+    "compliance": {
+      "prohibitedItems": ["Fireworks", "Certain hazardous materials"],
+      "restrictedItems": [
+        {
+          "item": "Alcohol",
+          "ageVerificationRequired": true,
+          "carrierRestrictions": ["FedEx", "UPS"],
+          "documentationRequired": ["Alcohol shipping permit"]
+        },
+        {
+          "item": "Hazardous materials",
+          "labelingRequirements": "Must have hazard warning label",
+          "documentationRequired": ["Material Safety Data Sheet (MSDS)"],
+          "shippingRestrictions": "Ground shipping only"
+        }
+      ],
+      "documentationRequirements": [
+        {
+          "item": "Firearms",
+          "requiredDocuments": ["Licensed dealer certificate"]
+        }
+      ],
+      "taxesAndFees": [
+        {
+          "category": "Excise tax",
+          "items": ["Alcohol"]
+        }
+      ],
+      "packagingLabeling": [
+        {
+          "item": "Hazardous materials",
+          "requirement": "Special hazard label required"
+        }
+      ],
+      "specialNotes": "Oregon enforces strict labeling for hazardous materials."
+    }
+  },
+  {
+    "state": "Iowa",
+    "compliance": {
+      "prohibitedItems": ["Fireworks", "Certain agricultural chemicals"],
+      "restrictedItems": [
+        {
+          "item": "Alcohol",
+          "ageVerificationRequired": true,
+          "carrierRestrictions": ["UPS"],
+          "documentationRequired": [
+            "Alcohol shipping permit",
+            "Proof of age 21+"
+          ]
+        }
+      ],
+      "documentationRequirements": [
+        {
+          "item": "Firearms",
+          "requiredDocuments": ["Firearm dealer license"]
+        }
+      ],
+      "taxesAndFees": [
+        {
+          "category": "Excise tax",
+          "items": ["Alcohol", "Tobacco"]
+        }
+      ],
+      "packagingLabeling": [
+        {
+          "item": "Alcohol",
+          "requirement": "Tamper-evident seal required"
+        }
+      ],
+      "specialNotes": "Iowa has specific restrictions on certain agricultural chemicals."
+    }
+  },
+  {
+    "state": "Mississippi",
+    "compliance": {
+      "prohibitedItems": ["Fireworks", "Certain pesticides"],
+      "restrictedItems": [
+        {
+          "item": "Alcohol",
+          "ageVerificationRequired": true,
+          "carrierRestrictions": ["FedEx"],
+          "documentationRequired": ["Alcohol permit"]
+        }
+      ],
+      "documentationRequirements": [
+        {
+          "item": "Firearms",
+          "requiredDocuments": ["Licensed dealer certificate"]
+        }
+      ],
+      "taxesAndFees": [
+        {
+          "category": "Excise tax",
+          "items": ["Alcohol"]
+        }
+      ],
+      "packagingLabeling": [
+        {
+          "item": "Hazardous materials",
+          "requirement": "Must display hazard warning label"
+        }
+      ],
+      "specialNotes": "Mississippi restricts shipments of certain pesticides for safety."
+    }
+  },
+  {
+    "state": "Arkansas",
+    "compliance": {
+      "prohibitedItems": ["Fireworks", "Certain flammable materials"],
+      "restrictedItems": [
+        {
+          "item": "Alcohol",
+          "ageVerificationRequired": true,
+          "carrierRestrictions": ["UPS"],
+          "documentationRequired": ["Alcohol permit", "Proof of age"]
+        }
+      ],
+      "documentationRequirements": [
+        {
+          "item": "Firearms",
+          "requiredDocuments": ["Dealer license"]
+        }
+      ],
+      "taxesAndFees": [
+        {
+          "category": "Excise tax",
+          "items": ["Alcohol"]
+        }
+      ],
+      "packagingLabeling": [
+        {
+          "item": "Hazardous materials",
+          "requirement": "Hazard warning label required"
+        }
+      ],
+      "specialNotes": "Strict regulations are in place for flammable materials."
+    }
+  },
+  {
+    "state": "Nebraska",
+    "compliance": {
+      "prohibitedItems": ["Fireworks", "Certain hazardous chemicals"],
+      "restrictedItems": [
+        {
+          "item": "Alcohol",
+          "ageVerificationRequired": true,
+          "carrierRestrictions": ["FedEx"],
+          "documentationRequired": ["Alcohol permit", "Proof of age 21+"]
+        }
+      ],
+      "documentationRequirements": [
+        {
+          "item": "Firearms",
+          "requiredDocuments": ["Dealer license"]
+        }
+      ],
+      "taxesAndFees": [
+        {
+          "category": "Excise tax",
+          "items": ["Alcohol"]
+        }
+      ],
+      "packagingLabeling": [
+        {
+          "item": "Alcohol",
+          "requirement": "Tamper-evident seal required"
+        }
+      ],
+      "specialNotes": "Nebraska has specific rules regarding hazardous chemicals."
+    }
+  },
+  {
+    "state": "South Dakota",
+    "compliance": {
+      "prohibitedItems": ["Fireworks", "Certain hazardous materials"],
+      "restrictedItems": [
+        {
+          "item": "Alcohol",
+          "ageVerificationRequired": true,
+          "carrierRestrictions": ["UPS"],
+          "documentationRequired": ["Alcohol shipping permit"]
+        }
+      ],
+      "documentationRequirements": [
+        {
+          "item": "Firearms",
+          "requiredDocuments": ["Dealer license"]
+        }
+      ],
+      "taxesAndFees": [
+        {
+          "category": "Excise tax",
+          "items": ["Alcohol"]
+        }
+      ],
+      "packagingLabeling": [
+        {
+          "item": "Alcohol",
+          "requirement": "Tamper-evident seal required"
+        }
+      ],
+      "specialNotes": "South Dakota has specific restrictions on hazardous materials."
+    }
+  },
+  {
+    "state": "North Dakota",
+    "compliance": {
+      "prohibitedItems": ["Fireworks", "Certain chemicals"],
+      "restrictedItems": [
+        {
+          "item": "Alcohol",
+          "ageVerificationRequired": true,
+          "carrierRestrictions": ["FedEx"],
+          "documentationRequired": [
+            "Alcohol shipping permit",
+            "Proof of age 21+"
+          ]
+        }
+      ],
+      "documentationRequirements": [
+        {
+          "item": "Firearms",
+          "requiredDocuments": ["Firearm dealer certificate"]
+        }
+      ],
+      "taxesAndFees": [
+        {
+          "category": "Excise tax",
+          "items": ["Alcohol"]
+        }
+      ],
+      "packagingLabeling": [
+        {
+          "item": "Hazardous materials",
+          "requirement": "Hazard warning label required"
+        }
+      ],
+      "specialNotes": "North Dakota restricts shipments of certain chemicals."
+    }
+  },
+  {
+    "state": "Idaho",
+    "compliance": {
+      "prohibitedItems": ["Fireworks", "Certain pesticides"],
+      "restrictedItems": [
+        {
+          "item": "Alcohol",
+          "ageVerificationRequired": true,
+          "carrierRestrictions": ["UPS"],
+          "documentationRequired": ["Alcohol shipping permit"]
+        }
+      ],
+      "documentationRequirements": [
+        {
+          "item": "Firearms",
+          "requiredDocuments": ["Licensed dealer certificate"]
+        }
+      ],
+      "taxesAndFees": [
+        {
+          "category": "Excise tax",
+          "items": ["Alcohol"]
+        }
+      ],
+      "packagingLabeling": [
+        {
+          "item": "Alcohol",
+          "requirement": "Must have tamper-evident seal"
+        }
+      ],
+      "specialNotes": "Idaho enforces strict regulations on certain pesticides."
+    }
+  },
+  {
+    "state": "Maine",
+    "compliance": {
+      "prohibitedItems": ["Fireworks", "Certain hazardous chemicals"],
+      "restrictedItems": [
+        {
+          "item": "Alcohol",
+          "ageVerificationRequired": true,
+          "carrierRestrictions": ["FedEx"],
+          "documentationRequired": ["Alcohol shipping permit", "Proof of age"]
+        }
+      ],
+      "documentationRequirements": [
+        {
+          "item": "Firearms",
+          "requiredDocuments": ["Firearm dealer license"]
+        }
+      ],
+      "taxesAndFees": [
+        {
+          "category": "Excise tax",
+          "items": ["Alcohol"]
+        }
+      ],
+      "packagingLabeling": [
+        {
+          "item": "Hazardous materials",
+          "requirement": "Hazard warning label required"
+        }
+      ],
+      "specialNotes": "Maine has specific requirements for hazardous chemicals."
+    }
+  },
+  {
+    "state": "New Hampshire",
+    "compliance": {
+      "prohibitedItems": ["Fireworks", "Certain agricultural products"],
+      "restrictedItems": [
+        {
+          "item": "Alcohol",
+          "ageVerificationRequired": true,
+          "carrierRestrictions": ["UPS"],
+          "documentationRequired": ["Alcohol shipping permit"]
+        }
+      ],
+      "documentationRequirements": [
+        {
+          "item": "Firearms",
+          "requiredDocuments": ["Dealer license"]
+        }
+      ],
+      "taxesAndFees": [
+        {
+          "category": "Excise tax",
+          "items": ["Alcohol"]
+        }
+      ],
+      "packagingLabeling": [
+        {
+          "item": "Alcohol",
+          "requirement": "Tamper-evident seal required"
+        }
+      ],
+      "specialNotes": "New Hampshire restricts certain agricultural products."
+    }
+  },
+  {
+    "state": "Vermont",
+    "compliance": {
+      "prohibitedItems": ["Fireworks", "Certain chemicals"],
+      "restrictedItems": [
+        {
+          "item": "Alcohol",
+          "ageVerificationRequired": true,
+          "carrierRestrictions": ["FedEx"],
+          "documentationRequired": ["Alcohol shipping permit"]
+        }
+      ],
+      "documentationRequirements": [
+        {
+          "item": "Firearms",
+          "requiredDocuments": ["Firearm dealer license"]
+        }
+      ],
+      "taxesAndFees": [
+        {
+          "category": "Excise tax",
+          "items": ["Alcohol"]
+        }
+      ],
+      "packagingLabeling": [
+        {
+          "item": "Hazardous materials",
+          "requirement": "Must display hazard warning label"
+        }
+      ],
+      "specialNotes": "Vermont has specific requirements for certain chemicals."
+    }
+  },
+  {
+    "state": "Rhode Island",
+    "compliance": {
+      "prohibitedItems": ["Fireworks", "Certain hazardous materials"],
+      "restrictedItems": [
+        {
+          "item": "Alcohol",
+          "ageVerificationRequired": true,
+          "carrierRestrictions": ["UPS"],
+          "documentationRequired": [
+            "Alcohol shipping permit",
+            "Proof of age 21+"
+          ]
+        }
+      ],
+      "documentationRequirements": [
+        {
+          "item": "Firearms",
+          "requiredDocuments": ["Dealer license"]
+        }
+      ],
+      "taxesAndFees": [
+        {
+          "category": "Excise tax",
+          "items": ["Alcohol"]
+        }
+      ],
+      "packagingLabeling": [
+        {
+          "item": "Hazardous materials",
+          "requirement": "Hazard warning label required"
+        }
+      ],
+      "specialNotes": "Rhode Island restricts certain hazardous materials."
+    }
+  },
+  {
+    "state": "Delaware",
+    "compliance": {
+      "prohibitedItems": ["Fireworks", "Certain chemicals"],
+      "restrictedItems": [
+        {
+          "item": "Alcohol",
+          "ageVerificationRequired": true,
+          "carrierRestrictions": ["FedEx"],
+          "documentationRequired": ["Alcohol shipping permit"]
+        }
+      ],
+      "documentationRequirements": [
+        {
+          "item": "Firearms",
+          "requiredDocuments": ["Firearm dealer license"]
+        }
+      ],
+      "taxesAndFees": [
+        {
+          "category": "Excise tax",
+          "items": ["Alcohol"]
+        }
+      ],
+      "packagingLabeling": [
+        {
+          "item": "Alcohol",
+          "requirement": "Tamper-evident seal required"
+        }
+      ],
+      "specialNotes": "Delaware enforces strict regulations on hazardous chemicals."
+    }
+  },
+  {
+    "state": "Hawaii",
+    "compliance": {
+      "prohibitedItems": ["Fireworks", "Certain agricultural products"],
+      "restrictedItems": [
+        {
+          "item": "Alcohol",
+          "ageVerificationRequired": true,
+          "carrierRestrictions": ["UPS"],
+          "documentationRequired": ["Alcohol shipping permit"]
+        }
+      ],
+      "documentationRequirements": [
+        {
+          "item": "Firearms",
+          "requiredDocuments": ["Firearm dealer license"]
+        }
+      ],
+      "taxesAndFees": [
+        {
+          "category": "Excise tax",
+          "items": ["Alcohol"]
+        }
+      ],
+      "packagingLabeling": [
+        {
+          "item": "Alcohol",
+          "requirement": "Must include tamper-evident seal"
+        }
+      ],
+      "specialNotes": "Hawaii restricts certain agricultural products due to invasive species concerns."
+    }
+  },
+  {
+    "state": "Alaska",
+    "compliance": {
+      "prohibitedItems": ["Fireworks", "Certain agricultural products"],
+      "restrictedItems": [
+        {
+          "item": "Alcohol",
+          "ageVerificationRequired": true,
+          "carrierRestrictions": ["FedEx"],
+          "documentationRequired": [
+            "Alcohol shipping permit",
+            "Proof of age 21+"
+          ]
+        }
+      ],
+      "documentationRequirements": [
+        {
+          "item": "Firearms",
+          "requiredDocuments": ["Firearm dealer license"]
+        }
+      ],
+      "taxesAndFees": [
+        {
+          "category": "Excise tax",
+          "items": ["Alcohol"]
+        }
+      ],
+      "packagingLabeling": [
+        {
+          "item": "Alcohol",
+          "requirement": "Must include tamper-evident seal"
+        }
+      ],
+      "specialNotes": "Alaska restricts certain agricultural products to protect local ecosystems."
+    }
+  },
+  {
+    "state": "Utah",
+    "compliance": {
+      "prohibitedItems": ["Fireworks", "Certain hazardous materials"],
+      "restrictedItems": [
+        {
+          "item": "Alcohol",
+          "ageVerificationRequired": true,
+          "carrierRestrictions": ["FedEx", "UPS"],
+          "documentationRequired": ["Alcohol shipping permit"]
+        }
+      ],
+      "documentationRequirements": [
+        {
+          "item": "Firearms",
+          "requiredDocuments": ["Licensed dealer certificate"]
+        }
+      ],
+      "taxesAndFees": [
+        {
+          "category": "Excise tax",
+          "items": ["Alcohol"]
+        }
+      ],
+      "packagingLabeling": [
+        {
+          "item": "Hazardous materials",
+          "requirement": "Must have a hazard warning label"
+        }
+      ],
+      "specialNotes": "Utah has specific restrictions on hazardous materials."
+    }
+  },
+  {
+    "state": "New Mexico",
+    "compliance": {
+      "prohibitedItems": ["Fireworks", "Certain chemicals"],
+      "restrictedItems": [
+        {
+          "item": "Alcohol",
+          "ageVerificationRequired": true,
+          "carrierRestrictions": ["FedEx"],
+          "documentationRequired": [
+            "Alcohol shipping permit",
+            "Proof of age 21+"
+          ]
+        }
+      ],
+      "documentationRequirements": [
+        {
+          "item": "Firearms",
+          "requiredDocuments": ["Dealer license"]
+        }
+      ],
+      "taxesAndFees": [
+        {
+          "category": "Excise tax",
+          "items": ["Alcohol"]
+        }
+      ],
+      "packagingLabeling": [
+        {
+          "item": "Alcohol",
+          "requirement": "Tamper-evident seal required"
+        }
+      ],
+      "specialNotes": "New Mexico enforces strict regulations on certain chemicals."
+    }
+  },
+  {
+    "state": "West Virginia",
+    "compliance": {
+      "prohibitedItems": ["Fireworks", "Certain hazardous substances"],
+      "restrictedItems": [
+        {
+          "item": "Alcohol",
+          "ageVerificationRequired": true,
+          "carrierRestrictions": ["UPS"],
+          "documentationRequired": ["Alcohol shipping permit"]
+        }
+      ],
+      "documentationRequirements": [
+        {
+          "item": "Firearms",
+          "requiredDocuments": ["Firearm dealer license"]
+        }
+      ],
+      "taxesAndFees": [
+        {
+          "category": "Excise tax",
+          "items": ["Alcohol"]
+        }
+      ],
+      "packagingLabeling": [
+        {
+          "item": "Hazardous materials",
+          "requirement": "Must display hazard warning"
+        }
+      ],
+      "specialNotes": "West Virginia restricts certain hazardous substances to ensure public safety."
+    }
+  },
+  {
+    "state": "Connecticut",
+    "compliance": {
+      "prohibitedItems": ["Fireworks", "Certain chemicals"],
+      "restrictedItems": [
+        {
+          "item": "Alcohol",
+          "ageVerificationRequired": true,
+          "carrierRestrictions": ["FedEx", "UPS"],
+          "documentationRequired": [
+            "Alcohol shipping permit",
+            "Proof of age 21+"
+          ]
+        }
+      ],
+      "documentationRequirements": [
+        {
+          "item": "Firearms",
+          "requiredDocuments": ["Firearm dealer license"]
+        }
+      ],
+      "taxesAndFees": [
+        {
+          "category": "Excise tax",
+          "items": ["Alcohol"]
+        }
+      ],
+      "packagingLabeling": [
+        {
+          "item": "Alcohol",
+          "requirement": "Must have tamper-evident seal"
+        }
+      ],
+      "specialNotes": "Connecticut has specific restrictions on hazardous chemicals."
+    }
+  },
+  {
+    "state": "Wyoming",
+    "compliance": {
+      "prohibitedItems": ["Fireworks", "Certain pesticides"],
+      "restrictedItems": [
+        {
+          "item": "Alcohol",
+          "ageVerificationRequired": true,
+          "carrierRestrictions": ["FedEx", "UPS"],
+          "documentationRequired": ["Alcohol shipping permit"]
+        }
+      ],
+      "documentationRequirements": [
+        {
+          "item": "Firearms",
+          "requiredDocuments": ["Firearm dealer license"]
+        }
+      ],
+      "taxesAndFees": [
+        {
+          "category": "Excise tax",
+          "items": ["Alcohol"]
+        }
+      ],
+      "packagingLabeling": [
+        {
+          "item": "Alcohol",
+          "requirement": "Tamper-evident seal required"
+        }
+      ],
+      "specialNotes": "Wyoming restricts certain pesticides to protect the environment."
+    }
+  },
+  {
+    "state": "Nevada",
+    "compliance": {
+      "prohibitedItems": ["Fireworks", "Certain hazardous materials"],
+      "restrictedItems": [
+        {
+          "item": "Alcohol",
+          "ageVerificationRequired": true,
+          "carrierRestrictions": ["FedEx", "UPS"],
+          "documentationRequired": [
+            "Alcohol shipping permit",
+            "Proof of age 21+"
+          ]
+        }
+      ],
+      "documentationRequirements": [
+        {
+          "item": "Firearms",
+          "requiredDocuments": ["Licensed dealer certificate"]
+        }
+      ],
+      "taxesAndFees": [
+        {
+          "category": "Excise tax",
+          "items": ["Alcohol"]
+        }
+      ],
+      "packagingLabeling": [
+        {
+          "item": "Hazardous materials",
+          "requirement": "Must display hazard warning label"
+        }
+      ],
+      "specialNotes": "Nevada has specific restrictions on hazardous materials."
+    }
+  },
+  {
+    "state": "Montana",
+    "compliance": {
+      "prohibitedItems": ["Fireworks", "Certain pesticides"],
+      "restrictedItems": [
+        {
+          "item": "Alcohol",
+          "ageVerificationRequired": true,
+          "carrierRestrictions": ["FedEx"],
+          "documentationRequired": [
+            "Alcohol shipping permit",
+            "Proof of age 21+"
+          ]
+        }
+      ],
+      "documentationRequirements": [
+        {
+          "item": "Firearms",
+          "requiredDocuments": ["Firearm dealer license"]
+        }
+      ],
+      "taxesAndFees": [
+        {
+          "category": "Excise tax",
+          "items": ["Alcohol"]
+        }
+      ],
+      "packagingLabeling": [
+        {
+          "item": "Alcohol",
+          "requirement": "Must have tamper-evident seal"
+        }
+      ],
+      "specialNotes": "Montana restricts the shipment of certain pesticides."
+    }
+  },
+  {
+    "state": "Kansas",
+    "compliance": {
+      "prohibitedItems": ["Fireworks", "Certain pesticides"],
+      "restrictedItems": [
+        {
+          "item": "Alcohol",
+          "ageVerificationRequired": true,
+          "carrierRestrictions": ["UPS"],
+          "documentationRequired": [
+            "Alcohol shipping permit",
+            "Proof of age 21+"
+          ]
+        }
+      ],
+      "documentationRequirements": [
+        {
+          "item": "Firearms",
+          "requiredDocuments": ["Dealer license"]
+        }
+      ],
+      "taxesAndFees": [
+        {
+          "category": "Excise tax",
+          "items": ["Alcohol"]
+        }
+      ],
+      "packagingLabeling": [
+        {
+          "item": "Hazardous materials",
+          "requirement": "Hazard warning label required"
+        }
+      ],
+      "specialNotes": "Kansas restricts certain pesticides to protect public health."
+    }
+  },
+  {
+    "state": "Louisiana",
+    "compliance": {
+      "prohibitedItems": ["Fireworks", "Certain chemicals"],
+      "restrictedItems": [
+        {
+          "item": "Alcohol",
+          "ageVerificationRequired": true,
+          "carrierRestrictions": ["FedEx"],
+          "documentationRequired": ["Alcohol shipping permit", "Proof of age"]
+        }
+      ],
+      "documentationRequirements": [
+        {
+          "item": "Firearms",
+          "requiredDocuments": ["Firearm dealer license"]
+        }
+      ],
+      "taxesAndFees": [
+        {
+          "category": "Excise tax",
+          "items": ["Alcohol", "Tobacco"]
+        }
+      ],
+      "packagingLabeling": [
+        {
+          "item": "Hazardous materials",
+          "requirement": "Must have hazard warning label"
+        }
+      ],
+      "specialNotes": "Louisiana has specific requirements for hazardous materials and agricultural products."
+    }
+  },
+  {
+    "state": "Oklahoma",
+    "compliance": {
+      "prohibitedItems": ["Fireworks", "Certain hazardous substances"],
+      "restrictedItems": [
+        {
+          "item": "Alcohol",
+          "ageVerificationRequired": true,
+          "carrierRestrictions": ["UPS"],
+          "documentationRequired": [
+            "Alcohol shipping permit",
+            "Proof of age 21+"
+          ]
+        }
+      ],
+      "documentationRequirements": [
+        {
+          "item": "Firearms",
+          "requiredDocuments": ["Licensed dealer certificate"]
+        }
+      ],
+      "taxesAndFees": [
+        {
+          "category": "Excise tax",
+          "items": ["Alcohol"]
+        }
+      ],
+      "packagingLabeling": [
+        {
+          "item": "Hazardous materials",
+          "requirement": "Hazard warning label required"
+        }
+      ],
+      "specialNotes": "Oklahoma restricts the shipment of certain hazardous substances."
+    }
+  }
+]

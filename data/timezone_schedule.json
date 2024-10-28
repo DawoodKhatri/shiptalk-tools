@@ -1,0 +1,92 @@
+{
+    "time_zones": [
+      {
+        "name": "Eastern",
+        "business_hours": "9:00 AM - 5:00 PM",
+        "peak_times": ["10:00 AM - 12:00 PM", "2:00 PM - 4:00 PM"]
+      },
+      {
+        "name": "Central",
+        "business_hours": "9:00 AM - 5:00 PM",
+        "peak_times": ["9:00 AM - 11:00 AM", "3:00 PM - 5:00 PM"]
+      },
+      {
+        "name": "Mountain",
+        "business_hours": "9:00 AM - 5:00 PM",
+        "peak_times": ["10:00 AM - 12:00 PM", "2:00 PM - 4:00 PM"]
+      },
+      {
+        "name": "Pacific",
+        "business_hours": "9:00 AM - 5:00 PM",
+        "peak_times": ["8:00 AM - 10:00 AM", "3:00 PM - 5:00 PM"]
+      }
+    ],
+    "transit_times": {
+      "short_distance": {
+        "zones": [1, 2],
+        "time": "1-2 business days"
+      },
+      "mid_distance": {
+        "zones": [3, 5],
+        "time": "2-3 business days"
+      },
+      "long_distance": {
+        "zones": [6, 8],
+        "time": "3-5 business days"
+      },
+      "express": {
+        "Eastern_to_Central": "2-4 hours",
+        "Central_to_Mountain": "3-5 hours",
+        "Mountain_to_Pacific": "3-5 hours",
+        "Coast_to_Coast": "10-16 hours"
+      }
+    },
+    "carrier_options": {
+      "standard": ["UPS Ground", "FedEx Ground"],
+      "express": ["FedEx Air", "UPS Air"],
+      "overnight": ["FedEx Overnight", "UPS Next Day Air"]
+    },
+    "peak_season_adjustments": {
+      "peak_season_dates": [
+        {
+          "name": "Holiday Season",
+          "start": "Holiday season start",
+          "end": "Holiday season end"
+        },
+        {
+          "name": "End of Quarter",
+          "description": "Last week of each quarter"
+        }
+      ],
+      "standard_delay": "1-2 days",
+      "express_delay": "12 hours",
+      "overnight_delay": "6 hours"
+    },
+    "regional_weather_impact": {
+      "Northeast": {
+        "season": "Winter",
+        "impact": "Delays during heavy snowfall (December - February)"
+      },
+      "Midwest": {
+        "season": "Winter",
+        "impact": "Moderate delays during peak winter months"
+      }
+    },
+    "traffic_patterns": {
+      "weekdays": "Increased transit times during rush hours (7:00 AM - 9:00 AM and 4:00 PM - 6:00 PM)",
+      "weekends": "Generally less traffic, shorter transit times"
+    },
+    "regulatory_cutoffs": {
+      "cutoff_times": {
+        "Eastern": "5:00 PM",
+        "Central": "5:00 PM",
+        "Mountain": "4:00 PM",
+        "Pacific": "4:00 PM"
+      },
+      "next_day_delivery": {
+        "standard_cutoff": "4:00 PM local time",
+        "express_cutoff": "5:00 PM local time"
+      }
+    }
+  }
+  

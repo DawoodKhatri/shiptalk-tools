@@ -1,0 +1,295 @@
+{
+  "parkingFees": [
+    {
+      "locationName": "Staten Island",
+      "zoneType": "Outerborough",
+      "parkingRates": "Zone 3 - (All Vehicles $1.25 1st Hour / $2.00 2nd Hour)"
+    },
+    {
+      "locationName": "Bronx",
+      "zoneType": "Outerborough",
+      "parkingRates": "Zone 3 - (All Vehicles $1.25 1st Hour / $2.00 2nd Hour)"
+    },
+    {
+      "locationName": "Manhattan",
+      "zoneType": "Manhattan Neighborhood",
+      "parkingRates": "Zone M2 - (Commercial Vehicles $5.00 1st Hour / $6.00 2nd Hour / $7.00 3rd Hour - All Vehicles $4.00 1st Hour / $6.75 2nd Hour)"
+    },
+    {
+      "locationName": "Brooklyn",
+      "zoneType": "Outerborough",
+      "parkingRates": "Zone 3 - (All Vehicles $1.25 1st Hour / $2.00 2nd Hour)"
+    },
+    {
+      "locationName": "Queens",
+      "zoneType": "Outerborough",
+      "parkingRates": "Zone 3 - (All Vehicles $1.25 1st Hour / $2.00 2nd Hour)"
+    },
+    {
+      "locationName": "Manhattan",
+      "zoneType": "Financial District",
+      "parkingRates": "Zone M1 - (Commercial Vehicles $6.00 1st Hour / $7.00 2nd Hour / $8.00 3rd Hour - All Vehicles $4.50 1st Hour / $7.50 2nd Hour)"
+    },
+    {
+      "locationName": "Manhattan",
+      "zoneType": "96th St to 110th St",
+      "parkingRates": "Zone M3 - (All Vehicles $2.50 1st Hour / $4.00 2nd Hour)"
+    },
+    {
+      "locationName": "Manhattan",
+      "zoneType": "Outerborough",
+      "parkingRates": "Zone 3 - (All Vehicles $1.25 1st Hour / $2.00 2nd Hour)"
+    },
+    {
+      "locationName": "Manhattan",
+      "zoneType": "Midtown",
+      "parkingRates": "Zone M1 - (Commercial Vehicles $6.00 1st Hour / $7.00 2nd Hour / $8.00 3rd Hour - All Vehicles $4.50 1st Hour / $7.50 2nd Hour)"
+    },
+    {
+      "locationName": "Brooklyn",
+      "zoneType": "Downtown Brooklyn",
+      "parkingRates": "Zone 1 - (All Vehicles $2.00 1st Hour / $4.00 2nd Hour)"
+    },
+    {
+      "locationName": "Queens",
+      "zoneType": "Flushing",
+      "parkingRates": "Zone 1 - (All Vehicles $2.00 1st Hour / $4.00 2nd Hour)"
+    },
+    {
+      "locationName": "Queens",
+      "zoneType": "Outerborough CBD - Jamaica",
+      "parkingRates": "Zone 1 - (All Vehicles $2.00 1st Hour / $4.00 2nd Hour)"
+    },
+    {
+      "locationName": "Bronx",
+      "zoneType": "Bronx Hub",
+      "parkingRates": "Zone 2 - (All Vehicles $1.50 1st Hour / $2.50 2nd Hour)"
+    },
+    {
+      "locationName": "Bronx",
+      "zoneType": "East Tremont",
+      "parkingRates": "Zone 2 - (All Vehicles $1.50 1st Hour / $2.50 2nd Hour)"
+    },
+    {
+      "locationName": "Bronx",
+      "zoneType": "Fordham",
+      "parkingRates": "Zone 2 - (All Vehicles $1.50 1st Hour / $2.50 2nd Hour)"
+    },
+    {
+      "locationName": "Bronx",
+      "zoneType": "Kingsbridge",
+      "parkingRates": "Zone 2 - (All Vehicles $1.50 1st Hour / $2.50 2nd Hour)"
+    },
+    {
+      "locationName": "Bronx",
+      "zoneType": "Norwood",
+      "parkingRates": "Zone 2 - (All Vehicles $1.50 1st Hour / $2.50 2nd Hour)"
+    },
+    {
+      "locationName": "Bronx",
+      "zoneType": "Pelham Parkway",
+      "parkingRates": "Zone 2 - (All Vehicles $1.50 1st Hour / $2.50 2nd Hour)"
+    },
+    {
+      "locationName": "Bronx",
+      "zoneType": "Westchester",
+      "parkingRates": "Zone 2 - (All Vehicles $1.50 1st Hour / $2.50 2nd Hour)"
+    },
+    {
+      "locationName": "Queens",
+      "zoneType": "Ditmars",
+      "parkingRates": "Zone 2 - (All Vehicles $1.50 1st Hour / $2.50 2nd Hour)"
+    },
+    {
+      "locationName": "Queens",
+      "zoneType": "Astoria",
+      "parkingRates": "Zone 2 - (All Vehicles $1.50 1st Hour / $2.50 2nd Hour)"
+    },
+    {
+      "locationName": "Queens",
+      "zoneType": "Sunnyside",
+      "parkingRates": "Zone 2 - (All Vehicles $1.50 1st Hour / $2.50 2nd Hour)"
+    },
+    {
+      "locationName": "Queens",
+      "zoneType": "Woodside",
+      "parkingRates": "Zone 2 - (All Vehicles $1.50 1st Hour / $2.50 2nd Hour)"
+    },
+    {
+      "locationName": "Queens",
+      "zoneType": "Forest Hills",
+      "parkingRates": "Zone 2 - (All Vehicles $1.50 1st Hour / $2.50 2nd Hour)"
+    },
+    {
+      "locationName": "Queens",
+      "zoneType": "Bayside",
+      "parkingRates": "Zone 2 - (All Vehicles $1.50 1st Hour / $2.50 2nd Hour)"
+    },
+    {
+      "locationName": "Brooklyn",
+      "zoneType": "Park Slope",
+      "parkingRates": "Zone 1 - (All Vehicles $2.00 1st Hour / $4.00 2nd Hour)"
+    },
+    {
+      "locationName": "Brooklyn",
+      "zoneType": "Myrtle Ave",
+      "parkingRates": "Zone 2 - (All Vehicles $1.50 1st Hour / $2.50 2nd Hour)"
+    },
+    {
+      "locationName": "Brooklyn",
+      "zoneType": "Greenpoint/Williamsburg",
+      "parkingRates": "Zone 2 - (All Vehicles $1.50 1st Hour / $2.50 2nd Hour)"
+    },
+    {
+      "locationName": "Brooklyn",
+      "zoneType": "Graham Ave",
+      "parkingRates": "Zone 2 - (All Vehicles $1.50 1st Hour / $2.50 2nd Hour)"
+    },
+    {
+      "locationName": "Brooklyn",
+      "zoneType": "Sunset Park",
+      "parkingRates": "Zone 2 - (All Vehicles $1.50 1st Hour / $2.50 2nd Hour)"
+    },
+    {
+      "locationName": "Brooklyn",
+      "zoneType": "Borough Park",
+      "parkingRates": "Zone 2 - (All Vehicles $1.50 1st Hour / $2.50 2nd Hour)"
+    },
+    {
+      "locationName": "Brooklyn",
+      "zoneType": "Bensonhurst",
+      "parkingRates": "Zone 2 - (All Vehicles $1.50 1st Hour / $2.50 2nd Hour)"
+    },
+    {
+      "locationName": "Brooklyn",
+      "zoneType": "Bay Ridge",
+      "parkingRates": "Zone 2 - (All Vehicles $1.50 1st Hour / $2.50 2nd Hour)"
+    },
+    {
+      "locationName": "Brooklyn",
+      "zoneType": "Brighton Beach",
+      "parkingRates": "Zone 2 - (All Vehicles $1.50 1st Hour / $2.50 2nd Hour)"
+    },
+    {
+      "locationName": "Brooklyn",
+      "zoneType": "Sheepshead Bay",
+      "parkingRates": "Zone 2 - (All Vehicles $1.50 1st Hour / $2.50 2nd Hour)"
+    },
+    {
+      "locationName": "Brooklyn",
+      "zoneType": "Avenue U",
+      "parkingRates": "Zone 2 - (All Vehicles $1.50 1st Hour / $2.50 2nd Hour)"
+    },
+    {
+      "locationName": "Brooklyn",
+      "zoneType": "Kings Highway",
+      "parkingRates": "Zone 2 - (All Vehicles $1.50 1st Hour / $2.50 2nd Hour)"
+    },
+    {
+      "locationName": "Brooklyn",
+      "zoneType": "Midwood",
+      "parkingRates": "Zone 2 - (All Vehicles $1.50 1st Hour / $2.50 2nd Hour)"
+    },
+    {
+      "locationName": "Brooklyn",
+      "zoneType": "Church Ave",
+      "parkingRates": "Zone 2 - (All Vehicles $1.50 1st Hour / $2.50 2nd Hour)"
+    },
+    {
+      "locationName": "Queens",
+      "zoneType": "Myrtle Ave",
+      "parkingRates": "Zone 2 - (All Vehicles $1.50 1st Hour / $2.50 2nd Hour)"
+    },
+    {
+      "locationName": "Queens",
+      "zoneType": "Woodhaven",
+      "parkingRates": "Zone 2 - (All Vehicles $1.50 1st Hour / $2.50 2nd Hour)"
+    },
+    {
+      "locationName": "Queens",
+      "zoneType": "Liberty Ave",
+      "parkingRates": "Zone 2 - (All Vehicles $1.50 1st Hour / $2.50 2nd Hour)"
+    },
+    {
+      "locationName": "Queens",
+      "zoneType": "Jackson Heights",
+      "parkingRates": "Zone 2 - (All Vehicles $1.50 1st Hour / $2.50 2nd Hour)"
+    },
+    {
+      "locationName": "Queens",
+      "zoneType": "Long Island City",
+      "parkingRates": "Zone 2 - (All Vehicles $1.50 1st Hour / $2.50 2nd Hour)"
+    },
+    {
+      "locationName": "Bronx",
+      "zoneType": "Belmont",
+      "parkingRates": "Zone 2 - (All Vehicles $1.50 1st Hour / $2.50 2nd Hour)"
+    },
+    {
+      "locationName": "Manhattan",
+      "zoneType": "125th Street",
+      "parkingRates": "Zone 1 - (All Vehicles $2.00 1st Hour / $4.00 2nd Hour)"
+    },
+    {
+      "locationName": "Manhattan",
+      "zoneType": "Inwood",
+      "parkingRates": "Zone 2 - (All Vehicles $1.50 1st Hour / $2.50 2nd Hour)"
+    },
+    {
+      "locationName": "Staten Island",
+      "zoneType": "St. George",
+      "parkingRates": "Zone 2 - (All Vehicles $1.50 1st Hour / $2.50 2nd Hour)"
+    },
+    {
+      "locationName": "Bronx",
+      "zoneType": "Riverdale",
+      "parkingRates": "Zone 2 - (All Vehicles $1.50 1st Hour / $2.50 2nd Hour)"
+    }
+  ],
+  "trafficPatterns": {
+    "peakHours": ["7:00 AM - 9:00 AM", "4:00 PM - 6:00 PM"],
+    "lowCongestionHours": ["10:00 AM - 3:00 PM"],
+    "weekendCongestion": "Generally lower than weekdays except in popular areas"
+  },
+  "loadingZones": {
+    "generalTimeLimits": "20 minutes for commercial vehicles",
+    "restrictions": [
+      "No loading during peak hours in central business districts",
+      "Free loading zones available in certain residential areas"
+    ]
+  },
+  "parkingRegulations": {
+    "generalRules": [
+      "Residential-only parking during overnight hours (7:00 PM - 7:00 AM)",
+      "Permit requirements in central business districts for commercial vehicles",
+      "No parking on main thoroughfares during peak hours"
+    ],
+    "commonPermits": [
+      {
+        "permitType": "Commercial Vehicle Permit",
+        "applicableZones": ["centralBusinessDistrict", "downtown"],
+        "cost": "$150 per month"
+      }
+    ]
+  },
+  "eventAndSeasonalData": [
+    {
+      "generalEvent": "Holiday Season",
+      "period": "December",
+      "expectedCongestionIncrease": "30%",
+      "parkingRestrictions": [
+        "High demand in commercial areas",
+        "Limited availability in residential zones"
+      ]
+    },
+    {
+      "generalEvent": "Major Parades/Festivals",
+      "commonPeriods": ["July", "November"],
+      "expectedCongestionIncrease": "50% in event zones",
+      "parkingRestrictions": [
+        "No parking along parade routes",
+        "Increased rates in surrounding areas"
+      ]
+    }
+  ]
+}

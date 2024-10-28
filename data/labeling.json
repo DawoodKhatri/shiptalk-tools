@@ -1,0 +1,103 @@
+{
+  "label_requirements": {
+    "standardLabelSize": {
+      "small": { "dimensions": "4x6 inches", "costPerLabel": 0.05 },
+      "medium": { "dimensions": "6x8 inches", "costPerLabel": 0.08 },
+      "large": { "dimensions": "8x10 inches", "costPerLabel": 0.12 }
+    },
+    "carrierSpecificRequirements": {
+      "FedEx": {
+        "mandatoryFields": ["trackingNumber", "shippingAddress", "barcode"],
+        "labelSize": "4x6 inches",
+        "placementNote": "Place label on the package’s largest surface; avoid wrapping around corners or placing on seams."
+      },
+      "UPS": {
+        "mandatoryFields": [
+          "trackingNumber",
+          "originAddress",
+          "destinationBarcode"
+        ],
+        "labelSize": "6x8 inches",
+        "placementNote": "Labels should not be placed on edges or sealing tape to prevent scanning issues."
+      },
+      "DHL": {
+        "mandatoryFields": [
+          "trackingNumber",
+          "shipperReference",
+          "customsDeclaration"
+        ],
+        "labelSize": "8x10 inches",
+        "placementNote": "Affix the original waybill to the primary package in multi-piece shipments; label all others with package counts (e.g., '1 of 3')."
+      }
+    }
+  },
+  "packaging_information": {
+    "productDimensions": {
+      "small": { "maxWeight": "2 lbs", "dimensions": "8x6x4 inches" },
+      "medium": { "maxWeight": "10 lbs", "dimensions": "12x10x6 inches" },
+      "large": { "maxWeight": "50 lbs", "dimensions": "18x16x12 inches" }
+    },
+    "packagingMaterialOptions": [
+      {
+        "material": "Cardboard",
+        "suitableFor": ["standard packages"],
+        "adhesionLevel": "high",
+        "recommendedLabelType": "thermal adhesive"
+      },
+      {
+        "material": "Plastic",
+        "suitableFor": ["water-resistant packaging"],
+        "adhesionLevel": "medium",
+        "recommendedLabelType": "waterproof adhesive"
+      }
+    ]
+  },
+  "label_material_and_costs": [
+    {
+      "materialType": "thermalPaper",
+      "costPerLabel": 0.03,
+      "durability": "low",
+      "recommendedFor": ["short transit", "standard conditions"]
+    },
+    {
+      "materialType": "waterproofPaper",
+      "costPerLabel": 0.07,
+      "durability": "high",
+      "recommendedFor": ["long transit", "humid conditions"]
+    },
+    {
+      "materialType": "highDurabilitySynthetic",
+      "costPerLabel": 0.1,
+      "durability": "very high",
+      "recommendedFor": ["rough handling", "extreme temperatures"]
+    }
+  ],
+  "bulk_printing_discounts": {
+    "batchSizes": [
+      { "sizeRange": "1-100 labels", "discountPercentage": 0 },
+      { "sizeRange": "101-500 labels", "discountPercentage": 5 },
+      { "sizeRange": "501-1000 labels", "discountPercentage": 10 },
+      { "sizeRange": "1001+ labels", "discountPercentage": 15 }
+    ]
+  },
+  "compliance_guidelines": {
+    "domesticShipping": {
+      "mandatoryFields": ["trackingNumber", "shippingAddress", "originAddress"],
+      "warnings": [
+        "Ensure barcode is legible",
+        "Follow carrier-specific formats"
+      ]
+    },
+    "internationalShipping": {
+      "mandatoryFields": [
+        "trackingNumber",
+        "customsDeclaration",
+        "countryOfOrigin"
+      ],
+      "warnings": [
+        "Check regional customs requirements",
+        "Include importer/exporter IDs where needed"
+      ]
+    }
+  }
+}

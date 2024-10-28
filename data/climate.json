@@ -1,0 +1,1212 @@
+[
+  {
+    "productType": "Electronics and Components",
+    "weatherConditions": [
+      {
+        "condition": "Extreme Heat",
+        "temperatureRange": "95°F to 120°F",
+        "humidityConcern": "High",
+        "recommendedPackaging": [
+          {
+            "name": "Thermal Insulated Box",
+            "cost": 12.75,
+            "specifications": {
+              "insulationRating": "R-12",
+              "heatReflection": "95%"
+            }
+          },
+          {
+            "name": "Phase Change Materials",
+            "cost": 8.5,
+            "specifications": {
+              "temperatureControl": "24-48 hours",
+              "meltingPoint": "75°F"
+            }
+          }
+        ],
+        "recommendedCarriers": [
+          {
+            "name": "CoolTech Logistics",
+            "rating": 4.8,
+            "capabilities": [
+              "Temperature-Controlled Vehicles",
+              "Real-Time Monitoring",
+              "Express Delivery"
+            ],
+            "costPremium": 1.75
+          }
+        ]
+      },
+      {
+        "condition": "Extreme Cold",
+        "temperatureRange": "-4°F to 32°F",
+        "humidityConcern": "High",
+        "recommendedPackaging": [
+          {
+            "name": "Cold-Resistant ESD Box",
+            "cost": 15.25,
+            "specifications": {
+              "temperatureRating": "-20°F",
+              "moistureBarrier": true
+            }
+          },
+          {
+            "name": "Desiccant Packs",
+            "cost": 2.5,
+            "specifications": {
+              "moistureAbsorption": "40% by weight",
+              "activationTemperature": "-4°F"
+            }
+          }
+        ],
+        "recommendedCarriers": [
+          {
+            "name": "PolarShield Transport",
+            "rating": 4.7,
+            "capabilities": [
+              "Heated Cargo Areas",
+              "Temperature Logging",
+              "Weather Routing"
+            ],
+            "costPremium": 1.85
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "productType": "Industrial Equipment",
+    "weatherConditions": [
+      {
+        "condition": "High Humidity",
+        "temperatureRange": "Above 75%",
+        "humidityConcern": "Corrosion Risk",
+        "recommendedPackaging": [
+          {
+            "name": "VCI Barrier Packaging",
+            "cost": 35.75,
+            "specifications": {
+              "corrosionProtection": "Up to 5 years",
+              "humidityBarrier": "Complete"
+            }
+          },
+          {
+            "name": "Desiccant Containers",
+            "cost": 28.5,
+            "specifications": {
+              "moistureAbsorption": "High Capacity",
+              "reactivation": "Possible"
+            }
+          }
+        ],
+        "recommendedCarriers": [
+          {
+            "name": "IndustrialCare Logistics",
+            "rating": 4.7,
+            "capabilities": [
+              "Climate-Controlled Storage",
+              "Humidity Monitoring",
+              "Specialized Handling"
+            ],
+            "costPremium": 1.95
+          }
+        ]
+      },
+      {
+        "condition": "Extreme Temperature Fluctuation",
+        "temperatureRange": "-20°F to 120°F",
+        "humidityConcern": "Expansion Concern",
+        "recommendedPackaging": [
+          {
+            "name": "Thermal Shock Absorbing Crate",
+            "cost": 125.0,
+            "specifications": {
+              "temperatureBuffering": "High",
+              "structuralIntegrity": "Enhanced"
+            }
+          }
+        ],
+        "recommendedCarriers": [
+          {
+            "name": "PrecisionTemp Transport",
+            "rating": 4.8,
+            "capabilities": [
+              "Temperature-Controlled Fleet",
+              "Continuous Monitoring",
+              "Route Optimization"
+            ],
+            "costPremium": 2.15
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "productType": "Musical Instruments",
+    "weatherConditions": [
+      {
+        "condition": "Extreme Humidity",
+        "temperatureRange": "Above 70%",
+        "humidityConcern": "Wood Damage Risk",
+        "recommendedPackaging": [
+          {
+            "name": "Humidity-Controlled Case",
+            "cost": 225.0,
+            "specifications": {
+              "humidityControl": "Two-Way",
+              "moistureBarrier": "Complete"
+            }
+          },
+          {
+            "name": "Instrument Humidifier Packs",
+            "cost": 15.5,
+            "specifications": {
+              "humidityMaintenance": "45-55%",
+              "duration": "30 days"
+            }
+          }
+        ],
+        "recommendedCarriers": [
+          {
+            "name": "MusicCare Logistics",
+            "rating": 4.8,
+            "capabilities": [
+              "Climate-Controlled Vehicles",
+              "Specialized Handling",
+              "Insurance Coverage"
+            ],
+            "costPremium": 2.35
+          }
+        ]
+      },
+      {
+        "condition": "Dry Conditions",
+        "temperatureRange": "Below 30%",
+        "humidityConcern": "Cracking Risk",
+        "recommendedPackaging": [
+          {
+            "name": "Humidification Case",
+            "cost": 195.0,
+            "specifications": {
+              "humidityGeneration": "Controlled",
+              "monitoring": "Digital"
+            }
+          }
+        ],
+        "recommendedCarriers": [
+          {
+            "name": "InstrumentAir Transport",
+            "rating": 4.7,
+            "capabilities": [
+              "Humidity-Controlled Fleet",
+              "24/7 Monitoring",
+              "Express Service"
+            ],
+            "costPremium": 2.25
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "productType": "Wine and Spirits",
+    "weatherConditions": [
+      {
+        "condition": "Extreme Heat",
+        "temperatureRange": "Above 75°F",
+        "humidityConcern": "Quality Risk",
+        "recommendedPackaging": [
+          {
+            "name": "Wine Thermal Protection Kit",
+            "cost": 45.0,
+            "specifications": {
+              "temperatureHold": "48 hours",
+              "shockAbsorption": "Enhanced"
+            }
+          },
+          {
+            "name": "Phase Change Wine Wrap",
+            "cost": 22.5,
+            "specifications": {
+              "temperatureMaintenance": "55-65°F",
+              "reusable": true
+            }
+          }
+        ],
+        "recommendedCarriers": [
+          {
+            "name": "WineCare Express",
+            "rating": 4.8,
+            "capabilities": [
+              "Temperature-Controlled Transport",
+              "Vibration Monitoring",
+              "Position Control"
+            ],
+            "costPremium": 2.45
+          }
+        ]
+      },
+      {
+        "condition": "Freezing Conditions",
+        "temperatureRange": "Below 32°F",
+        "humidityConcern": "Freezing Risk",
+        "recommendedPackaging": [
+          {
+            "name": "Heated Wine Shipper",
+            "cost": 55.0,
+            "specifications": {
+              "temperatureMaintenance": "45-65°F",
+              "batteryLife": "72 hours"
+            }
+          }
+        ],
+        "recommendedCarriers": [
+          {
+            "name": "VintageTemp Logistics",
+            "rating": 4.9,
+            "capabilities": [
+              "Heated Storage",
+              "Temperature Tracking",
+              "Insurance Coverage"
+            ],
+            "costPremium": 2.65
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "productType": "Textiles and Apparel",
+    "weatherConditions": [
+      {
+        "condition": "High Humidity",
+        "temperatureRange": "Above 80%",
+        "humidityConcern": "Mold Risk",
+        "recommendedPackaging": [
+          {
+            "name": "Anti-Mold Garment Bag",
+            "cost": 12.5,
+            "specifications": {
+              "moistureBarrier": "Complete",
+              "ventilation": "Controlled"
+            }
+          },
+          {
+            "name": "Desiccant Sheets",
+            "cost": 5.75,
+            "specifications": {
+              "absorptionCapacity": "300ml/m²",
+              "duration": "30 days"
+            }
+          }
+        ],
+        "recommendedCarriers": [
+          {
+            "name": "FabricCare Transport",
+            "rating": 4.6,
+            "capabilities": [
+              "Dehumidified Containers",
+              "Air Quality Control",
+              "Express Delivery"
+            ],
+            "costPremium": 1.55
+          }
+        ]
+      },
+      {
+        "condition": "Extreme Sun Exposure",
+        "temperatureRange": "High UV Exposure",
+        "humidityConcern": "Fading Risk",
+        "recommendedPackaging": [
+          {
+            "name": "UV-Protective Packaging",
+            "cost": 18.25,
+            "specifications": {
+              "uvProtection": "99%",
+              "lightBlocking": "Complete"
+            }
+          }
+        ],
+        "recommendedCarriers": [
+          {
+            "name": "TextileSafe Logistics",
+            "rating": 4.5,
+            "capabilities": [
+              "UV-Protected Vehicles",
+              "Climate Control",
+              "Careful Handling"
+            ],
+            "costPremium": 1.45
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "productType": "Chemical Products",
+    "weatherConditions": [
+      {
+        "condition": "Extreme Heat",
+        "temperatureRange": "Above 85°F",
+        "humidityConcern": "Reactivity Risk",
+        "recommendedPackaging": [
+          {
+            "name": "Temperature-Controlled Hazmat Container",
+            "cost": 85.0,
+            "specifications": {
+              "temperatureControl": "Active",
+              "pressureRelief": "Automatic"
+            }
+          },
+          {
+            "name": "Chemical Cooling Packs",
+            "cost": 35.5,
+            "specifications": {
+              "duration": "48 hours",
+              "nonReactive": true
+            }
+          }
+        ],
+        "recommendedCarriers": [
+          {
+            "name": "ChemSafe Transport",
+            "rating": 4.9,
+            "capabilities": [
+              "HAZMAT Certified",
+              "Temperature Control",
+              "Emergency Response"
+            ],
+            "costPremium": 2.85
+          }
+        ]
+      },
+      {
+        "condition": "Freezing Conditions",
+        "temperatureRange": "Below 32°F",
+        "humidityConcern": "Crystallization Risk",
+        "recommendedPackaging": [
+          {
+            "name": "Heated Chemical Container",
+            "cost": 95.0,
+            "specifications": {
+              "heatingSystem": "Thermostat Controlled",
+              "insulation": "Multi-Layer"
+            }
+          }
+        ],
+        "recommendedCarriers": [
+          {
+            "name": "TempChem Logistics",
+            "rating": 4.8,
+            "capabilities": [
+              "Heated Storage",
+              "24/7 Monitoring",
+              "HAZMAT Compliance"
+            ],
+            "costPremium": 2.95
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "productType": "Hazardous Materials",
+    "weatherConditions": [
+      {
+        "condition": "Extreme Heat",
+        "temperatureRange": "Above 85°F",
+        "humidityConcern": "Volatility Risk",
+        "recommendedPackaging": [
+          {
+            "name": "UN-Rated Thermal Container",
+            "cost": 145.0,
+            "specifications": {
+              "certification": "UN 4G/X45/S",
+              "temperatureControl": "Active",
+              "pressureRelief": "Automatic",
+              "thermalResistance": "R-20"
+            }
+          },
+          {
+            "name": "Chemical Cooling System",
+            "cost": 85.5,
+            "specifications": {
+              "coolingDuration": "72 hours",
+              "temperatureStability": "±2°F",
+              "nonReactive": true
+            }
+          }
+        ],
+        "recommendedCarriers": [
+          {
+            "name": "HazmatTemp Solutions",
+            "rating": 4.9,
+            "capabilities": [
+              "HAZMAT Certified Fleet",
+              "Temperature Monitoring",
+              "Emergency Response Team",
+              "Satellite Tracking"
+            ],
+            "costPremium": 3.25
+          }
+        ]
+      },
+      {
+        "condition": "High Humidity",
+        "temperatureRange": "Above 75%",
+        "humidityConcern": "Reactivity Risk",
+        "recommendedPackaging": [
+          {
+            "name": "Moisture-Barrier HAZMAT Container",
+            "cost": 168.0,
+            "specifications": {
+              "moisturePermeability": "Zero",
+              "chemicalResistance": "Class A",
+              "sealIntegrity": "Triple"
+            }
+          }
+        ],
+        "recommendedCarriers": [
+          {
+            "name": "SafeChem Transport",
+            "rating": 4.8,
+            "capabilities": [
+              "Climate-Controlled Units",
+              "Real-Time Humidity Monitoring",
+              "Specialized Handling Protocols"
+            ],
+            "costPremium": 2.85
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "productType": "Electronic Equipment",
+    "weatherConditions": [
+      {
+        "condition": "High Humidity",
+        "temperatureRange": "Above 70%",
+        "humidityConcern": "Condensation Risk",
+        "recommendedPackaging": [
+          {
+            "name": "Industrial Dehumidified Container",
+            "cost": 95.0,
+            "specifications": {
+              "moistureControl": "Active",
+              "staticProtection": "Built-In",
+              "humidityRange": "35-45%"
+            }
+          },
+          {
+            "name": "Multi-Layer Moisture Barrier",
+            "cost": 45.5,
+            "specifications": {
+              "layers": 5,
+              "moistureResistance": "99.9%",
+              "reusable": true
+            }
+          }
+        ],
+        "recommendedCarriers": [
+          {
+            "name": "TechSafe Logistics",
+            "rating": 4.8,
+            "capabilities": [
+              "Climate-Controlled Vehicles",
+              "ESD Protection",
+              "Specialized Handling"
+            ],
+            "costPremium": 2.15
+          }
+        ]
+      },
+      {
+        "condition": "Extreme Cold",
+        "temperatureRange": "Below 14°F",
+        "humidityConcern": "Battery and Display Damage Risk",
+        "recommendedPackaging": [
+          {
+            "name": "Thermal Protection System",
+            "cost": 78.5,
+            "specifications": {
+              "temperatureMaintenance": "50-70°F",
+              "batteryProtection": "Enhanced",
+              "impactResistance": "High"
+            }
+          }
+        ],
+        "recommendedCarriers": [
+          {
+            "name": "PrecisionTemp Electronics",
+            "rating": 4.7,
+            "capabilities": [
+              "Heated Storage",
+              "Battery Safety Protocols",
+              "Temperature Monitoring"
+            ],
+            "costPremium": 1.95
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "productType": "Furniture",
+    "weatherConditions": [
+      {
+        "condition": "High Humidity",
+        "temperatureRange": "Above 65%",
+        "humidityConcern": "Wood Damage and Mold Risk",
+        "recommendedPackaging": [
+          {
+            "name": "Furniture Humidity Shield",
+            "cost": 125.0,
+            "specifications": {
+              "moistureBarrier": "Complete",
+              "airCirculation": "Controlled",
+              "moldPrevention": "Active"
+            }
+          },
+          {
+            "name": "Desiccant System",
+            "cost": 45.0,
+            "specifications": {
+              "capacity": "2000g moisture/day",
+              "coverageArea": "500 sq ft",
+              "duration": "30 days"
+            }
+          }
+        ],
+        "recommendedCarriers": [
+          {
+            "name": "FurnitureCare Transport",
+            "rating": 4.6,
+            "capabilities": [
+              "Climate-Controlled Containers",
+              "White Glove Service",
+              "Humidity Monitoring"
+            ],
+            "costPremium": 1.85
+          }
+        ]
+      },
+      {
+        "condition": "Extreme Temperature Fluctuation",
+        "temperatureRange": "-10°F to 100°F",
+        "humidityConcern": "Expansion and Finish Damage Risk",
+        "recommendedPackaging": [
+          {
+            "name": "Temperature Buffering Wrap",
+            "cost": 85.0,
+            "specifications": {
+              "temperatureStabilization": "±5°F",
+              "surfaceProtection": "Complete",
+              "breathability": "Controlled"
+            }
+          }
+        ],
+        "recommendedCarriers": [
+          {
+            "name": "EliteFurniture Logistics",
+            "rating": 4.7,
+            "capabilities": [
+              "Temperature-Controlled Fleet",
+              "Specialized Handling",
+              "Climate Monitoring"
+            ],
+            "costPremium": 2.25
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "productType": "Perishable Goods",
+    "weatherConditions": [
+      {
+        "condition": "Extreme Heat",
+        "temperatureRange": "Above 80°F",
+        "humidityConcern": "Spoilage and Shelf Life Impact",
+        "recommendedPackaging": [
+          {
+            "name": "Active Cooling Container",
+            "cost": 185.0,
+            "specifications": {
+              "temperatureMaintenance": "33-39°F",
+              "powerSource": "Battery/Solar",
+              "runtime": "96 hours"
+            }
+          },
+          {
+            "name": "Phase Change Panels",
+            "cost": 45.5,
+            "specifications": {
+              "freezingPoint": "39°F",
+              "duration": "72 hours",
+              "reusable": true
+            }
+          }
+        ],
+        "recommendedCarriers": [
+          {
+            "name": "FreshChain Express",
+            "rating": 4.9,
+            "capabilities": [
+              "Refrigerated Fleet",
+              "Real-Time Temperature Monitoring",
+              "Express Delivery"
+            ],
+            "costPremium": 2.75
+          }
+        ]
+      },
+      {
+        "condition": "Freezing Conditions",
+        "temperatureRange": "Below 32°F",
+        "humidityConcern": "Freezing Damage and Texture Change Risk",
+        "recommendedPackaging": [
+          {
+            "name": "Heated Container System",
+            "cost": 225.0,
+            "specifications": {
+              "temperatureControl": "35-45°F",
+              "heatingMethod": "Electric",
+              "insulation": "Multi-Layer"
+            }
+          }
+        ],
+        "recommendedCarriers": [
+          {
+            "name": "TempGuard Logistics",
+            "rating": 4.8,
+            "capabilities": [
+              "Heated Storage",
+              "Temperature Mapping",
+              "Priority Handling"
+            ],
+            "costPremium": 2.45
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "productType": "Food Items",
+    "weatherConditions": [
+      {
+        "condition": "Extreme Heat",
+        "temperatureRange": "Above 75°F",
+        "humidityConcern": "Bacterial Growth and Quality Degradation",
+        "recommendedPackaging": [
+          {
+            "name": "Food-Grade Cooling Container",
+            "cost": 125.0,
+            "specifications": {
+              "temperatureRange": "35-40°F",
+              "foodSafetyCertified": true,
+              "odorBarrier": "Complete"
+            }
+          },
+          {
+            "name": "Gel Ice Pack System",
+            "cost": 28.5,
+            "specifications": {
+              "freezePoint": "32°F",
+              "duration": "48 hours",
+              "foodSafe": true
+            }
+          }
+        ],
+        "recommendedCarriers": [
+          {
+            "name": "FoodSafe Express",
+            "rating": 4.8,
+            "capabilities": [
+              "HACCP Certified",
+              "Temperature-Controlled Fleet",
+              "Food Safety Training"
+            ],
+            "costPremium": 2.35
+          }
+        ]
+      },
+      {
+        "condition": "Humidity Fluctuation",
+        "temperatureRange": "30-80%",
+        "humidityConcern": "Moisture Sensitivity and Texture Change Risk",
+        "recommendedPackaging": [
+          {
+            "name": "Humidity Control Container",
+            "cost": 75.0,
+            "specifications": {
+              "humidityRegulation": "Active",
+              "moistureBarrier": "Complete",
+              "ventilation": "Controlled"
+            }
+          },
+          {
+            "name": "Food-Grade Desiccant Packs",
+            "cost": 15.5,
+            "specifications": {
+              "absorptionCapacity": "500ml",
+              "foodSafe": true,
+              "indicator": "Color-Changing"
+            }
+          }
+        ],
+        "recommendedCarriers": [
+          {
+            "name": "QualityFood Logistics",
+            "rating": 4.7,
+            "capabilities": [
+              "Climate-Controlled Transport",
+              "Humidity Monitoring",
+              "Quick Delivery"
+            ],
+            "costPremium": 1.95
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "productType": "Pharmaceuticals and Medicines",
+    "weatherConditions": [
+      {
+        "condition": "Extreme Heat",
+        "temperatureRange": "Above 77°F",
+        "humidityConcern": "Stability and Potency Loss Risk",
+        "recommendedPackaging": [
+          {
+            "name": "Pharmaceutical-Grade Thermal Container",
+            "cost": 275.0,
+            "specifications": {
+              "certification": "GDP Compliant",
+              "temperatureControl": "Active",
+              "monitoring": "Real-Time IoT Sensors",
+              "thermalResistance": "R-30",
+              "qualification": "WHO/PQS Certified"
+            }
+          },
+          {
+            "name": "Medical-Grade PCM System",
+            "cost": 125.0,
+            "specifications": {
+              "temperatureMaintenance": "2-8°C",
+              "duration": "120 hours",
+              "calibration": "FDA Compliant",
+              "temperatureBreachIndicator": "Electronic"
+            }
+          }
+        ],
+        "recommendedCarriers": [
+          {
+            "name": "PharmaTemp Solutions",
+            "rating": 4.95,
+            "capabilities": [
+              "GDP Certified Fleet",
+              "Continuous Temperature Monitoring",
+              "Pharmaceutical Handling Certification",
+              "24/7 Emergency Response",
+              "Temperature Mapping Validated Vehicles"
+            ],
+            "costPremium": 3.75
+          }
+        ]
+      },
+      {
+        "condition": "Freezing Conditions",
+        "temperatureRange": "Below 35°F",
+        "humidityConcern": "Freezing Damage and Crystallization Risk",
+        "recommendedPackaging": [
+          {
+            "name": "Heated Pharmaceutical Container",
+            "cost": 295.0,
+            "specifications": {
+              "temperatureMaintenance": "15-25°C",
+              "heatingSystem": "Validated Electric",
+              "powerBackup": "48 hours",
+              "insulation": "Pharmaceutical-Grade"
+            }
+          }
+        ],
+        "recommendedCarriers": [
+          {
+            "name": "MedLogistics Plus",
+            "rating": 4.9,
+            "capabilities": [
+              "Temperature-Mapped Fleet",
+              "Pharmaceutical Handling Certified",
+              "Real-Time Monitoring",
+              "Regulatory Compliance"
+            ],
+            "costPremium": 3.45
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "productType": "Frozen Goods",
+    "weatherConditions": [
+      {
+        "condition": "Temperature Fluctuation",
+        "temperatureRange": "Above 0°F",
+        "humidityConcern": "Thawing and Quality Degradation Risk",
+        "recommendedPackaging": [
+          {
+            "name": "Deep Freeze Container System",
+            "cost": 245.0,
+            "specifications": {
+              "temperatureMaintenance": "-10°F to -20°F",
+              "coolingMethod": "Cryogenic",
+              "insulationRating": "R-40",
+              "temperatureLogging": "Continuous"
+            }
+          },
+          {
+            "name": "Dry Ice Packaging System",
+            "cost": 85.0,
+            "specifications": {
+              "sublimationRate": "Controlled",
+              "duration": "96 hours",
+              "ventilation": "CO2 Relief",
+              "stackability": "Optimized"
+            }
+          }
+        ],
+        "recommendedCarriers": [
+          {
+            "name": "DeepFreeze Logistics",
+            "rating": 4.85,
+            "capabilities": [
+              "Deep Freeze Fleet",
+              "Dry Ice Replenishment",
+              "Cold Chain Validation",
+              "Temperature Monitoring"
+            ],
+            "costPremium": 3.15
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "productType": "Glassware",
+    "weatherConditions": [
+      {
+        "condition": "Extreme Temperature Fluctuation",
+        "temperatureRange": "-20°F to 120°F",
+        "humidityConcern": "Thermal Shock and Breakage Risk",
+        "recommendedPackaging": [
+          {
+            "name": "Thermal Shock Protection System",
+            "cost": 165.0,
+            "specifications": {
+              "temperatureGradientControl": "Gradual",
+              "shockAbsorption": "Multi-Layer",
+              "thermalInsulation": "Progressive",
+              "impactProtection": "360-Degree"
+            }
+          },
+          {
+            "name": "Glass-Specific Cushioning",
+            "cost": 75.0,
+            "specifications": {
+              "density": "Variable",
+              "compressionSet": "Minimal",
+              "thermalConductivity": "Low",
+              "reusability": "Yes"
+            }
+          }
+        ],
+        "recommendedCarriers": [
+          {
+            "name": "GlassGuard Transport",
+            "rating": 4.8,
+            "capabilities": [
+              "Temperature-Controlled Fleet",
+              "Specialized Handling",
+              "Thermal Mapping",
+              "Fragile Items Certified"
+            ],
+            "costPremium": 2.85
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "productType": "Fragile Items",
+    "weatherConditions": [
+      {
+        "condition": "Vibration and Temperature",
+        "temperatureRange": "0°F to 100°F",
+        "humidityConcern": "Vibration Sensitivity and Impact Risk",
+        "recommendedPackaging": [
+          {
+            "name": "Multi-Protection System",
+            "cost": 195.0,
+            "specifications": {
+              "vibrationDampening": "Advanced",
+              "temperatureStability": "Moderate",
+              "impactAbsorption": "High",
+              "cornerProtection": "Reinforced"
+            }
+          },
+          {
+            "name": "Suspension Packaging",
+            "cost": 85.0,
+            "specifications": {
+              "suspensionTravel": "2 Inches",
+              "loadCapacity": "Adjustable",
+              "reusable": true,
+              "assembly": "Tool-Free"
+            }
+          }
+        ],
+        "recommendedCarriers": [
+          {
+            "name": "CarefulCargo Express",
+            "rating": 4.85,
+            "capabilities": [
+              "Air-Ride Suspension",
+              "Careful Handling Certified",
+              "Real-Time Shock Monitoring",
+              "Climate Control"
+            ],
+            "costPremium": 2.95
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "productType": "Cosmetics and Skincare",
+    "weatherConditions": [
+      {
+        "condition": "Extreme Heat",
+        "temperatureRange": "Above 73°F",
+        "humidityConcern": "Formula Separation and Efficacy Loss Risk",
+        "recommendedPackaging": [
+          {
+            "name": "Beauty Product Thermal Container",
+            "cost": 145.0,
+            "specifications": {
+              "temperatureControl": "Active",
+              "uvProtection": "Complete",
+              "humidityControl": "Built-In",
+              "airflow": "Regulated"
+            }
+          },
+          {
+            "name": "Cosmetic Cooling System",
+            "cost": 65.0,
+            "specifications": {
+              "temperatureRange": "59-71°F",
+              "duration": "72 hours",
+              "hermeticSeal": "Complete",
+              "condensationPrevention": "Active"
+            }
+          }
+        ],
+        "recommendedCarriers": [
+          {
+            "name": "BeautyCare Logistics",
+            "rating": 4.75,
+            "capabilities": [
+              "Temperature-Controlled Fleet",
+              "Beauty Product Certified",
+              "Contamination Prevention",
+              "Special Handling Protocols"
+            ],
+            "costPremium": 2.45
+          }
+        ]
+      },
+      {
+        "condition": "Freezing Conditions",
+        "temperatureRange": "Below 32°F",
+        "humidityConcern": "Emulsion Separation and Texture Change Risk",
+        "recommendedPackaging": [
+          {
+            "name": "Cosmetic Thermal Protection",
+            "cost": 155.0,
+            "specifications": {
+              "temperatureMaintenance": "40-65°F",
+              "heatingElements": "Integrated",
+              "structureProtection": "Enhanced",
+              "stabilityMonitoring": "Continuous"
+            }
+          }
+        ],
+        "recommendedCarriers": [
+          {
+            "name": "CosmeticSafe Transport",
+            "rating": 4.8,
+            "capabilities": [
+              "Beauty Product Specialized",
+              "Temperature Mapping",
+              "Gentle Handling Protocols",
+              "Climate Control"
+            ],
+            "costPremium": 2.65
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "productType": "Pharmaceuticals and Medicines",
+    "weatherConditions": [
+      {
+        "condition": "Extreme Heat",
+        "temperatureRange": "Above 77°F",
+        "humidityConcern": "Stability and Potency Loss Risk",
+        "recommendedPackaging": [
+          {
+            "name": "Pharmaceutical-Grade Thermal Container",
+            "cost": 275.0,
+            "specifications": {
+              "certification": "GDP Compliant",
+              "temperatureControl": "Active",
+              "monitoring": "Real-Time IoT Sensors",
+              "thermalResistance": "R-30",
+              "qualification": "WHO/PQS Certified"
+            }
+          },
+          {
+            "name": "Medical-Grade PCM System",
+            "cost": 125.0,
+            "specifications": {
+              "temperatureMaintenance": "2-8°C",
+              "duration": "120 hours",
+              "calibration": "FDA Compliant",
+              "temperatureBreachIndicator": "Electronic"
+            }
+          }
+        ],
+        "recommendedCarriers": [
+          {
+            "name": "PharmaTemp Solutions",
+            "rating": 4.95,
+            "capabilities": [
+              "GDP Certified Fleet",
+              "Continuous Temperature Monitoring",
+              "Pharmaceutical Handling Certification",
+              "24/7 Emergency Response",
+              "Temperature Mapping Validated Vehicles"
+            ],
+            "costPremium": 3.75
+          }
+        ]
+      },
+      {
+        "condition": "Freezing Conditions",
+        "temperatureRange": "Below 35°F",
+        "humidityConcern": "Freezing Damage and Crystallization Risk",
+        "recommendedPackaging": [
+          {
+            "name": "Heated Pharmaceutical Container",
+            "cost": 295.0,
+            "specifications": {
+              "temperatureMaintenance": "15-25°C",
+              "heatingSystem": "Validated Electric",
+              "powerBackup": "48 hours",
+              "insulation": "Pharmaceutical-Grade"
+            }
+          }
+        ],
+        "recommendedCarriers": [
+          {
+            "name": "MedLogistics Plus",
+            "rating": 4.9,
+            "capabilities": [
+              "Temperature-Mapped Fleet",
+              "Pharmaceutical Handling Certified",
+              "Real-Time Monitoring",
+              "Regulatory Compliance"
+            ],
+            "costPremium": 3.45
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "productType": "Cosmetics and Skincare",
+    "weatherConditions": [
+      {
+        "condition": "Extreme Heat",
+        "temperatureRange": "Above 73°F",
+        "humidityConcern": "Formula Separation and Efficacy Loss Risk",
+        "recommendedPackaging": [
+          {
+            "name": "Beauty Product Thermal Container",
+            "cost": 145.0,
+            "specifications": {
+              "temperatureControl": "Active",
+              "uvProtection": "Complete",
+              "humidityControl": "Built-In",
+              "airflow": "Regulated"
+            }
+          },
+          {
+            "name": "Cosmetic Cooling System",
+            "cost": 65.0,
+            "specifications": {
+              "temperatureRange": "59-71°F",
+              "duration": "72 hours",
+              "hermeticSeal": "Complete",
+              "condensationPrevention": "Active"
+            }
+          }
+        ],
+        "recommendedCarriers": [
+          {
+            "name": "BeautyCare Logistics",
+            "rating": 4.75,
+            "capabilities": [
+              "Temperature-Controlled Fleet",
+              "Beauty Product Certified",
+              "Contamination Prevention",
+              "Special Handling Protocols"
+            ],
+            "costPremium": 2.45
+          }
+        ]
+      },
+      {
+        "condition": "Freezing Conditions",
+        "temperatureRange": "Below 32°F",
+        "humidityConcern": "Emulsion Separation and Texture Change Risk",
+        "recommendedPackaging": [
+          {
+            "name": "Cosmetic Thermal Protection",
+            "cost": 155.0,
+            "specifications": {
+              "temperatureMaintenance": "40-65°F",
+              "heatingElements": "Integrated",
+              "structureProtection": "Enhanced",
+              "stabilityMonitoring": "Continuous"
+            }
+          }
+        ],
+        "recommendedCarriers": [
+          {
+            "name": "CosmeticSafe Transport",
+            "rating": 4.8,
+            "capabilities": [
+              "Beauty Product Specialized",
+              "Temperature Mapping",
+              "Gentle Handling Protocols",
+              "Climate Control"
+            ],
+            "costPremium": 2.65
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,79 @@
+{
+  "carrier_options": {
+    "electricVehicle": {
+      "energySource": "Electric",
+      "averageCostPerKwh": "$0.10-$0.20",
+      "efficiencyPerMile": "2 kWh per mile",
+      "suitability": "Ideal for urban and short-range routes",
+      "infrastructureAvailability": "High in urban areas, moderate in rural areas"
+    },
+    "hydrogenVehicle": {
+      "energySource": "Hydrogen",
+      "averageCostPerKg": "$10-$15",
+      "efficiencyPerMile": "0.5 kg per mile",
+      "suitability": "Best for long-haul, heavy-duty routes",
+      "infrastructureAvailability": "Limited, mainly in California and select regions"
+    },
+    "biofuelVehicle": {
+      "energySource": "Biofuel",
+      "averageCostPerGallon": "$3.50-$4.50",
+      "efficiencyPerMile": "8 miles per gallon",
+      "suitability": "Rural and regional routes lacking EV/hydrogen infrastructure",
+      "environmentalImpact": "20% reduction in CO₂ compared to diesel"
+    }
+  },
+  "route_distance": {
+    "local": {
+      "mileageRange": "0-50 miles",
+      "recommendedCarrier": "Electric Vehicle"
+    },
+    "regional": {
+      "mileageRange": "50-500 miles",
+      "recommendedCarrier": "Biofuel Vehicle"
+    },
+    "longHaul": {
+      "mileageRange": "500+ miles",
+      "recommendedCarrier": "Hydrogen or Biofuel Vehicle"
+    }
+  },
+  "charging_and_refueling": {
+    "electric": {
+      "chargingCostRange": "$0.10-$0.20 per kWh",
+      "stationAvailability": "High in urban areas, lower in rural areas"
+    },
+    "hydrogen": {
+      "refuelingCostPerKg": "$10-$15",
+      "stationAvailability": "Limited, mainly in specific states"
+    },
+    "biofuel": {
+      "costPerGallon": "$3.50-$4.50",
+      "availability": "High, especially in agricultural regions"
+    }
+  },
+  "emission_reductions": {
+    "electricVehicle": {
+      "emissionReduction": "100% reduction in tailpipe emissions",
+      "environmentalIncentives": "Subsidies available in some regions"
+    },
+    "hydrogenVehicle": {
+      "emissionReduction": "90% reduction relative to diesel",
+      "environmentalIncentives": "Grants available for infrastructure expansion"
+    },
+    "biofuelVehicle": {
+      "emissionReduction": "20% reduction relative to diesel",
+      "environmentalIncentives": "Lower taxes on biofuel in select regions"
+    }
+  },
+  "conventional_comparison": {
+    "diesel": {
+      "averageCostPerGallon": "$3.00-$4.00",
+      "efficiencyPerMile": "7 miles per gallon",
+      "emissionImpact": "High CO₂ emissions, no reduction"
+    },
+    "gasoline": {
+      "averageCostPerGallon": "$3.00-$4.00",
+      "efficiencyPerMile": "10 miles per gallon",
+      "emissionImpact": "High CO₂ emissions, no reduction"
+    }
+  }
+}

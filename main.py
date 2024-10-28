@@ -51,7 +51,7 @@ async def process_tool(
 
         messages = prompt_func(inputParameters=validated_input)
         completion = client.beta.chat.completions.parse(
-            model="gpt-4o-mini", messages=messages, response_format=response_format
+            model="gpt-4o-mini", messages=messages, response_format=response_format, temperature=0
         )
 
         response = completion.choices[0].message.parsed
