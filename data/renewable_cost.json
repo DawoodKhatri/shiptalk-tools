@@ -1,5 +1,5 @@
 {
-  "carrier_options": {
+  "vehicle_options": {
     "electricVehicle": {
       "energySource": "Electric",
       "averageCostPerKwh": "$0.10-$0.20",

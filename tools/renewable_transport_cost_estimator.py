@@ -5,10 +5,10 @@ from .custom_types.base_types import Plot
 
 class RenewableTransportCostEstimatorInputParams(BaseModel):
     routeDistance: float  # Route distance in miles
-    carrierType: str  # Type of renewable-powered carrier (e.g., "electricVehicle", "hydrogenVehicle", "biofuelVehicle")
+    vehicleType: str  # Type of renewable-powered vehicle (e.g., "electricVehicle", "hydrogenVehicle", "biofuelVehicle")
 
 
-class CarrierCostEstimate(BaseModel):
+class VehicleCostEstimate(BaseModel):
     vehicleName: str
     energySource: str
     costEstimate: float  # Total cost estimate for the route
@@ -18,11 +18,11 @@ class CarrierCostEstimate(BaseModel):
 
 
 class RenewableTransportCostEstimatorResults(BaseModel):
-    estimatedTotalCost: float  # Estimated total cost for the route using selected carrier
-    carrierCostEstimates: List[CarrierCostEstimate]  # Breakdown of costs for each carrier type
-    emissionReductions: Optional[Dict[str, str]]  # Emission reduction details for each carrier type
-    recommendedCarrier: str  # Recommended carrier type for given route distance
-    carrierComparisonAnalysis: Plot  # Bar chart comparing cost efficiency across carrier types
+    estimatedTotalCost: float  # Estimated total cost for the route using selected vehicle
+    vehicleCostEstimates: List[VehicleCostEstimate]  # Breakdown of costs for each vehicle type
+    emissionReductions: Optional[Dict[str, str]]  # Emission reduction details for each vehicle type
+    recommendedVehicle: str  # Recommended vehicle type for given route distance
+    vehicleComparisonAnalysis: Plot  # Bar chart comparing cost efficiency across vehicle types
     environmentalIncentives: List[str]  # List of available incentives for renewable transport
 
 
@@ -33,7 +33,7 @@ def renewable_transport_cost_estimator_prompt(inputParameters: RenewableTranspor
     system_prompt = (
         """
     You are an assistant for a shipping tool called the Renewable Transport Cost Estimator.
-    Your role is to calculate and compare costs for using renewable-powered carriers (Electric, Hydrogen, Biofuel) based on input data.
+    Your role is to calculate and compare costs for using renewable-powered vehicles (Electric, Hydrogen, Biofuel) based on input data.
 
     Use the provided data for reference:
     """
@@ -46,37 +46,37 @@ def renewable_transport_cost_estimator_prompt(inputParameters: RenewableTranspor
 
     - `estimatedTotalCost`: 
         - **Format**: Float.
-        - **Description**: Total estimated cost for the route using the chosen carrier type.
+        - **Description**: Total estimated cost for the route using the chosen vehicle type.
         - **Goal**: To provide a clear overview of the transportation cost using renewable energy.
 
-    - `carrierCostEstimates`: 
-        - **Format**: List of `CarrierCostEstimate` objects.
-        - **Description**: Detailed cost analysis per carrier type, including energy source, cost per unit, efficiency per mile, and environmental impact.
-        - **Goal**: To help users compare the cost and efficiency of different renewable carriers.
+    - `vehicleCostEstimates`: 
+        - **Format**: List of `VehicleCostEstimate` objects.
+        - **Description**: Detailed cost analysis per vehicle type, including energy source, cost per unit, efficiency per mile, and environmental impact.
+        - **Goal**: To help users compare the cost and efficiency of different renewable vehicles.
 
     - `emissionReductions`: 
         - **Format**: Dictionary.
-        - **Description**: Emission reduction details for each carrier type.
-        - **Goal**: To highlight the environmental benefits of each renewable carrier type.
+        - **Description**: Emission reduction details for each vehicle type.
+        - **Goal**: To highlight the environmental benefits of each renewable vehicle type.
 
-    - `recommendedCarrier`: 
+    - `recommendedVehicle`: 
         - **Format**: String.
-        - **Description**: Carrier type recommended based on the route distance.
-        - **Goal**: Guide users to the most efficient carrier for their route length.
+        - **Description**: Vehicle type recommended based on the route distance.
+        - **Goal**: Guide users to the most efficient vehicle for their route length.
 
-    - `carrierComparisonAnalysis`: 
+    - `vehicleComparisonAnalysis`: 
         - **Chart Type**: "barChart"
-        - **Description**: Show cost efficiency comparison across carrier types.
-        - **Goal**: Visual representation of carrier cost-effectiveness for informed decision-making.
-        - **Explanation**: Summary of the cost benefits of each carrier type.
+        - **Description**: Show cost efficiency comparison across vehicle types.
+        - **Goal**: Visual representation of vehicle cost-effectiveness for informed decision-making.
+        - **Explanation**: Summary of the cost benefits of each vehicle type.
 
     - `environmentalIncentives`: 
         - **Format**: List of strings.
-        - **Description**: Available environmental incentives, subsidies, or grants related to the chosen carrier type.
+        - **Description**: Available environmental incentives, subsidies, or grants related to the chosen vehicle type.
         - **Goal**: Inform users of cost-saving opportunities for renewable transport.
 
     **Note:**
-    Only use ["barChart"] for visualizations to compare carrier cost efficiency.
+    Only use ["barChart"] for visualizations to compare vehicle cost efficiency.
     """
     )
 
@@ -101,7 +101,7 @@ tool_config = {
         "response_format": RenewableTransportCostEstimatorResults,
         "input_format": RenewableTransportCostEstimatorInputParams,
         "options": {
-            "carrierType": ["electricVehicle", "hydrogenVehicle", "biofuelVehicle"]
+            "vehicleType": ["electricVehicle", "hydrogenVehicle", "biofuelVehicle"]
         }
     }
 }
