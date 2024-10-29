@@ -102,7 +102,7 @@ def compliance_checker_prompt(inputParameters: ComplianceInputParams):
     return messages
 
 tool_config = {
-    "interstate-compliance": {
+    "interstate-compliance-checker": {
         "prompt_func": compliance_checker_prompt,
         "response_format": ComplianceAnalysisResults,
         "input_format": ComplianceInputParams,
