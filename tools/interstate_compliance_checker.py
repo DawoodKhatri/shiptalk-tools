@@ -106,8 +106,6 @@ tool_config = {
         "prompt_func": compliance_checker_prompt,
         "response_format": ComplianceAnalysisResults,
         "input_format": ComplianceInputParams,
-        "options": {
-            "originState": ["California", "Texas", "Florida"]
-        }
+        "options": {}
     }
 }

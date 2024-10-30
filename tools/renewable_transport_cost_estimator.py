@@ -101,7 +101,7 @@ tool_config = {
         "response_format": RenewableTransportCostEstimatorResults,
         "input_format": RenewableTransportCostEstimatorInputParams,
         "options": {
-            "vehicleType": ["electricVehicle", "hydrogenVehicle", "biofuelVehicle"]
+            "vehicleType": ["Electric Vehicle", "Hydrogen Vehicle", "Biofuel Vehicle"]
         }
     }
 }

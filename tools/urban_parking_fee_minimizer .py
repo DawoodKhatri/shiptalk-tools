@@ -3,9 +3,12 @@ from pydantic import BaseModel
 from typing import List
 from .custom_types.base_types import Plot
 
+class DeliveryLocation(BaseModel):
+    location: str
+    deliveryTime: str
+
 class ParkingFeeMinimizerInputParams(BaseModel):
-    deliveryLocations: List[str]  # List of delivery locations in the city
-    deliveryTimes: List[str]  # Planned delivery times for each location (e.g., ["8:00 AM", "12:00 PM"])
+    deliveryLocations: List[DeliveryLocation]  # List of delivery locations in the city
     urgencyLevel: str  # Delivery urgency level (e.g., "Standard", "Express", "Same-Day")
 
 

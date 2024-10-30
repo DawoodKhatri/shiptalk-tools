@@ -5,7 +5,7 @@ from .custom_types.base_types import Plot
 
 class BulkShipmentLabelingInputParams(BaseModel):
     # Type of product based on product dimensions and weight (small, medium, large)
-    packageType: str
+    packageSize: str
     # Carrier being used for shipment (e.g., FedEx, UPS, DHL)
     carrier: str
     # Number of labels needed for the bulk shipment
@@ -141,7 +141,7 @@ tool_config = {
         "response_format": BulkShipmentLabelingAnalysisResults,
         "input_format": BulkShipmentLabelingInputParams,
         "options": {
-            "productSize": ["Small", "Medium", "Large"],
+            "packageSize": ["Small", "Medium", "Large"],
             "shippingType": ["Domestic Shipping", "International Shipping"]
         }
     }
