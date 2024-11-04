@@ -83,6 +83,8 @@ def freight_consolidation_prompt(inputParameters: FreightConsolidationInputParam
 
     The goal is to help users combine multiple shipments into larger ones, reduce shipping costs, maximize carrier capacity utilization.
     
+    
+    There is no Compulsion to go with the same order of the input, but make sure you cover all the points.
     Make use of all the input parameters provided to generate insightful analysis and recommendations.
     The output should include visualizations and explanations for each aspect of the consolidation process.
     Try to combine as many orders as as possible into larger one while considering the carrier capacities.
