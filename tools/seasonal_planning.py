@@ -42,7 +42,7 @@ def seasonal_planning_prompt(inputParameters: SeasonalPlanningInputParamsType):
     5. Implementation Plan: A markdown explanation of the implementation plan.
     6. Chart 1: A "barChart" showing the comparison of expected peak season demand vs. available shipping and storage capacity.
     7. Chart 2: A "pieChart" showing the breakdown of estimated additional costs due to increased demand.
-    8. Chart 3: A "lineChart" showing the staffing levels vs. peak season demand over time.
+    8. Chart 3: A "lineChart" showing the staffing levels vs. peak season demand over time make more accourate and realestic.
     9. Chart 4: A "barChart" showing the inventory adjustments over time based on demand forecasts.
     10. Summary: A markdown summary of all recommendations.
     """
