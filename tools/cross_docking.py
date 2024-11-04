@@ -53,6 +53,9 @@ class CrossDockingAnalysisResults(BaseModel):
 
 
 def cross_docking_prompt(inputParameters: CrossDockingInputParams):
+    knowledge_file = open("data/cross_docking.json", "r")
+    knowledge = json.loads(knowledge_file.read())
+    knowledge_file.close()
 
     system_prompt = (
         """
@@ -63,6 +66,11 @@ def cross_docking_prompt(inputParameters: CrossDockingInputParams):
          - Efficiently allocate labor and dock resources.
          - Optimize the transfer of goods between inbound and outbound trucks based on priority level, traffic, and weather conditions.
 
+         Strictly use the following data as the foundation for your analysis:
+        """
+        + json.dumps(knowledge, indent=4) +
+        """
+        
          ## **Instructions**:
 
          ### Step 1: Analyze Incoming and Outbound Trucks

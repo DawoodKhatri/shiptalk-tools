@@ -1,0 +1,643 @@
+[
+  {
+    "scenario": "Efficient allocation for perishable goods under high priority",
+    "incomingTrucks": [
+      {
+        "arrivalTime": "2024-07-11 2:00 PM",
+        "loadType": "Perishable",
+        "quantity": 300
+      },
+      {
+        "arrivalTime": "2024-07-11 4:00 PM",
+        "loadType": "Standard",
+        "quantity": 400
+      }
+    ],
+    "outboundTrucks": [
+      { "departureTime": "2024-07-11 6:00 PM", "capacity": 500 },
+      { "departureTime": "2024-07-11 9:00 PM", "capacity": 300 }
+    ],
+    "docksAvailable": 2,
+    "laborAvailable": 5,
+    "priorityLevel": "High",
+    "trafficConditions": "Light",
+    "weatherConditions": "Clear",
+    "expectedOutput": {
+      "carrierOptimization": {
+        "plotType": "barChart",
+        "data": {
+          "Truck A": { "load": 300, "composition": ["300 Perishable"] },
+          "Truck B": { "load": 300, "composition": ["300 Standard"] }
+        },
+        "explanation": "Prioritized the perishable load for immediate dispatch in Truck A, reserving standard load for Truck B."
+      },
+      "dockScheduling": {
+        "plotType": "barChart",
+        "data": { "Dock 1": "In Use", "Dock 2": "In Use" },
+        "explanation": "Both docks are active to minimize waiting for high-priority perishable goods."
+      },
+      "laborAllocation": {
+        "plotType": "pieChart",
+        "data": { "Unloading": 60, "Loading": 40 },
+        "explanation": "Focused more labor on unloading the perishable items to ensure a swift transfer."
+      },
+      "deliveryTimelineComparison": {
+        "plotType": "lineChart",
+        "data": {
+          "Planned Departure": ["6:00 PM", "9:00 PM"],
+          "Actual Departure": ["On Time", "On Time"]
+        },
+        "explanation": "No delays expected given light traffic and clear weather."
+      },
+      "riskAssessment": {
+        "riskLevel": "Low",
+        "explanation": "Low risk due to favorable conditions and efficient scheduling of perishable goods."
+      },
+      "deliveryStatus": {
+        "status": "On Time",
+        "explanation": "Proper labor and dock allocation ensures timely dispatch for both trucks."
+      },
+      "finalRecommendations": "Current allocation is optimal for high-priority goods. Continue using both docks for efficient processing."
+    }
+  },
+  {
+    "scenario": "Managing heavy load with limited docks and labor",
+    "incomingTrucks": [
+      {
+        "arrivalTime": "2024-08-01 8:00 AM",
+        "loadType": "Standard",
+        "quantity": 600
+      },
+      {
+        "arrivalTime": "2024-08-01 10:00 AM",
+        "loadType": "Fragile",
+        "quantity": 150
+      }
+    ],
+    "outboundTrucks": [
+      { "departureTime": "2024-08-01 12:00 PM", "capacity": 500 },
+      { "departureTime": "2024-08-01 3:00 PM", "capacity": 300 }
+    ],
+    "docksAvailable": 1,
+    "laborAvailable": 3,
+    "priorityLevel": "Medium",
+    "trafficConditions": "Moderate",
+    "weatherConditions": "Rainy",
+    "expectedOutput": {
+      "carrierOptimization": {
+        "plotType": "barChart",
+        "data": {
+          "Truck A": {
+            "load": 500,
+            "composition": ["350 Standard", "150 Fragile"]
+          },
+          "Truck B": { "load": 300, "composition": ["250 Standard"] }
+        },
+        "explanation": "Assigned the fragile load to Truck A to avoid extra handling, balancing the remaining load across both trucks."
+      },
+      "dockScheduling": {
+        "plotType": "barChart",
+        "data": { "Dock 1": "In Use" },
+        "explanation": "Single dock utilized continuously to handle the high load efficiently."
+      },
+      "laborAllocation": {
+        "plotType": "pieChart",
+        "data": { "Unloading": 70, "Loading": 30 },
+        "explanation": "More labor allocated to unloading to manage the heavy load within limited dock capacity."
+      },
+      "deliveryTimelineComparison": {
+        "plotType": "lineChart",
+        "data": {
+          "Planned Departure": ["12:00 PM", "3:00 PM"],
+          "Actual Departure": ["On Time", "On Time"]
+        },
+        "explanation": "Efficient allocation avoids delays even with moderate traffic."
+      },
+      "riskAssessment": {
+        "riskLevel": "Medium",
+        "explanation": "Moderate risk due to rainy weather and single dock availability, mitigated by proper labor allocation."
+      },
+      "deliveryStatus": {
+        "status": "On Time",
+        "explanation": "Timely departures achieved by maintaining continuous dock usage."
+      },
+      "finalRecommendations": "Consider adding additional dock or labor during peak hours to improve flow."
+    }
+  },
+  {
+    "scenario": "Optimizing high-priority fragile load under stormy weather",
+    "incomingTrucks": [
+      {
+        "arrivalTime": "2024-09-05 11:30 AM",
+        "loadType": "Fragile",
+        "quantity": 80
+      },
+      {
+        "arrivalTime": "2024-09-05 1:00 PM",
+        "loadType": "Standard",
+        "quantity": 400
+      }
+    ],
+    "outboundTrucks": [
+      { "departureTime": "2024-09-05 2:00 PM", "capacity": 500 },
+      { "departureTime": "2024-09-05 6:00 PM", "capacity": 200 }
+    ],
+    "docksAvailable": 1,
+    "laborAvailable": 4,
+    "priorityLevel": "High",
+    "trafficConditions": "Heavy",
+    "weatherConditions": "Stormy",
+    "expectedOutput": {
+      "carrierOptimization": {
+        "plotType": "barChart",
+        "data": {
+          "Truck A": {
+            "load": 400,
+            "composition": ["80 Fragile", "320 Standard"]
+          },
+          "Truck B": { "load": 80, "composition": ["80 Standard"] }
+        },
+        "explanation": "Assigned fragile load to Truck A for immediate dispatch, utilizing remaining capacity efficiently."
+      },
+      "dockScheduling": {
+        "plotType": "barChart",
+        "data": { "Dock 1": "In Use" },
+        "explanation": "Single dock utilized to maintain flow under limited conditions."
+      },
+      "laborAllocation": {
+        "plotType": "pieChart",
+        "data": { "Unloading": 50, "Loading": 50 },
+        "explanation": "Balanced labor allocation to manage high-priority fragile items and standard load within dock limitations."
+      },
+      "deliveryTimelineComparison": {
+        "plotType": "lineChart",
+        "data": {
+          "Planned Departure": ["2:00 PM", "6:00 PM"],
+          "Actual Departure": ["2:30 PM", "6:30 PM"]
+        },
+        "explanation": "Heavy traffic and stormy weather introduce slight delays; adjustments accounted for."
+      },
+      "riskAssessment": {
+        "riskLevel": "High",
+        "explanation": "High risk due to stormy conditions and heavy traffic, mitigated by prioritizing fragile load."
+      },
+      "deliveryStatus": {
+        "status": "Delayed",
+        "explanation": "Stormy conditions and traffic contribute to minor delays; adjustments made to maintain flow."
+      },
+      "finalRecommendations": "Consider scheduling high-priority loads during favorable weather or adding labor during challenging conditions."
+    }
+  },
+  {
+    "scenario": "Handling high-priority perishable and fragile loads with limited capacity",
+    "incomingTrucks": [
+      {
+        "arrivalTime": "2024-10-10 3:00 PM",
+        "loadType": "Perishable",
+        "quantity": 200
+      },
+      {
+        "arrivalTime": "2024-10-10 3:30 PM",
+        "loadType": "Fragile",
+        "quantity": 150
+      },
+      {
+        "arrivalTime": "2024-10-10 4:00 PM",
+        "loadType": "Standard",
+        "quantity": 300
+      }
+    ],
+    "outboundTrucks": [
+      { "departureTime": "2024-10-10 5:00 PM", "capacity": 400 },
+      { "departureTime": "2024-10-10 8:00 PM", "capacity": 300 }
+    ],
+    "docksAvailable": 2,
+    "laborAvailable": 4,
+    "priorityLevel": "High",
+    "trafficConditions": "Heavy",
+    "weatherConditions": "Clear",
+    "expectedOutput": {
+      "carrierOptimization": {
+        "plotType": "barChart",
+        "data": {
+          "Truck A": {
+            "load": 350,
+            "composition": ["200 Perishable", "150 Fragile"]
+          },
+          "Truck B": { "load": 150, "composition": ["150 Standard"] }
+        },
+        "explanation": "Prioritized perishable and fragile loads for Truck A to minimize waiting, leaving remaining standard load for Truck B."
+      },
+      "dockScheduling": {
+        "plotType": "barChart",
+        "data": { "Dock 1": "In Use", "Dock 2": "In Use" },
+        "explanation": "Both docks are fully utilized to manage high-priority loads efficiently under heavy traffic."
+      },
+      "laborAllocation": {
+        "plotType": "pieChart",
+        "data": { "Unloading": 60, "Loading": 40 },
+        "explanation": "Increased labor for unloading to prioritize high-risk perishable and fragile items."
+      },
+      "deliveryTimelineComparison": {
+        "plotType": "lineChart",
+        "data": {
+          "Planned Departure": ["5:00 PM", "8:00 PM"],
+          "Actual Departure": ["5:30 PM", "8:15 PM"]
+        },
+        "explanation": "Heavy traffic slightly delays both departures; mitigation strategies in place."
+      },
+      "riskAssessment": {
+        "riskLevel": "High",
+        "explanation": "High risk due to traffic and high-priority loads, mitigated by efficient scheduling and labor allocation."
+      },
+      "deliveryStatus": {
+        "status": "Delayed",
+        "explanation": "Slight delays expected due to traffic; prioritization prevents significant setbacks."
+      },
+      "finalRecommendations": "Consider scheduling high-priority loads during off-peak hours to reduce delays."
+    }
+  },
+  {
+    "scenario": "Managing low-priority, high-volume loads under clear conditions",
+    "incomingTrucks": [
+      {
+        "arrivalTime": "2024-11-20 6:00 AM",
+        "loadType": "Standard",
+        "quantity": 700
+      },
+      {
+        "arrivalTime": "2024-11-20 7:00 AM",
+        "loadType": "Standard",
+        "quantity": 300
+      }
+    ],
+    "outboundTrucks": [
+      { "departureTime": "2024-11-20 9:00 AM", "capacity": 600 },
+      { "departureTime": "2024-11-20 1:00 PM", "capacity": 600 }
+    ],
+    "docksAvailable": 1,
+    "laborAvailable": 3,
+    "priorityLevel": "Low",
+    "trafficConditions": "Light",
+    "weatherConditions": "Clear",
+    "expectedOutput": {
+      "carrierOptimization": {
+        "plotType": "barChart",
+        "data": {
+          "Truck A": { "load": 600, "composition": ["600 Standard"] },
+          "Truck B": { "load": 400, "composition": ["400 Standard"] }
+        },
+        "explanation": "Distributed load evenly across both trucks to maximize capacity, without prioritizing specific loads due to low priority level."
+      },
+      "dockScheduling": {
+        "plotType": "barChart",
+        "data": { "Dock 1": "In Use" },
+        "explanation": "Single dock usage is sufficient under low-priority and light traffic conditions."
+      },
+      "laborAllocation": {
+        "plotType": "pieChart",
+        "data": { "Unloading": 50, "Loading": 50 },
+        "explanation": "Balanced labor allocation for efficient handling given low-priority status and light traffic."
+      },
+      "deliveryTimelineComparison": {
+        "plotType": "lineChart",
+        "data": {
+          "Planned Departure": ["9:00 AM", "1:00 PM"],
+          "Actual Departure": ["On Time", "On Time"]
+        },
+        "explanation": "No expected delays due to favorable traffic and weather."
+      },
+      "riskAssessment": {
+        "riskLevel": "Low",
+        "explanation": "Low risk as conditions and load priority are manageable with available resources."
+      },
+      "deliveryStatus": {
+        "status": "On Time",
+        "explanation": "Timely handling of all loads due to low-priority level and favorable conditions."
+      },
+      "finalRecommendations": "Single dock usage and balanced labor are optimal for this low-priority scenario."
+    }
+  },
+  {
+    "scenario": "Balancing perishable and standard loads with moderate traffic",
+    "incomingTrucks": [
+      {
+        "arrivalTime": "2024-12-02 11:00 AM",
+        "loadType": "Perishable",
+        "quantity": 200
+      },
+      {
+        "arrivalTime": "2024-12-02 12:30 PM",
+        "loadType": "Standard",
+        "quantity": 500
+      }
+    ],
+    "outboundTrucks": [
+      { "departureTime": "2024-12-02 3:00 PM", "capacity": 450 },
+      { "departureTime": "2024-12-02 5:30 PM", "capacity": 300 }
+    ],
+    "docksAvailable": 2,
+    "laborAvailable": 5,
+    "priorityLevel": "Medium",
+    "trafficConditions": "Moderate",
+    "weatherConditions": "Clear",
+    "expectedOutput": {
+      "carrierOptimization": {
+        "plotType": "barChart",
+        "data": {
+          "Truck A": {
+            "load": 450,
+            "composition": ["200 Perishable", "250 Standard"]
+          },
+          "Truck B": { "load": 250, "composition": ["250 Standard"] }
+        },
+        "explanation": "Allocated perishable items to Truck A for timely delivery, while balancing remaining standard load across both trucks."
+      },
+      "dockScheduling": {
+        "plotType": "barChart",
+        "data": { "Dock 1": "In Use", "Dock 2": "In Use" },
+        "explanation": "Both docks utilized to maintain efficiency for perishable and standard loads."
+      },
+      "laborAllocation": {
+        "plotType": "pieChart",
+        "data": { "Unloading": 60, "Loading": 40 },
+        "explanation": "Labor allocated more heavily towards unloading perishable items to minimize delay risks."
+      },
+      "deliveryTimelineComparison": {
+        "plotType": "lineChart",
+        "data": {
+          "Planned Departure": ["3:00 PM", "5:30 PM"],
+          "Actual Departure": ["On Time", "On Time"]
+        },
+        "explanation": "No delays expected as moderate traffic and clear weather do not impact scheduling."
+      },
+      "riskAssessment": {
+        "riskLevel": "Medium",
+        "explanation": "Moderate risk due to traffic; timely labor allocation helps reduce risk."
+      },
+      "deliveryStatus": {
+        "status": "On Time",
+        "explanation": "Efficient allocation of resources supports on-time delivery for both trucks."
+      },
+      "finalRecommendations": "Current allocation is effective for medium-priority loads with moderate traffic."
+    }
+  },
+  {
+    "scenario": "Urgent handling of fragile and perishable goods with last-minute standard load",
+    "incomingTrucks": [
+      {
+        "arrivalTime": "2025-01-15 1:30 PM",
+        "loadType": "Fragile",
+        "quantity": 120
+      },
+      {
+        "arrivalTime": "2025-01-15 2:15 PM",
+        "loadType": "Perishable",
+        "quantity": 180
+      },
+      {
+        "arrivalTime": "2025-01-15 3:00 PM",
+        "loadType": "Standard",
+        "quantity": 250
+      }
+    ],
+    "outboundTrucks": [
+      { "departureTime": "2025-01-15 4:00 PM", "capacity": 300 },
+      { "departureTime": "2025-01-15 6:00 PM", "capacity": 300 }
+    ],
+    "docksAvailable": 2,
+    "laborAvailable": 6,
+    "priorityLevel": "High",
+    "trafficConditions": "Moderate",
+    "weatherConditions": "Rainy",
+    "expectedOutput": {
+      "carrierOptimization": {
+        "plotType": "barChart",
+        "data": {
+          "Truck A": {
+            "load": 300,
+            "composition": ["120 Fragile", "180 Perishable"]
+          },
+          "Truck B": { "load": 250, "composition": ["250 Standard"] }
+        },
+        "explanation": "Prioritized urgent dispatch of fragile and perishable loads with Truck A due to high priority. Standard load scheduled with Truck B to utilize remaining capacity."
+      },
+      "dockScheduling": {
+        "plotType": "barChart",
+        "data": { "Dock 1": "In Use", "Dock 2": "In Use" },
+        "explanation": "Both docks utilized to expedite handling, especially for sensitive goods with tight timelines."
+      },
+      "laborAllocation": {
+        "plotType": "pieChart",
+        "data": { "Unloading": 70, "Loading": 30 },
+        "explanation": "Allocated more labor to unloading to minimize storage time for high-priority fragile and perishable items."
+      },
+      "deliveryTimelineComparison": {
+        "plotType": "lineChart",
+        "data": {
+          "Planned Departure": ["4:00 PM", "6:00 PM"],
+          "Actual Departure": ["On Time", "On Time"]
+        },
+        "explanation": "Rainy conditions and moderate traffic may affect timing, but no significant delays expected due to prompt labor allocation."
+      },
+      "riskAssessment": {
+        "riskLevel": "Medium",
+        "explanation": "Moderate risk due to rainy weather and high-priority items; well-managed with appropriate scheduling."
+      },
+      "deliveryStatus": {
+        "status": "On Time",
+        "explanation": "Timely departure expected as labor and dock allocations are optimized for high-priority items."
+      },
+      "finalRecommendations": "Consider additional labor for similar scenarios to handle high-priority items more flexibly under inclement weather."
+    }
+  },
+  {
+    "scenario": "Efficient transfer of bulk and fragile items with low labor availability",
+    "incomingTrucks": [
+      {
+        "arrivalTime": "2025-02-20 7:30 AM",
+        "loadType": "Bulk",
+        "quantity": 600
+      },
+      {
+        "arrivalTime": "2025-02-20 8:30 AM",
+        "loadType": "Fragile",
+        "quantity": 150
+      }
+    ],
+    "outboundTrucks": [
+      { "departureTime": "2025-02-20 10:00 AM", "capacity": 500 },
+      { "departureTime": "2025-02-20 2:00 PM", "capacity": 250 }
+    ],
+    "docksAvailable": 1,
+    "laborAvailable": 2,
+    "priorityLevel": "Medium",
+    "trafficConditions": "Light",
+    "weatherConditions": "Clear",
+    "expectedOutput": {
+      "carrierOptimization": {
+        "plotType": "barChart",
+        "data": {
+          "Truck A": {
+            "load": 500,
+            "composition": ["350 Bulk", "150 Fragile"]
+          },
+          "Truck B": { "load": 250, "composition": ["250 Bulk"] }
+        },
+        "explanation": "Assigned fragile load and portion of bulk to Truck A to ensure safe and timely delivery, with remaining bulk load allocated to Truck B."
+      },
+      "dockScheduling": {
+        "plotType": "barChart",
+        "data": { "Dock 1": "In Use" },
+        "explanation": "Single dock usage due to low labor availability, maximizing resource use while avoiding delays."
+      },
+      "laborAllocation": {
+        "plotType": "pieChart",
+        "data": { "Unloading": 60, "Loading": 40 },
+        "explanation": "Focused more labor on unloading bulk items, as this is the largest load and requires more handling time."
+      },
+      "deliveryTimelineComparison": {
+        "plotType": "lineChart",
+        "data": {
+          "Planned Departure": ["10:00 AM", "2:00 PM"],
+          "Actual Departure": ["On Time", "On Time"]
+        },
+        "explanation": "No delays expected due to clear weather and light traffic; efficient dock scheduling maintains timelines."
+      },
+      "riskAssessment": {
+        "riskLevel": "Low",
+        "explanation": "Low risk due to clear weather and light traffic, with dock usage optimized for low labor availability."
+      },
+      "deliveryStatus": {
+        "status": "On Time",
+        "explanation": "Timely handling achieved through efficient use of limited labor and dock resources."
+      },
+      "finalRecommendations": "Consider additional labor in future cases to expedite handling of bulk loads, but current allocation is effective."
+    }
+  },
+  {
+    "scenario": "Prioritizing last-minute high-volume standard load with limited dock space",
+    "incomingTrucks": [
+      {
+        "arrivalTime": "2025-03-30 3:00 PM",
+        "loadType": "Standard",
+        "quantity": 800
+      }
+    ],
+    "outboundTrucks": [
+      { "departureTime": "2025-03-30 5:00 PM", "capacity": 400 },
+      { "departureTime": "2025-03-30 8:00 PM", "capacity": 400 }
+    ],
+    "docksAvailable": 1,
+    "laborAvailable": 3,
+    "priorityLevel": "Medium",
+    "trafficConditions": "Heavy",
+    "weatherConditions": "Clear",
+    "expectedOutput": {
+      "carrierOptimization": {
+        "plotType": "barChart",
+        "data": {
+          "Truck A": { "load": 400, "composition": ["400 Standard"] },
+          "Truck B": { "load": 400, "composition": ["400 Standard"] }
+        },
+        "explanation": "Split the high-volume standard load evenly between Truck A and Truck B to maximize each truck's capacity, given the medium priority level and heavy traffic."
+      },
+      "dockScheduling": {
+        "plotType": "barChart",
+        "data": { "Dock 1": "In Use" },
+        "explanation": "Single dock continuously utilized to manage high volume, ensuring no delay for scheduled departures."
+      },
+      "laborAllocation": {
+        "plotType": "pieChart",
+        "data": { "Unloading": 50, "Loading": 50 },
+        "explanation": "Balanced labor allocation between unloading and loading to facilitate smooth transfer given limited resources."
+      },
+      "deliveryTimelineComparison": {
+        "plotType": "lineChart",
+        "data": {
+          "Planned Departure": ["5:00 PM", "8:00 PM"],
+          "Actual Departure": ["On Time", "On Time"]
+        },
+        "explanation": "Despite heavy traffic, clear weather and efficient resource use prevent delays."
+      },
+      "riskAssessment": {
+        "riskLevel": "Medium",
+        "explanation": "Moderate risk due to high traffic and limited dock capacity, managed through optimal load allocation."
+      },
+      "deliveryStatus": {
+        "status": "On Time",
+        "explanation": "Effective scheduling and balanced labor prevent delays for both departures."
+      },
+      "finalRecommendations": "Consider additional labor or dock capacity for similar high-volume, time-sensitive scenarios to minimize risk."
+    }
+  },
+  {
+    "scenario": "Efficient distribution of mixed loads under minimal labor availability",
+    "incomingTrucks": [
+      {
+        "arrivalTime": "2025-04-15 9:00 AM",
+        "loadType": "Perishable",
+        "quantity": 200
+      },
+      {
+        "arrivalTime": "2025-04-15 10:00 AM",
+        "loadType": "Standard",
+        "quantity": 300
+      },
+      {
+        "arrivalTime": "2025-04-15 11:00 AM",
+        "loadType": "Fragile",
+        "quantity": 100
+      }
+    ],
+    "outboundTrucks": [
+      { "departureTime": "2025-04-15 12:00 PM", "capacity": 300 },
+      { "departureTime": "2025-04-15 3:00 PM", "capacity": 300 }
+    ],
+    "docksAvailable": 1,
+    "laborAvailable": 2,
+    "priorityLevel": "High",
+    "trafficConditions": "Moderate",
+    "weatherConditions": "Clear",
+    "expectedOutput": {
+      "carrierOptimization": {
+        "plotType": "barChart",
+        "data": {
+          "Truck A": {
+            "load": 300,
+            "composition": ["200 Perishable", "100 Fragile"]
+          },
+          "Truck B": { "load": 300, "composition": ["300 Standard"] }
+        },
+        "explanation": "Prioritized perishable and fragile loads for Truck A to ensure timely handling, with remaining standard load assigned to Truck B."
+      },
+      "dockScheduling": {
+        "plotType": "barChart",
+        "data": { "Dock 1": "In Use" },
+        "explanation": "Single dock usage optimized to handle mixed loads within tight schedule constraints."
+      },
+      "laborAllocation": {
+        "plotType": "pieChart",
+        "data": { "Unloading": 60, "Loading": 40 },
+        "explanation": "Increased focus on unloading to prioritize perishable and fragile items."
+      },
+      "deliveryTimelineComparison": {
+        "plotType": "lineChart",
+        "data": {
+          "Planned Departure": ["12:00 PM", "3:00 PM"],
+          "Actual Departure": ["On Time", "On Time"]
+        },
+        "explanation": "No delays expected due to moderate traffic and efficient scheduling for high-priority loads."
+      },
+      "riskAssessment": {
+        "riskLevel": "Medium",
+        "explanation": "Moderate risk due to high priority and limited labor, mitigated by optimized scheduling and resource allocation."
+      },
+      "deliveryStatus": {
+        "status": "On Time",
+        "explanation": "Both departures are on time due to prioritization and balanced dock scheduling."
+      },
+      "finalRecommendations": "Additional labor could improve flexibility, but current approach ensures timely delivery for high-priority loads."
+    }
+  }
+]
